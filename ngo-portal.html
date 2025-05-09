@@ -121,7 +121,7 @@
         <a href="#" data-section="add-dog">Add Dog</a>
         <a href="#" data-section="manage-dogs">Manage Dogs</a>
         <a href="#" data-section="adoption-requests">Adoption Requests</a>
-        <a href="index.html">Logout</a>
+        <a href="index.html" id="logoutBtn">Logout</a>
     </nav>
     <main class="portal-main">
         <section id="dashboard-section" class="portal-section">
@@ -136,21 +136,136 @@
         </section>
         <section id="add-dog-section" class="portal-section" style="display:none">
             <h2>Add a New Dog</h2>
-            <p>Form to add a new dog will go here.</p>
+            <form id="addDogForm" style="max-width: 400px; margin: 0 auto; background: #f8f9fa; padding: 2rem 2rem 1rem 2rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(44,62,80,0.08);" enctype="multipart/form-data">
+                <div style="margin-bottom: 1.2rem;">
+                    <label for="dogName" style="display:block; font-weight:600; margin-bottom:0.4rem;">Name</label>
+                    <input type="text" id="dogName" name="dogName" required style="width:100%; padding:0.6rem; border-radius:6px; border:1px solid #ccc;">
+                </div>
+                <div style="margin-bottom: 1.2rem;">
+                    <label for="dogAge" style="display:block; font-weight:600; margin-bottom:0.4rem;">Age</label>
+                    <input type="number" id="dogAge" name="dogAge" min="0" required style="width:100%; padding:0.6rem; border-radius:6px; border:1px solid #ccc;">
+                </div>
+                <div style="margin-bottom: 1.2rem;">
+                    <label for="dogBreed" style="display:block; font-weight:600; margin-bottom:0.4rem;">Breed</label>
+                    <input type="text" id="dogBreed" name="dogBreed" required style="width:100%; padding:0.6rem; border-radius:6px; border:1px solid #ccc;">
+                </div>
+                <div style="margin-bottom: 1.2rem;">
+                    <label for="dogDescription" style="display:block; font-weight:600; margin-bottom:0.4rem;">Description</label>
+                    <textarea id="dogDescription" name="dogDescription" rows="3" required style="width:100%; padding:0.6rem; border-radius:6px; border:1px solid #ccc;"></textarea>
+                </div>
+                <div style="margin-bottom: 1.2rem;">
+                    <label for="dogImage" style="display:block; font-weight:600; margin-bottom:0.4rem;">Upload Image</label>
+                    <input type="file" id="dogImage" name="dogImage" accept="image/*" style="width:100%; padding:0.6rem; border-radius:6px; border:1px solid #ccc;">
+                    <img id="imagePreview" src="#" alt="Image Preview" style="display:none; margin-top:0.8rem; max-width:100%; border-radius:8px;"/>
+                </div>
+                <button type="submit" style="width:100%; padding:0.8rem; background: var(--primary-color); color:#fff; border:none; border-radius:6px; font-size:1.1rem; font-weight:600; cursor:pointer; transition:background 0.2s;">Add Dog</button>
+            </form>
+            <div class="success-message" id="successMessage" style="display:none; color:green; text-align:center; margin-top:1.2rem;">
+                Dog added successfully!
+            </div>
         </section>
         <section id="manage-dogs-section" class="portal-section" style="display:none">
             <h2>Manage Dogs</h2>
-            <p>List and edit your organization's dogs here.</p>
+            <div style="overflow-x:auto;">
+                <table id="dogsTable" style="width:100%; border-collapse:collapse; margin-top:1.5rem;">
+                    <thead>
+                        <tr style="background:#f4f6f8;">
+                            <th style="padding:0.7rem; border-bottom:1px solid #ddd;">Image</th>
+                            <th style="padding:0.7rem; border-bottom:1px solid #ddd;">Name</th>
+                            <th style="padding:0.7rem; border-bottom:1px solid #ddd;">Age</th>
+                            <th style="padding:0.7rem; border-bottom:1px solid #ddd;">Breed</th>
+                            <th style="padding:0.7rem; border-bottom:1px solid #ddd;">Health Description</th>
+                            <th style="padding:0.7rem; border-bottom:1px solid #ddd;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Dog rows will be inserted here by JS -->
+                    </tbody>
+                </table>
+            </div>
         </section>
         <section id="adoption-requests-section" class="portal-section" style="display:none">
             <h2>Adoption Requests</h2>
-            <p>View and manage adoption requests here.</p>
+            <div style="overflow-x:auto;">
+                <table id="adoptionRequestsTable" style="width:100%; border-collapse:collapse; margin-top:1.5rem;">
+                    <thead>
+                        <tr style="background:#f4f6f8;">
+                            <th style="padding:0.7rem; border-bottom:1px solid #ddd;">Requester Name</th>
+                            <th style="padding:0.7rem; border-bottom:1px solid #ddd;">Dog Name</th>
+                            <th style="padding:0.7rem; border-bottom:1px solid #ddd;">Contact</th>
+                            <th style="padding:0.7rem; border-bottom:1px solid #ddd;">Status</th>
+                            <th style="padding:0.7rem; border-bottom:1px solid #ddd;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Requests will be inserted here by JS -->
+                    </tbody>
+                </table>
+            </div>
         </section>
         <section id="update-info-section" class="portal-section" style="display:none">
             <h2>Update Organization Info</h2>
-            <p>Update your NGO's information here.</p>
+            <form id="orgInfoForm" style="max-width: 500px; margin: 0 auto; background: #f8f9fa; padding: 2rem 2rem 1rem 2rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(44,62,80,0.08);">
+                <div style="margin-bottom: 1.2rem;">
+                    <label for="orgName" style="display:block; font-weight:600; margin-bottom:0.4rem;">Organization Name</label>
+                    <input type="text" id="orgName" name="orgName" required style="width:100%; padding:0.6rem; border-radius:6px; border:1px solid #ccc;">
+                </div>
+                <div style="margin-bottom: 1.2rem;">
+                    <label for="orgEmail" style="display:block; font-weight:600; margin-bottom:0.4rem;">Email</label>
+                    <input type="email" id="orgEmail" name="orgEmail" required style="width:100%; padding:0.6rem; border-radius:6px; border:1px solid #ccc;">
+                </div>
+                <div style="margin-bottom: 1.2rem;">
+                    <label for="orgPhone" style="display:block; font-weight:600; margin-bottom:0.4rem;">Phone</label>
+                    <input type="tel" id="orgPhone" name="orgPhone" required style="width:100%; padding:0.6rem; border-radius:6px; border:1px solid #ccc;">
+                </div>
+                <div style="margin-bottom: 1.2rem;">
+                    <label for="orgAddress" style="display:block; font-weight:600; margin-bottom:0.4rem;">Address</label>
+                    <input type="text" id="orgAddress" name="orgAddress" required style="width:100%; padding:0.6rem; border-radius:6px; border:1px solid #ccc;">
+                </div>
+                <div style="margin-bottom: 1.2rem;">
+                    <label for="orgDescription" style="display:block; font-weight:600; margin-bottom:0.4rem;">Description</label>
+                    <textarea id="orgDescription" name="orgDescription" rows="3" required style="width:100%; padding:0.6rem; border-radius:6px; border:1px solid #ccc;"></textarea>
+                </div>
+                <button type="submit" style="width:100%; padding:0.8rem; background: var(--primary-color); color:#fff; border:none; border-radius:6px; font-size:1.1rem; font-weight:600; cursor:pointer; transition:background 0.2s;">Save</button>
+            </form>
+            <div class="success-message" id="orgSuccessMessage" style="display:none; color:green; text-align:center; margin-top:1.2rem;">
+                Organization info updated successfully!
+            </div>
         </section>
     </main>
+    <!-- Modal for editing dog details -->
+    <div id="editDogModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.3); z-index:1000; align-items:center; justify-content:center;">
+        <div style="background:#fff; padding:2rem; border-radius:12px; max-width:400px; width:90%; position:relative;">
+            <h3>Edit Dog</h3>
+            <form id="editDogForm">
+                <input type="hidden" id="editDogId">
+                <div style="margin-bottom:1rem;">
+                    <label for="editDogName" style="font-weight:600;">Name</label>
+                    <input type="text" id="editDogName" required style="width:100%; padding:0.5rem; border-radius:6px; border:1px solid #ccc;">
+                </div>
+                <div style="margin-bottom:1rem;">
+                    <label for="editDogAge" style="font-weight:600;">Age</label>
+                    <input type="number" id="editDogAge" min="0" required style="width:100%; padding:0.5rem; border-radius:6px; border:1px solid #ccc;">
+                </div>
+                <div style="margin-bottom:1rem;">
+                    <label for="editDogBreed" style="font-weight:600;">Breed</label>
+                    <input type="text" id="editDogBreed" required style="width:100%; padding:0.5rem; border-radius:6px; border:1px solid #ccc;">
+                </div>
+                <div style="margin-bottom:1rem;">
+                    <label for="editDogHealth" style="font-weight:600;">Health Description</label>
+                    <input type="text" id="editDogHealth" style="width:100%; padding:0.5rem; border-radius:6px; border:1px solid #ccc;">
+                </div>
+                <div style="margin-bottom:1rem;">
+                    <label for="editDogImage" style="font-weight:600;">Image URL</label>
+                    <input type="text" id="editDogImage" style="width:100%; padding:0.5rem; border-radius:6px; border:1px solid #ccc;">
+                </div>
+                <div style="text-align:right;">
+                    <button type="button" onclick="closeEditModal()" style="margin-right:0.5rem; padding:0.5rem 1rem; border:none; background:#ccc; color:#333; border-radius:4px; cursor:pointer;">Cancel</button>
+                    <button type="submit" style="padding:0.5rem 1rem; border:none; background:#1976d2; color:#fff; border-radius:4px; cursor:pointer;">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
     <script>
         // Navigation and action button logic
         const navLinks = document.querySelectorAll('.portal-nav a[data-section]');
@@ -179,6 +294,241 @@
         });
         // Default to dashboard
         showSection('dashboard');
+
+        document.getElementById('addDogForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // TODO: Replace this with actual API call
+            document.getElementById('successMessage').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('successMessage').style.display = 'none';
+                document.getElementById('addDogForm').reset();
+            }, 2000);
+        });
+
+        document.getElementById('dogImage').addEventListener('change', function(event) {
+            const [file] = event.target.files;
+            const preview = document.getElementById('imagePreview');
+            if (file) {
+                preview.src = URL.createObjectURL(file);
+                preview.style.display = 'block';
+            } else {
+                preview.src = '#';
+                preview.style.display = 'none';
+            }
+        });
+
+        const mockDogs = [
+            {
+                id: 1,
+                name: "Buddy",
+                age: 3,
+                breed: "Golden Retriever",
+                description: "Friendly and playful.",
+                health: "Vaccinated, no known issues.",
+                image: "https://images.dog.ceo/breeds/retriever-golden/n02099601_200.jpg"
+            },
+            {
+                id: 2,
+                name: "Luna",
+                age: 2,
+                breed: "Labrador",
+                description: "Loves to swim.",
+                health: "Minor allergy to wheat.",
+                image: "https://images.dog.ceo/breeds/labrador/n02099712_5642.jpg"
+            },
+            {
+                id: 3,
+                name: "Max",
+                age: 4,
+                breed: "Beagle",
+                description: "Curious and energetic.",
+                health: "Recently treated for fleas.",
+                image: "https://images.dog.ceo/breeds/beagle/n02088364_11136.jpg"
+            }
+        ];
+
+        function renderDogsTable() {
+            const tbody = document.querySelector('#dogsTable tbody');
+            tbody.innerHTML = '';
+            if (mockDogs.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:1.5rem;">No dogs found.</td></tr>';
+                return;
+            }
+            mockDogs.forEach(dog => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td style="padding:0.7rem; text-align:center;">
+                        <img src="${dog.image}" alt="${dog.name}" style="width:60px; height:60px; object-fit:cover; border-radius:8px;">
+                    </td>
+                    <td style="padding:0.7rem;">${dog.name}</td>
+                    <td style="padding:0.7rem;">${dog.age}</td>
+                    <td style="padding:0.7rem;">${dog.breed}</td>
+                    <td style="padding:0.7rem;">${dog.health || ''}</td>
+                    <td style="padding:0.7rem;">
+                        <button onclick="editDog(${dog.id})" style="margin-right:0.5rem; padding:0.4rem 0.8rem; border:none; background:#1976d2; color:#fff; border-radius:4px; cursor:pointer;">Edit</button>
+                        <button onclick="deleteDog(${dog.id})" style="padding:0.4rem 0.8rem; border:none; background:#e74c3c; color:#fff; border-radius:4px; cursor:pointer;">Delete</button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function deleteDog(id) {
+            if (confirm('Are you sure you want to delete this dog?')) {
+                const index = mockDogs.findIndex(dog => dog.id === id);
+                if (index !== -1) {
+                    mockDogs.splice(index, 1);
+                    renderDogsTable();
+                }
+            }
+        }
+
+        function editDog(id) {
+            const dog = mockDogs.find(d => d.id === id);
+            if (!dog) return;
+            document.getElementById('editDogId').value = dog.id;
+            document.getElementById('editDogName').value = dog.name;
+            document.getElementById('editDogAge').value = dog.age;
+            document.getElementById('editDogBreed').value = dog.breed;
+            document.getElementById('editDogHealth').value = dog.health || '';
+            document.getElementById('editDogImage').value = dog.image || '';
+            document.getElementById('editDogModal').style.display = 'flex';
+        }
+
+        function closeEditModal() {
+            document.getElementById('editDogModal').style.display = 'none';
+        }
+
+        document.getElementById('editDogForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const id = parseInt(document.getElementById('editDogId').value, 10);
+            const dog = mockDogs.find(d => d.id === id);
+            if (dog) {
+                dog.name = document.getElementById('editDogName').value;
+                dog.age = parseInt(document.getElementById('editDogAge').value, 10);
+                dog.breed = document.getElementById('editDogBreed').value;
+                dog.health = document.getElementById('editDogHealth').value;
+                dog.image = document.getElementById('editDogImage').value;
+                renderDogsTable();
+                closeEditModal();
+            }
+        });
+
+        // Optional: Close modal when clicking outside the modal content
+        document.getElementById('editDogModal').addEventListener('click', function(e) {
+            if (e.target === this) closeEditModal();
+        });
+
+        // Render table when the section is shown
+        document.querySelector('a[data-section="manage-dogs"]').addEventListener('click', renderDogsTable);
+        document.querySelector('.portal-action[data-section="manage-dogs"]').addEventListener('click', renderDogsTable);
+
+        const mockAdoptionRequests = [
+            {
+                id: 1,
+                requester: "Alice Smith",
+                dogId: 1,
+                contact: "alice@example.com",
+                status: "Pending"
+            },
+            {
+                id: 2,
+                requester: "Bob Johnson",
+                dogId: 2,
+                contact: "bob@example.com",
+                status: "Pending"
+            },
+            {
+                id: 3,
+                requester: "Carol Lee",
+                dogId: 3,
+                contact: "carol@example.com",
+                status: "Approved"
+            }
+        ];
+
+        function getDogNameById(id) {
+            const dog = mockDogs.find(d => d.id === id);
+            return dog ? dog.name : "Unknown";
+        }
+
+        function renderAdoptionRequestsTable() {
+            const tbody = document.querySelector('#adoptionRequestsTable tbody');
+            tbody.innerHTML = '';
+            if (mockAdoptionRequests.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding:1.5rem;">No adoption requests found.</td></tr>';
+                return;
+            }
+            mockAdoptionRequests.forEach(req => {
+                const isPending = req.status === "Pending";
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td style="padding:0.7rem;">${req.requester}</td>
+                    <td style="padding:0.7rem;">${getDogNameById(req.dogId)}</td>
+                    <td style="padding:0.7rem;">${req.contact}</td>
+                    <td style="padding:0.7rem;">${req.status}</td>
+                    <td style="padding:0.7rem;">
+                        <button onclick="updateRequestStatus(${req.id}, 'Approved')" style="margin-right:0.5rem; padding:0.4rem 0.8rem; border:none; background:#27ae60; color:#fff; border-radius:4px; cursor:pointer;" ${!isPending ? 'disabled' : ''}>Approve</button>
+                        <button onclick="updateRequestStatus(${req.id}, 'Rejected')" style="padding:0.4rem 0.8rem; border:none; background:#e74c3c; color:#fff; border-radius:4px; cursor:pointer;" ${!isPending ? 'disabled' : ''}>Reject</button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function updateRequestStatus(id, status) {
+            const req = mockAdoptionRequests.find(r => r.id === id);
+            if (req && req.status === "Pending") {
+                req.status = status;
+                renderAdoptionRequestsTable();
+                alert(`Request has been ${status.toLowerCase()}.`);
+            }
+        }
+
+        // Render table when the section is shown
+        document.querySelector('a[data-section="adoption-requests"]').addEventListener('click', renderAdoptionRequestsTable);
+        document.querySelector('.portal-action[data-section="adoption-requests"]').addEventListener('click', renderAdoptionRequestsTable);
+
+        const mockOrgInfo = {
+            name: "PawPortal NGO",
+            email: "contact@pawportal.org",
+            phone: "+1 234 567 8900",
+            address: "1234 Dog Lane, Cityville",
+            description: "We are dedicated to rescuing and rehoming dogs in need. Our mission is to provide loving homes for every dog."
+        };
+
+        function fillOrgInfoForm() {
+            document.getElementById('orgName').value = mockOrgInfo.name;
+            document.getElementById('orgEmail').value = mockOrgInfo.email;
+            document.getElementById('orgPhone').value = mockOrgInfo.phone;
+            document.getElementById('orgAddress').value = mockOrgInfo.address;
+            document.getElementById('orgDescription').value = mockOrgInfo.description;
+        }
+
+        document.querySelector('a[data-section="update-info"]').addEventListener('click', fillOrgInfoForm);
+        document.querySelector('.portal-action[data-section="update-info"]').addEventListener('click', fillOrgInfoForm);
+
+        document.getElementById('orgInfoForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            mockOrgInfo.name = document.getElementById('orgName').value;
+            mockOrgInfo.email = document.getElementById('orgEmail').value;
+            mockOrgInfo.phone = document.getElementById('orgPhone').value;
+            mockOrgInfo.address = document.getElementById('orgAddress').value;
+            mockOrgInfo.description = document.getElementById('orgDescription').value;
+            document.getElementById('orgSuccessMessage').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('orgSuccessMessage').style.display = 'none';
+            }, 2000);
+            // Optionally update the header name
+            document.getElementById('ngoName').textContent = "Welcome, " + mockOrgInfo.name;
+        });
+
+        document.getElementById('logoutBtn').addEventListener('click', function(event) {
+            event.preventDefault();
+            if (confirm('Are you sure you want to logout?')) {
+                window.location.href = 'user.html';
+            }
+        });
     </script>
 </body>
 </html> 
