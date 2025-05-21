@@ -229,18 +229,37 @@
 </head>
 <body>
     <div class="portal-header">
-        <h1 id="ngoName">Welcome, [NGO Name]</h1>
-        <p>This is your PawPortal NGO dashboard. Manage your dogs, view adoption requests, and update your organization info here.</p>
+        <h1 id="ngoName">Welcome to NGO Portal</h1>
+        <p>Please login to access your NGO dashboard</p>
     </div>
     <nav class="portal-nav">
-        <a href="#" class="active" data-section="dashboard">Dashboard</a>
-        <a href="#" data-section="add-dog">Add Dog</a>
-        <a href="#" data-section="manage-dogs">Manage Dogs</a>
-        <a href="#" data-section="adoption-requests">Adoption Requests</a>
-        <a href="index.html" id="logoutBtn">Logout</a>
+        <a href="#" class="active" data-section="login">Login</a>
+        <a href="#" data-section="register">Register</a>
+        <a href="user.html">Back to Home</a>
     </nav>
     <main class="portal-main">
-        <section id="dashboard-section" class="portal-section">
+        <section id="login-section" class="portal-section">
+            <h2>NGO Login</h2>
+            <form id="loginForm" style="max-width: 400px; margin: 0 auto;">
+                <input type="email" id="loginEmail" placeholder="Email" required />
+                <input type="password" id="loginPassword" placeholder="Password" required />
+                <div id="loginError" style="color: red; margin-bottom: 1rem;"></div>
+                <button type="button" onclick="login()">Login</button>
+            </form>
+        </section>
+
+        <section id="register-section" class="portal-section" style="display: none;">
+            <h2>Register NGO</h2>
+            <form id="registerForm" style="max-width: 400px; margin: 0 auto;">
+                <input type="text" id="orgName" placeholder="Organization Name" required />
+                <input type="email" id="email" placeholder="Email" required />
+                <input type="password" id="password" placeholder="Password" required />
+                <div id="error" style="color: red; margin-bottom: 1rem;"></div>
+                <button type="submit">Sign Up</button>
+            </form>
+        </section>
+
+        <section id="dashboard-section" class="portal-section" style="display: none;">
             <h2>NGO Dashboard</h2>
             <p>Use the options below to manage your organization's dogs and adoption process. More features coming soon!</p>
             <div class="portal-actions">
@@ -250,35 +269,17 @@
                 <a href="#" class="portal-action" data-section="update-info">Update Organization Info</a>
             </div>
         </section>
-        <section id="add-dog-section" class="portal-section" style="display:none">
+        <section id="add-dog-section" class="portal-section" style="display: none;">
             <h2>Add a New Dog</h2>
-            <form id="addDogForm" style="max-width: 400px; margin: 0 auto; background: #f8f9fa; padding: 2rem 2rem 1rem 2rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(44,62,80,0.08);" enctype="multipart/form-data">
-                <div style="margin-bottom: 1.2rem;">
-                    <label for="dogName" style="display:block; font-weight:600; margin-bottom:0.4rem;">Name</label>
-                    <input type="text" id="dogName" name="dogName" required style="width:100%; padding:0.6rem; border-radius:6px; border:1px solid #ccc;">
-                </div>
-                <div style="margin-bottom: 1.2rem;">
-                    <label for="dogAge" style="display:block; font-weight:600; margin-bottom:0.4rem;">Age</label>
-                    <input type="number" id="dogAge" name="dogAge" min="0" required style="width:100%; padding:0.6rem; border-radius:6px; border:1px solid #ccc;">
-                </div>
-                <div style="margin-bottom: 1.2rem;">
-                    <label for="dogBreed" style="display:block; font-weight:600; margin-bottom:0.4rem;">Breed</label>
-                    <input type="text" id="dogBreed" name="dogBreed" required style="width:100%; padding:0.6rem; border-radius:6px; border:1px solid #ccc;">
-                </div>
-                <div style="margin-bottom: 1.2rem;">
-                    <label for="dogDescription" style="display:block; font-weight:600; margin-bottom:0.4rem;">Description</label>
-                    <textarea id="dogDescription" name="dogDescription" rows="3" required style="width:100%; padding:0.6rem; border-radius:6px; border:1px solid #ccc;"></textarea>
-                </div>
-                <div style="margin-bottom: 1.2rem;">
-                    <label for="dogImage" style="display:block; font-weight:600; margin-bottom:0.4rem;">Upload Image</label>
-                    <input type="file" id="dogImage" name="dogImage" accept="image/*" style="width:100%; padding:0.6rem; border-radius:6px; border:1px solid #ccc;">
-                    <img id="imagePreview" src="#" alt="Image Preview" style="display:none; margin-top:0.8rem; max-width:100%; border-radius:8px;"/>
-                </div>
-                <button type="submit" style="width:100%; padding:0.8rem; background: var(--primary-color); color:#fff; border:none; border-radius:6px; font-size:1.1rem; font-weight:600; cursor:pointer; transition:background 0.2s;">Add Dog</button>
+            <form id="dogForm">
+                <input type="text" id="dogName" placeholder="Dog Name" required />
+                <input type="text" id="breed" placeholder="Breed" required />
+                <input type="number" id="age" placeholder="Age (in years)" min="0" step="0.1" required />
+                <input type="number" id="weight" placeholder="Weight (in kg)" min="0" step="0.1" required />
+                <textarea id="healthStatus" placeholder="Health Status (e.g., Vaccinated, Spayed/Neutered, Any medical conditions)" rows="3" required></textarea>
+                <input type="file" id="imageInput" accept="image/*" required />
+                <button type="submit">Upload Dog Info</button>
             </form>
-            <div class="success-message" id="successMessage" style="display:none; color:green; text-align:center; margin-top:1.2rem;">
-                Dog added successfully!
-            </div>
         </section>
         <section id="manage-dogs-section" class="portal-section" style="display:none">
             <h2>Manage Dogs</h2>
@@ -382,54 +383,228 @@
             </form>
         </div>
     </div>
-    <script>
-        // Navigation and action button logic
-        const navLinks = document.querySelectorAll('.portal-nav a[data-section]');
-        const actionLinks = document.querySelectorAll('.portal-action[data-section]');
-        const sections = document.querySelectorAll('.portal-section');
+    <!-- Firebase Core SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
 
-        function showSection(sectionId) {
-            sections.forEach(sec => sec.style.display = 'none');
-            document.getElementById(sectionId + '-section').style.display = 'block';
-            navLinks.forEach(link => link.classList.remove('active'));
-            const nav = Array.from(navLinks).find(link => link.dataset.section === sectionId);
-            if (nav) nav.classList.add('active');
+    <!-- Firebase Auth SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+
+    <!-- Firestore SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyA2zAdnwkms_F-lVWZnA9q-4t_f014CkZQ",
+            authDomain: "paw-portal-f651d.firebaseapp.com",
+            projectId: "paw-portal-f651d",
+            storageBucket: "paw-portal-f651d.firebasestorage.app",
+            messagingSenderId: "178766672520",
+            appId: "1:178766672520:web:123d27c8e353477579a53d"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+    </script>
+
+    <script>
+        // Update navigation functionality
+        document.querySelectorAll('.portal-nav a[data-section]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const section = e.target.dataset.section;
+                if (section) {
+                    // Hide all sections first
+                    document.querySelectorAll('.portal-section').forEach(s => s.style.display = 'none');
+                    // Show the selected section
+                    document.getElementById(`${section}-section`).style.display = 'block';
+                    // Update active state in navigation
+                    document.querySelectorAll('.portal-nav a').forEach(a => a.classList.remove('active'));
+                    e.target.classList.add('active');
+                }
+            });
+        });
+
+        // Register form submission
+        document.getElementById("registerForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            signup();
+        });
+
+        function signup() {
+            const orgName = document.getElementById('orgName').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            console.log('Starting signup with:', { orgName, email }); // Debug log
+
+            firebase.auth().createUserWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    console.log('User created with ID:', userCredential.user.uid); // Debug log
+                    // Store organization name in Firestore
+                    const ngoData = {
+                        organizationName: orgName,
+                        email: email,
+                        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                    };
+                    console.log('Storing NGO data:', ngoData); // Debug log
+                    return db.collection('ngos').doc(userCredential.user.uid).set(ngoData);
+                })
+                .then(() => {
+                    console.log('NGO data stored successfully'); // Debug log
+                    // Sign out the user immediately after registration
+                    return firebase.auth().signOut();
+                })
+                .then(() => {
+                    console.log('User signed out after registration'); // Debug log
+                    // Show success message
+                    alert("Registration successful! Please login to continue.");
+                    // Clear the form
+                    document.getElementById("registerForm").reset();
+                    // Switch to login section
+                    document.getElementById('register-section').style.display = 'none';
+                    document.getElementById('login-section').style.display = 'block';
+                    // Update navigation
+                    document.querySelector('.portal-nav a[data-section="login"]').click();
+                })
+                .catch((error) => {
+                    console.error('Error during signup:', error); // Debug log
+                    document.getElementById("error").innerText = error.message;
+                });
         }
 
-        navLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                showSection(this.dataset.section);
-            });
-        });
-        actionLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                showSection(this.dataset.section);
-            });
-        });
-        // Default to dashboard
-        showSection('dashboard');
+        function login() {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
 
-        document.getElementById('addDogForm').addEventListener('submit', function(event) {
+            console.log('Attempting login with:', email); // Debug log
+
+            firebase.auth().signInWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    console.log('Login successful, user ID:', userCredential.user.uid); // Debug log
+                    // Get NGO details from Firestore
+                    return db.collection('ngos').doc(userCredential.user.uid).get();
+                })
+                .then((ngoDoc) => {
+                    console.log('Retrieved NGO document:', ngoDoc.data()); // Debug log
+                    if (ngoDoc.exists) {
+                        const ngoData = ngoDoc.data();
+                        console.log('NGO data:', ngoData); // Debug log
+                        const orgName = ngoData.organizationName;
+                        console.log('Organization name:', orgName); // Debug log
+                        if (orgName) {
+                            // Update the header with NGO name
+                            document.getElementById('ngoName').textContent = `Welcome, ${orgName}`;
+                            console.log('Updated header with:', orgName); // Debug log
+                            // Redirect to dashboard
+                            window.location.href = "ngo-dashboard.html";
+                        } else {
+                            console.error('Organization name not found in data'); // Debug log
+                            throw new Error('Organization name not found');
+                        }
+                    } else {
+                        console.error('NGO document does not exist'); // Debug log
+                        throw new Error('NGO data not found');
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error during login:', error); // Debug log
+                    document.getElementById("loginError").innerText = error.message;
+                });
+        }
+
+        // Check if user is already logged in
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                console.log('User is logged in, ID:', user.uid); // Debug log
+                // Get NGO details and update header
+                db.collection('ngos').doc(user.uid).get().then((ngoDoc) => {
+                    console.log('Retrieved NGO document:', ngoDoc.data()); // Debug log
+                    if (ngoDoc.exists) {
+                        const ngoData = ngoDoc.data();
+                        console.log('NGO data:', ngoData); // Debug log
+                        const orgName = ngoData.organizationName;
+                        console.log('Organization name:', orgName); // Debug log
+                        if (orgName) {
+                            document.getElementById('ngoName').textContent = `Welcome, ${orgName}`;
+                            console.log('Updated header with:', orgName); // Debug log
+                            // Only redirect to dashboard if we're not on the login/register page
+                            if (!window.location.pathname.includes('ngo-portal.html')) {
+                                window.location.href = "ngo-dashboard.html";
+                            }
+                        }
+                    }
+                }).catch(error => {
+                    console.error('Error fetching NGO data:', error);
+                });
+            }
+        });
+
+        // Update logout functionality
+        document.getElementById('logoutBtn').addEventListener('click', function(event) {
             event.preventDefault();
-            // TODO: Replace this with actual API call
-            document.getElementById('successMessage').style.display = 'block';
-            setTimeout(() => {
-                document.getElementById('successMessage').style.display = 'none';
-                document.getElementById('addDogForm').reset();
-            }, 2000);
+            if (confirm('Are you sure you want to logout?')) {
+                firebase.auth().signOut().then(() => {
+                    window.location.reload();
+                });
+            }
         });
 
-        document.getElementById('dogImage').addEventListener('change', function(event) {
-            const [file] = event.target.files;
-            const preview = document.getElementById('imagePreview');
-            if (file) {
-                preview.src = URL.createObjectURL(file);
-                preview.style.display = 'block';
-            } else {
-                preview.src = '#';
-                preview.style.display = 'none';
+        // Dog form submission
+        document.getElementById("dogForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            // Check if user is logged in
+            const user = firebase.auth().currentUser;
+            if (!user) {
+                alert("You must be logged in as an NGO to upload.");
+                document.getElementById('login-section').style.display = 'block';
+                document.getElementById('dashboard-section').style.display = 'none';
+                document.querySelector('.portal-nav a[data-section="login"]').click();
+                return;
+            }
+
+            const dogName = document.getElementById("dogName").value;
+            const breed = document.getElementById("breed").value;
+            const age = parseFloat(document.getElementById("age").value);
+            const weight = parseFloat(document.getElementById("weight").value);
+            const healthStatus = document.getElementById("healthStatus").value;
+            const file = document.getElementById("imageInput").files[0];
+
+            if (!file) return alert("Please select an image");
+
+            // Upload to Cloudinary
+            const formData = new FormData();
+            formData.append("file", file);
+            formData.append("upload_preset", "pawportal");
+            const cloudName = "daskt2byc";
+
+            try {
+                const uploadRes = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
+                    method: "POST",
+                    body: formData
+                });
+
+                const uploadData = await uploadRes.json();
+                const imageUrl = uploadData.secure_url;
+
+                // Store in Firestore
+                await db.collection("dogs").add({
+                    name: dogName,
+                    breed: breed,
+                    age: age,
+                    weight: weight,
+                    healthStatus: healthStatus,
+                    imageUrl: imageUrl,
+                    ngoId: user.uid,  // Link to logged-in NGO
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                });
+
+                alert("Dog info uploaded successfully!");
+                document.getElementById("dogForm").reset();
+            } catch (error) {
+                console.error("Error uploading:", error);
+                alert("Error uploading dog info. Please try again.");
             }
         });
 
@@ -637,13 +812,6 @@
             }, 2000);
             // Optionally update the header name
             document.getElementById('ngoName').textContent = "Welcome, " + mockOrgInfo.name;
-        });
-
-        document.getElementById('logoutBtn').addEventListener('click', function(event) {
-            event.preventDefault();
-            if (confirm('Are you sure you want to logout?')) {
-                window.location.href = 'user.html';
-            }
         });
     </script>
 </body>
