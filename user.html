@@ -131,7 +131,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
             opacity: 0.5;
         }
         
@@ -1503,6 +1503,68 @@
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        .contact-details-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info-section {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .contact-form-section {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 36px;
+            height: 36px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+            background: var(--secondary-color);
+        }
+
+        @media (max-width: 768px) {
+            .contact-details-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Ensure submit button is visible in the schedule visit form */
+        #modalAdoptionForm .submit-btn {
+            display: block !important;
+            visibility: visible !important;
+        }
+
+        /* Make the schedule visit form section scrollable */
+        #modalAdoptionForm {
+            overflow-y: auto;
+            max-height: 70vh; /* Adjust height as needed */
+        }
+
     </style>
 </head>
 <body>
@@ -1662,7 +1724,7 @@
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" id="email" required>
+                        <input type="email" id="ngoEmail" required>
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
@@ -1758,7 +1820,7 @@
             </div>
             <!-- Adoption Request Form Section -->
             <div class="modal-body" id="modalAdoptionForm" style="display: none;">
-                 <h3>Submit Adoption Request</h3>
+                 <h3>Schedule a Visit</h3>
                  <form id="adoptionRequestForm">
                       <input type="hidden" id="adoptionDogId">
                       <input type="hidden" id="adoptionNgoId">
@@ -1772,26 +1834,71 @@
                       </div>
                       <div class="form-group">
                            <label for="adopterPhone">Phone Number</label>
-                           <input type="tel" id="adopterPhone">
+                           <input type="tel" id="adopterPhone" required>
                       </div>
                       <div class="form-group">
-                           <label for="adopterMessage">Message to NGO</label>
-                           <textarea id="adopterMessage" rows="4"></textarea>
+                           <label for="visitDate">Preferred Visit Date</label>
+                           <input type="date" id="visitDate" required min="">
                       </div>
-                      <button type="submit" class="submit-btn">Send Request</button>
+                      <div class="form-group">
+                           <label for="visitTime">Preferred Time Slot</label>
+                           <select id="visitTime" required>
+                                <option value="">Select a time slot</option>
+                                <option value="morning">Morning (10:00 AM - 12:00 PM)</option>
+                                <option value="afternoon">Afternoon (2:00 PM - 4:00 PM)</option>
+                                <option value="evening">Evening (4:00 PM - 6:00 PM)</option>
+                           </select>
+                      </div>
+                      <div class="form-group">
+                           <label for="adopterMessage">Additional Notes</label>
+                           <textarea id="adopterMessage" rows="4" placeholder="Any special requirements or questions you'd like to share with the NGO"></textarea>
+                      </div>
+                      <button type="submit" class="submit-btn">Schedule Visit</button>
                  </form>
                  <div class="contact-success" id="adoptionSuccessMessage" style="display: none;">
                      <i class="fas fa-check-circle"></i>
-                     <p>Your adoption request has been sent! The NGO will contact you soon.</p>
+                     <p>Your visit request has been sent! The NGO will contact you soon to confirm the appointment.</p>
                  </div>
             </div>
             <!-- NGO Contact Info Section -->
             <div class="modal-body" id="modalNgoContact" style="display: none;">
                  <h3>Contact NGO</h3>
-                 <div id="ngoContactDetails">
-                      <p>Loading contact information...</p>
+                 <div id="ngoContactDetails" class="contact-details-container">
+                      <div class="contact-info-section">
+                           <div id="ngoBasicInfo">
+                                <p>Loading contact information...</p>
+                           </div>
+                           <div id="ngoSocialLinks" class="social-links" style="margin-top: 1rem;">
+                                <!-- Social media links will be added here -->
+                           </div>
+                      </div>
+                      <div class="contact-form-section">
+                           <h4>Send a Message</h4>
+                           <form id="contactNgoForm">
+                                <div class="form-group">
+                                     <label for="contactName">Your Name</label>
+                                     <input type="text" id="contactName" required>
+                                </div>
+                                <div class="form-group">
+                                     <label for="contactEmail">Email Address</label>
+                                     <input type="email" id="contactEmail" required>
+                                </div>
+                                <div class="form-group">
+                                     <label for="contactSubject">Subject</label>
+                                     <input type="text" id="contactSubject" required>
+                                </div>
+                                <div class="form-group">
+                                     <label for="contactMessage">Message</label>
+                                     <textarea id="contactMessage" rows="4" required></textarea>
+                                </div>
+                                <button type="submit" class="submit-btn">Send Message</button>
+                           </form>
+                      </div>
                  </div>
-                 <button class="modal-btn secondary" onclick="showDogDetails()">Back to Dog Details</button>
+                 <div id="ngoMap" style="height: 200px; margin-top: 1rem; border-radius: 8px; overflow: hidden;">
+                      <!-- Map will be added here -->
+                 </div>
+                 <button class="modal-btn secondary" onclick="showDogDetails()" style="margin-top: 1rem;">Back to Dog Details</button>
             </div>
         </div>
     </div>
@@ -2245,148 +2352,138 @@
                 }
 
                 if (action === 'schedule-visit') {
+                    // Set minimum date to today
+                    const today = new Date().toISOString().split('T')[0];
+                    document.getElementById('visitDate').min = today;
+                    
                     // Show the adoption request form
                     document.getElementById('modalDogDetails').style.display = 'none';
                     document.getElementById('modalNgoContact').style.display = 'none';
                     document.getElementById('modalAdoptionForm').style.display = 'block';
+                    
                     // Pre-fill hidden inputs with dog and NGO IDs
                     document.getElementById('adoptionDogId').value = dogId;
                     document.getElementById('adoptionNgoId').value = ngoId;
 
                 } else if (action === 'contact-ngo') {
-                     // Show loading message and contact section
-                     document.getElementById('modalDogDetails').style.display = 'none';
-                     document.getElementById('modalAdoptionForm').style.display = 'none';
-                     document.getElementById('modalNgoContact').style.display = 'block';
-                     document.getElementById('ngoContactDetails').innerHTML = '<p>Loading contact information...</p>'; // Loading indicator
+                    // Show loading message and contact section
+                    document.getElementById('modalDogDetails').style.display = 'none';
+                    document.getElementById('modalAdoptionForm').style.display = 'none';
+                    document.getElementById('modalNgoContact').style.display = 'block';
+                    document.getElementById('ngoBasicInfo').innerHTML = '<p>Loading contact information...</p>';
+                    document.getElementById('ngoSocialLinks').innerHTML = '';
+                    document.getElementById('ngoMap').innerHTML = '';
 
-                     try {
-                          // Fetch NGO details from Firestore
-                          const ngoDoc = await db.collection('ngos').doc(ngoId).get();
+                    try {
+                        // Fetch NGO details from Firestore
+                        const ngoDoc = await db.collection('ngos').doc(ngoId).get();
 
-                          if (ngoDoc.exists) {
-                              const ngoData = ngoDoc.data();
-                              let contactHtml = '<h4>' + (ngoData.organizationName || ngoData.name || 'NGO') + ' Contact Details</h4>';
-                              if (ngoData.email) {
-                                  contactHtml += '<p><strong>Email:</strong> <a href="mailto:' + ngoData.email + '">' + ngoData.email + '</a></p>';
-                              }
-                              if (ngoData.phone) {
-                                  contactHtml += '<p><strong>Phone:</strong> <a href="tel:' + ngoData.phone + '">' + ngoData.phone + '</a></p>';
-                              }
-                              // Add other contact info fields if available (address, etc.)
-                              if (ngoData.address) {
-                                   contactHtml += '<p><strong>Address:</strong> ' + ngoData.address + '</p>';
-                              }
-                              if (ngoData.website) {
-                                  contactHtml += '<p><strong>Website:</strong> <a href="' + ngoData.website + '" target="_blank">' + ngoData.website + '</a></p>';
-                              }
+                        if (ngoDoc.exists) {
+                            const ngoData = ngoDoc.data();
+                            let contactHtml = '<h4>' + (ngoData.organizationName || ngoData.name || 'NGO') + '</h4>';
+                            
+                            // Basic contact info
+                            if (ngoData.email) {
+                                contactHtml += '<p><i class="fas fa-envelope"></i> <a href="mailto:' + ngoData.email + '">' + ngoData.email + '</a></p>';
+                            }
+                            if (ngoData.phone) {
+                                contactHtml += '<p><i class="fas fa-phone"></i> <a href="tel:' + ngoData.phone + '">' + ngoData.phone + '</a></p>';
+                            }
+                            if (ngoData.address) {
+                                contactHtml += '<p><i class="fas fa-map-marker-alt"></i> ' + ngoData.address + '</p>';
+                            }
+                            if (ngoData.website) {
+                                contactHtml += '<p><i class="fas fa-globe"></i> <a href="' + ngoData.website + '" target="_blank">' + ngoData.website + '</a></p>';
+                            }
 
-                              document.getElementById('ngoContactDetails').innerHTML = contactHtml;
-                          } else {
-                              document.getElementById('ngoContactDetails').innerHTML = '<p>Contact information not found for this NGO.</p>';
-                          }
-                     } catch (error) {
-                          console.error('Error fetching NGO contact info:', error);
-                          document.getElementById('ngoContactDetails').innerHTML = '<p>Error loading contact information.</p>';
-                     }
-                 }
-                 // else if other actions...
+                            document.getElementById('ngoBasicInfo').innerHTML = contactHtml;
+
+                            // Social media links
+                            let socialHtml = '';
+                            if (ngoData.facebook) {
+                                socialHtml += '<a href="' + ngoData.facebook + '" target="_blank"><i class="fab fa-facebook-f"></i></a>';
+                            }
+                            if (ngoData.twitter) {
+                                socialHtml += '<a href="' + ngoData.twitter + '" target="_blank"><i class="fab fa-twitter"></i></a>';
+                            }
+                            if (ngoData.instagram) {
+                                socialHtml += '<a href="' + ngoData.instagram + '" target="_blank"><i class="fab fa-instagram"></i></a>';
+                            }
+                            if (ngoData.linkedin) {
+                                socialHtml += '<a href="' + ngoData.linkedin + '" target="_blank"><i class="fab fa-linkedin-in"></i></a>';
+                            }
+                            document.getElementById('ngoSocialLinks').innerHTML = socialHtml;
+
+                            // Initialize map if address is available
+                            if (ngoData.address) {
+                                // You would typically initialize a map here using Google Maps or similar
+                                // For now, we'll just show a placeholder
+                                document.getElementById('ngoMap').innerHTML = '<div style="background: #e2e8f0; height: 100%; display: flex; align-items: center; justify-content: center;">Map View (Address: ' + ngoData.address + ')</div>';
+                            }
+                        } else {
+                            document.getElementById('ngoBasicInfo').innerHTML = '<p>Contact information not found for this NGO.</p>';
+                        }
+                    } catch (error) {
+                        console.error('Error fetching NGO contact info:', error);
+                        document.getElementById('ngoBasicInfo').innerHTML = '<p>Error loading contact information.</p>';
+                    }
+                }
             });
         });
 
-        // Handle adoption request form submission
+        // Handle adoption request form submission (now handles Visit Requests)
         document.getElementById('adoptionRequestForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
             const adopterName = document.getElementById('adopterName').value;
             const adopterEmail = document.getElementById('adopterEmail').value;
             const adopterPhone = document.getElementById('adopterPhone').value;
+            const visitDate = document.getElementById('visitDate').value;
+            const visitTime = document.getElementById('visitTime').value;
             const adopterMessage = document.getElementById('adopterMessage').value;
             const dogId = document.getElementById('adoptionDogId').value;
             const ngoId = document.getElementById('adoptionNgoId').value;
 
             if (!dogId || !ngoId) {
-                 console.error('Dog or NGO ID missing for request.');
-                 showToast('Error: Could not submit request.');
-                 return;
+                console.error('Dog or NGO ID missing for request.');
+                showToast('Error: Could not submit request.');
+                return;
             }
 
             try {
-                // Add adoption request to Firestore
+                // Add visit request to Firestore under adoptionRequests
                 await db.collection('adoptionRequests').add({
+                    type: 'visit', // Indicate this is a visit request
                     dogId: dogId,
                     ngoId: ngoId,
-                    adopterName: adopterName,
-                    adopterEmail: adopterEmail,
-                    adopterPhone: adopterPhone,
-                    adopterMessage: adopterMessage,
+                    visitorName: adopterName,
+                    visitorEmail: adopterEmail,
+                    visitorPhone: adopterPhone,
+                    visitDate: visitDate,
+                    visitTime: visitTime,
+                    message: adopterMessage,
                     status: 'Pending', // Initial status
                     timestamp: firebase.firestore.FieldValue.serverTimestamp()
                 });
 
                 // Show success message
                 document.getElementById('modalAdoptionForm').style.display = 'none';
-                document.getElementById('adoptionSuccessMessage').style.display = 'block';
+                const successMessageDiv = document.getElementById('adoptionSuccessMessage');
+                successMessageDiv.innerHTML = '<i class="fas fa-check-circle"></i><p>Your visit request has been sent! The NGO will contact you soon to confirm the appointment.</p>';
+                successMessageDiv.style.display = 'block';
 
                 // Clear the form after successful submission
                 this.reset();
 
-                // Optionally close modal after a delay or show a button to close
-                 setTimeout(() => {
-                     closeModal();
-                 }, 3000); // Close modal after 3 seconds
+                // Close modal after a delay
+                setTimeout(() => {
+                    closeModal();
+                }, 3000);
 
             } catch (error) {
-                console.error('Error submitting adoption request:', error);
+                console.error('Error submitting visit request:', error);
                 showToast('Error submitting request. Please try again.');
             }
-        });
-
-        // Re-attach event listeners for dynamically loaded dog cards
-        // This function should be called after dogs are loaded into the grid
-        function attachDogCardListeners() {
-             const dogsGrid = document.querySelector('.dogs-grid');
-             if (dogsGrid) {
-                dogsGrid.addEventListener('click', (event) => {
-                    // Find the closest dog-card element to the clicked target
-                    const dogCard = event.target.closest('.dog-card');
-                    
-                    if (dogCard) {
-                        // Prevent default action if the click is on a link inside the card
-                        if (event.target.tagName === 'A') {
-                            event.preventDefault();
-                        }
-                        
-                        const dogData = {
-                            id: dogCard.dataset.dogId, // Retrieve dog ID
-                            ngoId: dogCard.dataset.ngoId, // Retrieve NGO ID
-                            name: dogCard.querySelector('.dog-name').textContent,
-                            breed: dogCard.querySelector('.dog-breed').textContent,
-                            // Corrected extraction based on current HTML structure
-                            age: dogCard.querySelector('.dog-detail:nth-child(1)')?.textContent.replace('🐶', '').trim() || 'N/A',
-                            weight: dogCard.querySelector('.dog-detail:nth-child(2)')?.textContent.replace('⚖️', '').replace('kg','').trim() || 'N/A', // Update extraction if needed
-                            // location is removed, NGO Name is the 3rd detail
-                            ngoName: dogCard.querySelector('.dog-detail:nth-child(3)')?.textContent.replace('🏢', '').trim() || 'N/A',
-                            description: dogCard.querySelector('.dog-description')?.textContent || 'No description available.',
-                            image: dogCard.querySelector('.dog-img img').src
-                        };
-                        
-                        openModal(dogData);
-                    }
-                });
-             }
-        }
-
-        // Call attachDogCardListeners after dogs are loaded
-        attachDogCardListeners();
-
-        // Existing Add click handlers for modal buttons (keeping this as is)
-        document.querySelectorAll('.modal-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const action = btn.textContent.trim();
-                showToast(`${action} request sent! We'll contact you soon.`);
-                closeModal();
-            });
         });
 
         // Existing NGO Login functionality (keeping this as is)
@@ -2458,6 +2555,97 @@
             });
         });
 
+        // Handle NGO contact form submission
+        document.getElementById('contactNgoForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const contactName = document.getElementById('contactName').value;
+            const contactEmail = document.getElementById('contactEmail').value;
+            const contactSubject = document.getElementById('contactSubject').value;
+            const contactMessage = document.getElementById('contactMessage').value;
+            // Get dogId and ngoId from the modal dataset
+            const dogId = modal.dataset.dogId;
+            const ngoId = modal.dataset.ngoId;
+
+            if (!dogId || !ngoId) {
+                 console.error('Dog or NGO ID missing for contact message.');
+                 showToast('Error: Could not send message.');
+                 return;
+            }
+
+            try {
+                // Add contact message to Firestore under adoptionRequests
+                await db.collection('adoptionRequests').add({
+                    type: 'contact', // Indicate this is a contact message
+                    dogId: dogId, // Include dog ID for context
+                    ngoId: ngoId,
+                    senderName: contactName,
+                    senderEmail: contactEmail,
+                    subject: contactSubject,
+                    message: contactMessage,
+                    status: 'Unread',
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                });
+
+                // Show success message
+                // Re-using the same success message div as the adoption form for simplicity in modal
+                document.getElementById('modalNgoContact').style.display = 'none';
+                const successMessageDiv = document.getElementById('adoptionSuccessMessage');
+                 successMessageDiv.innerHTML = '<i class="fas fa-check-circle"></i><p>Your message has been sent! The NGO will contact you soon.</p>';
+                successMessageDiv.style.display = 'block';
+                
+                // Clear the form
+                this.reset();
+                
+                // Close modal after a delay
+                setTimeout(() => {
+                    closeModal();
+                }, 2000);
+
+            } catch (error) {
+                console.error('Error sending message:', error);
+                showToast('Error sending message. Please try again.');
+            }
+        });
+
+        // Re-attach event listeners for dynamically loaded dog cards
+        // This function should be called after dogs are loaded into the grid
+        function attachDogCardListeners() {
+             const dogsGrid = document.querySelector('.dogs-grid');
+             if (dogsGrid) {
+                dogsGrid.addEventListener('click', (event) => {
+                    // Find the closest dog-card element to the clicked target
+                    const dogCard = event.target.closest('.dog-card');
+
+                    if (dogCard) {
+                        // Prevent default action if the click is on a link inside the card
+                        if (event.target.tagName === 'A') {
+                            event.preventDefault();
+                        }
+
+                        const dogData = {
+                            id: dogCard.dataset.dogId, // Retrieve dog ID
+                            ngoId: dogCard.dataset.ngoId, // Retrieve NGO ID
+                            name: dogCard.querySelector('.dog-name').textContent,
+                            breed: dogCard.querySelector('.dog-breed').textContent,
+                            // Corrected extraction based on current HTML structure
+                            age: dogCard.querySelector('.dog-detail:nth-child(1)')?.textContent.replace('🐶', '').trim() || 'N/A',
+                            weight: dogCard.querySelector('.dog-detail:nth-child(2)')?.textContent.replace('⚖️', '').replace('kg','').trim() || 'N/A', // Update extraction if needed
+                            // location is removed, NGO Name is the 3rd detail
+                            ngoName: dogCard.querySelector('.dog-detail:nth-child(3)')?.textContent.replace('🏢', '').trim() || 'N/A',
+                            description: dogCard.querySelector('.dog-description')?.textContent || 'No description available.',
+                            image: dogCard.querySelector('.dog-img img').src,
+                            healthStatus: dogCard.dataset.healthStatus || 'No health information available.'
+                        };
+
+                        openModal(dogData);
+                    }
+                });
+             }
+        }
+
+        // Call attachDogCardListeners after dogs are loaded
+        attachDogCardListeners();
 
     </script>
 
