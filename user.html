@@ -1640,9 +1640,6 @@
                         <option value="xlarge">X-Large (100+ lbs)</option>
                     </select>
                 </div>
-                <div class="search-box">
-                    <input type="text" placeholder="Zip Code" id="zipcode">
-                </div>
                 <button class="search-btn">Search</button>
             </div>
         </div>
@@ -2203,6 +2200,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
 
     <script>
+        // Initialize Firebase
         const firebaseConfig = {
             apiKey: "AIzaSyA2zAdnwkms_F-lVWZnA9q-4t_f014CkZQ",
             authDomain: "paw-portal-f651d.firebaseapp.com",
@@ -2212,7 +2210,14 @@
             appId: "1:178766672520:web:123d27c8e353477579a53d"
         };
 
-        firebase.initializeApp(firebaseConfig);
+        // Initialize Firebase
+        try {
+            firebase.initializeApp(firebaseConfig);
+            console.log("Firebase initialized successfully");
+        } catch (error) {
+            console.error("Firebase initialization error:", error);
+        }
+
         const db = firebase.firestore();
 
         // Target the existing dogs grid in the featured dogs section
@@ -2352,15 +2357,6 @@
                 }
 
                 if (action === 'schedule-visit') {
-                    // Check if user is authenticated before showing the form
-                    const user = firebase.auth().currentUser;
-                    if (!user) {
-                        showToast('Please log in or create an account to schedule a visit.');
-                        // Optionally, redirect to login page or show login modal
-                        // window.location.href = 'ngo-portal.html'; // Example redirect
-                        return;
-                    }
-
                     // Set minimum date to today
                     const today = new Date().toISOString().split('T')[0];
                     document.getElementById('visitDate').min = today;
@@ -2373,7 +2369,6 @@
                     // Pre-fill hidden inputs with dog and NGO IDs
                     document.getElementById('adoptionDogId').value = dogId;
                     document.getElementById('adoptionNgoId').value = ngoId;
-
                 } else if (action === 'contact-ngo') {
                     // Show loading message and contact section
                     document.getElementById('modalDogDetails').style.display = 'none';
@@ -2440,7 +2435,7 @@
             });
         });
 
-        // Handle adoption request form submission (now handles Visit Requests)
+        // Handle adoption request form submission
         document.getElementById('adoptionRequestForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
@@ -2449,24 +2444,31 @@
             submitBtn.classList.add('loading');
             submitBtn.disabled = true;
 
-            const adopterName = document.getElementById('adopterName').value;
-            const adopterEmail = document.getElementById('adopterEmail').value;
-            const adopterPhone = document.getElementById('adopterPhone').value;
-            const visitDate = document.getElementById('visitDate').value;
-            const visitTime = document.getElementById('visitTime').value;
-            const adopterMessage = document.getElementById('adopterMessage').value;
-            const dogId = document.getElementById('adoptionDogId').value;
-            const ngoId = document.getElementById('adoptionNgoId').value;
-
-            if (!dogId || !ngoId) {
-                console.error('Dog or NGO ID missing for request.');
-                showToast('Error: Could not submit request.');
-                submitBtn.classList.remove('loading');
-                submitBtn.disabled = false;
-                return;
-            }
-
             try {
+                const adopterName = document.getElementById('adopterName').value;
+                const adopterEmail = document.getElementById('adopterEmail').value;
+                const adopterPhone = document.getElementById('adopterPhone').value;
+                const visitDate = document.getElementById('visitDate').value;
+                const visitTime = document.getElementById('visitTime').value;
+                const adopterMessage = document.getElementById('adopterMessage').value;
+                const dogId = document.getElementById('adoptionDogId').value;
+                const ngoId = document.getElementById('adoptionNgoId').value;
+
+                console.log('Form data:', {
+                    adopterName,
+                    adopterEmail,
+                    adopterPhone,
+                    visitDate,
+                    visitTime,
+                    adopterMessage,
+                    dogId,
+                    ngoId
+                });
+
+                if (!dogId || !ngoId) {
+                    throw new Error('Dog or NGO ID missing for request.');
+                }
+
                 // First get the dog details to include in the request
                 const dogDoc = await db.collection('dogs').doc(dogId).get();
                 if (!dogDoc.exists) {
@@ -2474,9 +2476,9 @@
                 }
                 const dogData = dogDoc.data();
 
-                // Add visit request to Firestore under adoptionRequests
-                await db.collection('adoptionRequests').add({
-                    type: 'visit', // Indicate this is a visit request
+                // Create the visit request data
+                const visitRequestData = {
+                    type: 'visit',
                     dogId: dogId,
                     ngoId: ngoId,
                     dogName: dogData.name,
@@ -2487,10 +2489,16 @@
                     visitDate: visitDate,
                     visitTime: visitTime,
                     message: adopterMessage,
-                    status: 'Pending', // Initial status
-                    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-                    updatedAt: firebase.firestore.FieldValue.serverTimestamp()
-                });
+                    status: 'Pending',
+                    createdAt: new Date(),
+                    updatedAt: new Date()
+                };
+
+                console.log('Submitting visit request:', visitRequestData);
+
+                // Add visit request to Firestore
+                const docRef = await db.collection('adoptionRequests').add(visitRequestData);
+                console.log('Visit request submitted successfully with ID:', docRef.id);
 
                 // Show success message
                 document.getElementById('modalAdoptionForm').style.display = 'none';
@@ -2498,7 +2506,7 @@
                 successMessageDiv.innerHTML = '<i class="fas fa-check-circle"></i><p>Your visit request has been sent! The NGO will contact you soon to confirm the appointment.</p>';
                 successMessageDiv.style.display = 'block';
 
-                // Clear the form after successful submission
+                // Clear the form
                 this.reset();
 
                 // Close modal after a delay
@@ -2508,7 +2516,7 @@
 
             } catch (error) {
                 console.error('Error submitting visit request:', error);
-                showToast('Error submitting request. Please try again.');
+                showToast('Error submitting request: ' + error.message);
             } finally {
                 // Remove loading state
                 submitBtn.classList.remove('loading');

@@ -332,6 +332,24 @@
         </section>
     </main>
 
+    <!-- Request Details Modal -->
+    <div id="requestDetailsModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); backdrop-filter:blur(8px); z-index:1000;">
+        <div style="background:white; width:90%; max-width:600px; margin:5% auto; padding:2rem; border-radius:var(--border-radius); box-shadow:var(--hover-shadow); position:relative;">
+            <h3 style="color:var(--primary-color); margin-bottom:1.5rem;">Request Details</h3>
+            <button onclick="closeRequestDetailsModal()" style="position:absolute; top:1rem; right:1rem; background:#e0e7ff; border:none; width:30px; height:30px; border-radius:50%; cursor:pointer; font-size:1.2rem;">&times;</button>
+            <div style="margin-bottom:1rem;">
+                <p><strong>Type:</strong> <span id="requestDetailType"></span></p>
+                <p><strong>Dog:</strong> <span id="requestDetailDog"></span></p>
+                <p><strong>Status:</strong> <span id="requestDetailStatus" style="padding: 0.3rem 0.6rem; border-radius: 4px; color: white;"></span></p>
+                <p><strong>Date:</strong> <span id="requestDetailDate"></span></p>
+            </div>
+            <div id="requestSpecificDetails" style="margin-top:1.5rem; padding-top:1.5rem; border-top:1px solid #eee;">
+                <!-- Specific details (visitor/sender info, message) will be inserted here by JS -->
+            </div>
+        </div>
+    </div>
+    <!-- End Request Details Modal -->
+
     <!-- Firebase Core SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
 
@@ -640,16 +658,19 @@
                 }
 
                 const request = requestDoc.data();
-                let detailsHtml = `
-                    <h3>Request Details</h3>
-                    <p><strong>Type:</strong> ${request.type === 'visit' ? 'Visit Request' : 'Contact Message'}</p>
-                    <p><strong>Dog:</strong> ${request.dogName} (${request.dogBreed})</p>
-                    <p><strong>Status:</strong> ${request.status}</p>
-                    <p><strong>Date:</strong> ${request.createdAt ? new Date(request.createdAt.toDate()).toLocaleString() : 'N/A'}</p>
-                `;
+                
+                // Populate the modal with request details
+                document.getElementById('requestDetailType').textContent = request.type === 'visit' ? 'Visit Request' : 'Contact Message';
+                document.getElementById('requestDetailDog').textContent = `${request.dogName} (${request.dogBreed})`;
+                document.getElementById('requestDetailStatus').textContent = request.status;
+                document.getElementById('requestDetailStatus').style.backgroundColor = getStatusColor(request.status);
+                document.getElementById('requestDetailDate').textContent = request.createdAt ? new Date(request.createdAt.toDate()).toLocaleString() : 'N/A';
+
+                const specificDetailsDiv = document.getElementById('requestSpecificDetails');
+                let specificDetailsHtml = '';
 
                 if (request.type === 'visit') {
-                    detailsHtml += `
+                    specificDetailsHtml = `
                         <p><strong>Visitor Name:</strong> ${request.visitorName}</p>
                         <p><strong>Email:</strong> ${request.visitorEmail}</p>
                         <p><strong>Phone:</strong> ${request.visitorPhone}</p>
@@ -658,20 +679,27 @@
                         <p><strong>Message:</strong> ${request.message || 'No message'}</p>
                     `;
                 } else {
-                    detailsHtml += `
+                    specificDetailsHtml = `
                         <p><strong>Sender Name:</strong> ${request.senderName}</p>
                         <p><strong>Email:</strong> ${request.senderEmail}</p>
                         <p><strong>Subject:</strong> ${request.subject}</p>
                         <p><strong>Message:</strong> ${request.message}</p>
                     `;
                 }
+                specificDetailsDiv.innerHTML = specificDetailsHtml;
 
-                // Show details in a modal or alert
-                alert(detailsHtml);
+                // Display the modal
+                document.getElementById('requestDetailsModal').style.display = 'block';
+
             } catch (error) {
                 console.error('Error fetching request details:', error);
                 alert('Error loading request details. Please try again.');
             }
+        }
+
+        // Function to close the request details modal
+        function closeRequestDetailsModal() {
+            document.getElementById('requestDetailsModal').style.display = 'none';
         }
 
         // Render table when the section is shown
