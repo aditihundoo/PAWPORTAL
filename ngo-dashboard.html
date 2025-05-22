@@ -528,6 +528,155 @@
                 alert("Error loading dog details. Please try again.");
             }
         }
+
+        // Render adoption requests table
+        async function renderAdoptionRequestsTable() {
+            const tbody = document.querySelector('#adoptionRequestsTable tbody');
+            tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding:1.5rem;">Loading requests...</td></tr>';
+
+            try {
+                // Get the current NGO's ID
+                const user = firebase.auth().currentUser;
+                if (!user) {
+                    throw new Error('No user logged in');
+                }
+
+                // Fetch adoption requests for this NGO
+                const requestsSnapshot = await db.collection('adoptionRequests')
+                    .where('ngoId', '==', user.uid)
+                    .orderBy('createdAt', 'desc')
+                    .get();
+
+                if (requestsSnapshot.empty) {
+                    tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding:1.5rem;">No adoption requests found.</td></tr>';
+                    return;
+                }
+
+                tbody.innerHTML = ''; // Clear loading message
+                requestsSnapshot.forEach(doc => {
+                    const request = doc.data();
+                    const isPending = request.status === 'Pending' || request.status === 'Unread';
+                    const requesterName = request.type === 'visit' ? request.visitorName : request.senderName;
+                    const contact = request.type === 'visit' ? 
+                        `${request.visitorEmail}<br>${request.visitorPhone}` : 
+                        `${request.senderEmail}`;
+                    
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td style="padding:0.7rem;">${requesterName}</td>
+                        <td style="padding:0.7rem;">${request.dogName} (${request.dogBreed})</td>
+                        <td style="padding:0.7rem;">${contact}</td>
+                        <td style="padding:0.7rem;">
+                            <span style="padding: 0.3rem 0.6rem; border-radius: 4px; background: ${getStatusColor(request.status)}; color: white;">
+                                ${request.status}
+                            </span>
+                        </td>
+                        <td style="padding:0.7rem;">
+                            ${isPending ? `
+                                <button onclick="updateRequestStatus('${doc.id}', 'Approved')" 
+                                    style="margin-right:0.5rem; padding:0.4rem 0.8rem; border:none; background:#27ae60; color:#fff; border-radius:4px; cursor:pointer;">
+                                    Approve
+                                </button>
+                                <button onclick="updateRequestStatus('${doc.id}', 'Rejected')" 
+                                    style="padding:0.4rem 0.8rem; border:none; background:#e74c3c; color:#fff; border-radius:4px; cursor:pointer;">
+                                    Reject
+                                </button>
+                            ` : ''}
+                            <button onclick="viewRequestDetails('${doc.id}')" 
+                                style="margin-left:0.5rem; padding:0.4rem 0.8rem; border:none; background:#3498db; color:#fff; border-radius:4px; cursor:pointer;">
+                                View Details
+                            </button>
+                        </td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            } catch (error) {
+                console.error('Error fetching adoption requests:', error);
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding:1.5rem; color: #e74c3c;">Error loading requests. Please try again.</td></tr>';
+            }
+        }
+
+        // Helper function to get status color
+        function getStatusColor(status) {
+            switch (status.toLowerCase()) {
+                case 'approved':
+                    return '#27ae60';
+                case 'rejected':
+                    return '#e74c3c';
+                case 'pending':
+                    return '#f39c12';
+                case 'unread':
+                    return '#3498db';
+                default:
+                    return '#95a5a6';
+            }
+        }
+
+        // Update request status
+        async function updateRequestStatus(requestId, newStatus) {
+            try {
+                await db.collection('adoptionRequests').doc(requestId).update({
+                    status: newStatus,
+                    updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+                });
+                
+                // Refresh the table
+                renderAdoptionRequestsTable();
+                
+                // Show success message
+                alert(`Request has been ${newStatus.toLowerCase()}.`);
+            } catch (error) {
+                console.error('Error updating request status:', error);
+                alert('Error updating request status. Please try again.');
+            }
+        }
+
+        // View request details
+        async function viewRequestDetails(requestId) {
+            try {
+                const requestDoc = await db.collection('adoptionRequests').doc(requestId).get();
+                if (!requestDoc.exists) {
+                    throw new Error('Request not found');
+                }
+
+                const request = requestDoc.data();
+                let detailsHtml = `
+                    <h3>Request Details</h3>
+                    <p><strong>Type:</strong> ${request.type === 'visit' ? 'Visit Request' : 'Contact Message'}</p>
+                    <p><strong>Dog:</strong> ${request.dogName} (${request.dogBreed})</p>
+                    <p><strong>Status:</strong> ${request.status}</p>
+                    <p><strong>Date:</strong> ${request.createdAt ? new Date(request.createdAt.toDate()).toLocaleString() : 'N/A'}</p>
+                `;
+
+                if (request.type === 'visit') {
+                    detailsHtml += `
+                        <p><strong>Visitor Name:</strong> ${request.visitorName}</p>
+                        <p><strong>Email:</strong> ${request.visitorEmail}</p>
+                        <p><strong>Phone:</strong> ${request.visitorPhone}</p>
+                        <p><strong>Visit Date:</strong> ${request.visitDate}</p>
+                        <p><strong>Time Slot:</strong> ${request.visitTime}</p>
+                        <p><strong>Message:</strong> ${request.message || 'No message'}</p>
+                    `;
+                } else {
+                    detailsHtml += `
+                        <p><strong>Sender Name:</strong> ${request.senderName}</p>
+                        <p><strong>Email:</strong> ${request.senderEmail}</p>
+                        <p><strong>Subject:</strong> ${request.subject}</p>
+                        <p><strong>Message:</strong> ${request.message}</p>
+                    `;
+                }
+
+                // Show details in a modal or alert
+                alert(detailsHtml);
+            } catch (error) {
+                console.error('Error fetching request details:', error);
+                alert('Error loading request details. Please try again.');
+            }
+        }
+
+        // Render table when the section is shown
+        document.querySelector('a[data-section="adoption-requests"]').addEventListener('click', renderAdoptionRequestsTable);
+        document.querySelector('.portal-action[data-section="adoption-requests"]').addEventListener('click', renderAdoptionRequestsTable);
     </script>
 </body>
 </html> 
