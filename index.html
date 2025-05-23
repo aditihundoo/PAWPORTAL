@@ -4,19 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PawPortal - Find Your Perfect Furry Friend</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #e67e22;
-            --accent-color: #e74c3c;
-            --light-bg: #f9f9f9;
-            --dark-text: #2c3e50;
+            --primary-color: #4f46e5;
+            --secondary-color: #f97316;
+            --accent-color: #ef4444;
+            --light-bg: #ffffff;
+            --dark-text: #1e293b;
             --light-text: #ffffff;
-            --gradient-primary: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
-            --gradient-secondary: linear-gradient(135deg, #e67e22 0%, #f39c12 100%);
-            --gradient-accent: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
-            --section-bg: rgba(255, 255, 255, 0.95);
-            --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            --gradient-primary: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
+            --gradient-secondary: linear-gradient(135deg, #f97316 0%, #fb923c 100%);
+            --gradient-accent: linear-gradient(135deg, #ef4444 0%, #f87171 100%);
+            --section-bg: rgba(255, 255, 255, 0.98);
+            --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            --hover-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --border-radius: 16px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         * {
@@ -31,18 +36,22 @@
             color: var(--dark-text);
             line-height: 1.6;
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(52, 152, 219, 0.1) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(231, 126, 34, 0.1) 0%, transparent 20%);
+                radial-gradient(circle at 10% 20%, rgba(79, 70, 229, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(249, 115, 22, 0.05) 0%, transparent 20%);
             background-attachment: fixed;
         }
         
         header {
-            background: var(--gradient-primary);
-            color: var(--light-text);
+            background: var(--section-bg);
+            color: var(--dark-text);
             padding: 1rem 0;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            position: relative;
+            box-shadow: var(--card-shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
             z-index: 1000;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
         }
         
         .container {
@@ -62,6 +71,7 @@
             align-items: center;
             font-size: 1.8rem;
             font-weight: bold;
+            color: var(--primary-color);
         }
         
         .logo span {
@@ -83,30 +93,35 @@
         }
         
         nav ul li a {
-            color: var(--light-text);
+            color: var(--dark-text);
             text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
         }
         
         nav ul li a:hover {
-            color: var(--secondary-color);
+            color: var(--primary-color);
+            background: rgba(37, 99, 235, 0.1);
         }
         
         .hero {
             background-image: 
-                linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)),
+                linear-gradient(rgba(79, 70, 229, 0.85), rgba(99, 102, 241, 0.85)),
                 url('https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            height: 600px;
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: var(--light-text);
             position: relative;
+            margin-top: 0;
+            overflow: hidden;
         }
         
         .hero::before {
@@ -116,86 +131,231 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(45deg, rgba(52, 152, 219, 0.3), rgba(231, 126, 34, 0.3));
-            z-index: 1;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.5;
         }
         
         .hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
             position: relative;
-            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(to right, #ffffff, #e2e8f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientFlow 8s ease infinite;
+        }
+        
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         
         .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
         }
         
         .btn {
             background: var(--gradient-secondary);
             color: var(--light-text);
-            padding: 1rem 2rem;
+            padding: 1.2rem 3rem;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
+            font-weight: 600;
+            transition: var(--transition);
             border: none;
-            box-shadow: 0 4px 15px rgba(231, 126, 34, 0.3);
+            box-shadow: var(--card-shadow);
+            font-size: 1.1rem;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(255,255,255,0.2), transparent);
+            transform: translateY(-100%);
+            transition: var(--transition);
         }
         
         .btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(231, 126, 34, 0.4);
+            box-shadow: var(--hover-shadow);
+        }
+        
+        .btn:hover::before {
+            transform: translateY(0);
         }
         
         .search-section {
-            padding: 3rem 0;
+            padding: 4rem 0;
             background-color: var(--section-bg);
             box-shadow: var(--card-shadow);
-            margin-top: -50px;
+            margin-top: -100px;
             position: relative;
             z-index: 2;
-            border-radius: 10px;
+            border-radius: var(--border-radius);
             margin-left: 5%;
             margin-right: 5%;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .search-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            max-width: 900px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
             margin: 0 auto;
+            padding: 0 2rem;
         }
         
         .search-box {
-            flex: 1;
-            min-width: 200px;
+            position: relative;
         }
         
         .search-box select, .search-box input {
             width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            padding: 1.2rem 1.2rem 1.2rem 3rem;
+            border: 2px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: var(--transition);
+            background: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            appearance: none;
+            cursor: pointer;
+        }
+        
+        .search-box::before {
+            content: '';
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.5;
+            transition: var(--transition);
+        }
+        
+        .search-box:nth-child(1)::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234f46e5'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z'/%3E%3C/svg%3E");
+        }
+        
+        .search-box:nth-child(2)::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234f46e5'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z'/%3E%3C/svg%3E");
+        }
+        
+        .search-box:nth-child(3)::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234f46e5'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z'/%3E%3C/svg%3E");
+        }
+        
+        .search-box:nth-child(4)::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234f46e5'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z'/%3E%3C/svg%3E");
+        }
+        
+        .search-box:nth-child(5)::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234f46e5'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z'/%3E%3C/svg%3E");
+        }
+        
+        .search-box select:focus, .search-box input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+            outline: none;
+        }
+        
+        .search-box:hover::before {
+            opacity: 1;
         }
         
         .search-btn {
-            background-color: var(--primary-color);
+            background: var(--gradient-primary);
             color: white;
             border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 4px;
+            padding: 1.2rem 2rem;
+            border-radius: var(--border-radius);
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: var(--transition);
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: var(--card-shadow);
+            position: relative;
+            overflow: hidden;
+            grid-column: 1 / -1;
+            max-width: 200px;
+            margin: 0 auto;
+        }
+        
+        .search-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(255,255,255,0.2), transparent);
+            transform: translateY(-100%);
+            transition: var(--transition);
         }
         
         .search-btn:hover {
-            background-color: #3a5a84;
+            transform: translateY(-2px);
+            box-shadow: var(--hover-shadow);
+        }
+        
+        .search-btn:hover::before {
+            transform: translateY(0);
+        }
+        
+        .loading {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: loading 1.5s infinite;
+        }
+        
+        @keyframes loading {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
         }
         
         .featured-dogs {
@@ -204,8 +364,31 @@
         
         .section-title {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
             color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2.5rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s ease;
+        }
+        
+        .section-title.animate::after {
+            transform: scaleX(1);
+            transform-origin: left;
         }
         
         .dogs-grid {
@@ -215,22 +398,40 @@
         }
         
         .dog-card {
-            background-color: var(--section-bg);
-            border-radius: 15px;
+            background-color: #ffffff;
+            border-radius: var(--border-radius);
             overflow: hidden;
             box-shadow: var(--card-shadow);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(0,0,0,0.1);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.05);
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .dog-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.7));
+            opacity: 0;
+            transition: var(--transition);
         }
         
         .dog-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--hover-shadow);
+        }
+        
+        .dog-card:hover::before {
+            opacity: 1;
         }
         
         .dog-img {
-            height: 200px;
-            background-color: #eee;
+            height: 300px;
+            position: relative;
             overflow: hidden;
         }
         
@@ -238,48 +439,81 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .dog-card:hover .dog-img img {
+            transform: scale(1.1);
         }
         
         .dog-info {
-            padding: 1.5rem;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
         }
         
         .dog-name {
-            font-size: 1.3rem;
+            font-size: 1.8rem;
             margin-bottom: 0.5rem;
             color: var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        .dog-card:hover .dog-name {
+            color: var(--light-text);
         }
         
         .dog-breed {
-            color: #666;
-            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+            font-weight: 500;
+            margin-bottom: 1rem;
+            transition: var(--transition);
+        }
+        
+        .dog-card:hover .dog-breed {
+            color: var(--light-text);
         }
         
         .dog-details {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem 0;
+            border-top: 1px solid rgba(226, 232, 240, 0.5);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+            transition: var(--transition);
+        }
+        
+        .dog-card:hover .dog-details {
+            border-color: rgba(255, 255, 255, 0.2);
         }
         
         .dog-detail {
             display: flex;
             align-items: center;
-            color: #666;
-            font-size: 0.9rem;
+            color: #64748b;
+            font-size: 0.95rem;
+            transition: var(--transition);
         }
         
-        .dog-detail i {
-            margin-right: 5px;
-            color: var(--secondary-color);
+        .dog-card:hover .dog-detail {
+            color: var(--light-text);
         }
         
         .dog-description {
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            color: #475569;
+            line-height: 1.7;
+            transition: var(--transition);
+        }
+        
+        .dog-card:hover .dog-description {
+            color: var(--light-text);
         }
         
         .mission {
-            background: var(--gradient-primary);
+            background: linear-gradient(rgba(37, 99, 235, 0.95), rgba(59, 130, 246, 0.95));
             position: relative;
             overflow: hidden;
             padding: 6rem 0;
@@ -318,7 +552,7 @@
         }
         
         .testimonials {
-            background-color: var(--light-bg);
+            background-color: #ffffff;
             position: relative;
             padding: 6rem 0;
             margin: 4rem 0;
@@ -332,25 +566,28 @@
         }
         
         .testimonial-card {
-            background: var(--section-bg);
-            border-radius: 15px;
+            background: #ffffff;
+            border-radius: var(--border-radius);
             box-shadow: var(--card-shadow);
-            transition: all 0.3s ease;
+            transition: var(--transition);
             padding: 2.5rem;
             position: relative;
+            border: 1px solid rgba(0,0,0,0.05);
         }
         
         .testimonial-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            box-shadow: var(--hover-shadow);
         }
         
         .quote {
-            font-size: 4rem;
+            font-size: 5rem;
             position: absolute;
-            top: 20px;
+            top: 10px;
             left: 20px;
-            color: rgba(0,0,0,0.05);
+            color: rgba(79, 70, 229, 0.1);
+            font-family: Georgia, serif;
+            line-height: 1;
         }
         
         .testimonial-text {
@@ -366,10 +603,21 @@
             font-weight: bold;
             color: var(--primary-color);
             font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .testimonial-author::before {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 2px;
+            background: var(--primary-color);
         }
         
         .cta {
-            background: var(--gradient-secondary);
+            background: linear-gradient(rgba(245, 158, 11, 0.95), rgba(251, 191, 36, 0.95));
             position: relative;
             overflow: hidden;
             padding: 6rem 0;
@@ -428,7 +676,7 @@
         }
         
         footer {
-            background: var(--gradient-primary);
+            background: linear-gradient(rgba(37, 99, 235, 0.95), rgba(59, 130, 246, 0.95));
             color: var(--light-text);
             padding: 3rem 0 1.5rem;
             position: relative;
@@ -572,24 +820,771 @@
             box-shadow: 0 6px 20px rgba(44, 62, 80, 0.4);
         }
         
+        .floating-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--gradient-primary);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            z-index: 1000;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .floating-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: var(--hover-shadow);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 2000;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .modal.active {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 800px;
+            margin: auto;
+            border-radius: var(--border-radius);
+            position: relative;
+            transform: translateY(-50px) scale(0.95);
+            transition: var(--transition);
+            overflow: hidden;
+            box-shadow: var(--hover-shadow);
+        }
+        
+        .modal.active .modal-content {
+            transform: translateY(0) scale(1);
+        }
+        
+        .modal-header {
+            padding: 2rem;
+            background: var(--gradient-primary);
+            color: white;
+            position: relative;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+        
+        .modal-body {
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        .modal-image {
+            width: 100%;
+            height: 300px;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .modal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .modal-info h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .modal-details {
+            margin: 1.5rem 0;
+            padding: 1rem 0;
+            border-top: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .modal-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+        
+        .modal-detail i {
+            margin-right: 0.8rem;
+            color: var(--primary-color);
+        }
+        
+        .modal-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .modal-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-btn.primary {
+            background: var(--gradient-primary);
+            color: white;
+        }
+        
+        .modal-btn.secondary {
+            background: #e2e8f0;
+            color: var(--dark-text);
+        }
+        
+        .modal-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--card-shadow);
+        }
+        
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            box-shadow: var(--card-shadow);
+            z-index: 2000;
+            opacity: 0;
+            transition: var(--transition);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        
+        .toast.active {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+        
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
                 text-align: center;
+                padding: 1rem;
             }
             
             nav ul {
                 margin-top: 1rem;
+                flex-wrap: wrap;
                 justify-content: center;
+                gap: 0.5rem;
             }
             
             .hero h1 {
                 font-size: 2.5rem;
             }
             
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
             .search-container {
                 flex-direction: column;
+                padding: 1rem;
             }
+            
+            .search-section {
+                margin: -50px 1rem 0;
+            }
+            
+            .modal-body {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                width: 95%;
+                margin: 1rem;
+            }
+        }
+        
+        .about-section {
+            padding: 6rem 0;
+            background-color: var(--light-bg);
+            position: relative;
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .about-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .about-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--hover-shadow);
+        }
+        
+        .about-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .about-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .about-card p {
+            color: #64748b;
+            line-height: 1.7;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .team-member {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--hover-shadow);
+        }
+        
+        .team-image {
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .team-member:hover .team-image img {
+            transform: scale(1.1);
+        }
+        
+        .team-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .team-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .team-info p {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .team-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .team-social a {
+            width: 36px;
+            height: 36px;
+            background: #f1f5f9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .team-social a:hover {
+            background: var(--gradient-primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .resources-section {
+            padding: 6rem 0;
+            background-color: var(--light-bg);
+            position: relative;
+        }
+        
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .resource-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--hover-shadow);
+        }
+        
+        .resource-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .resource-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .resource-card:hover .resource-image img {
+            transform: scale(1.1);
+        }
+        
+        .resource-tag {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--gradient-primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .resource-content {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .resource-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .resource-content p {
+            color: #64748b;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            flex-grow: 1;
+        }
+        
+        .resource-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .resource-link i {
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .resource-link:hover {
+            color: var(--secondary-color);
+        }
+        
+        .resource-link:hover i {
+            transform: translateX(5px);
+        }
+        
+        .resources-filter {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 0.8rem 1.5rem;
+            border: 2px solid var(--primary-color);
+            border-radius: 50px;
+            background: transparent;
+            color: var(--primary-color);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--gradient-primary);
+            color: white;
+            border-color: transparent;
+        }
+        
+        .download-section {
+            background: var(--gradient-primary);
+            padding: 4rem 0;
+            margin-top: 4rem;
+            color: white;
+            text-align: center;
+        }
+        
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .download-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .download-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .download-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .download-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background: white;
+            color: var(--primary-color);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .download-btn i {
+            margin-left: 0.5rem;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--card-shadow);
+        }
+
+        .contact-section {
+            padding: 6rem 0;
+            background-color: var(--light-bg);
+            position: relative;
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info {
+            padding: 2rem;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+        }
+
+        .contact-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .contact-details {
+            margin-bottom: 2rem;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: var(--dark-text);
+        }
+
+        .contact-detail i {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+            outline: none;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            font-size: 1rem;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(255,255,255,0.2), transparent);
+            transform: translateY(-100%);
+            transition: var(--transition);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .submit-btn:hover::before {
+            transform: translateY(0);
+        }
+
+        .contact-success {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+            background: #10b981;
+            color: white;
+            border-radius: var(--border-radius);
+            margin-top: 1rem;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .contact-details-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info-section {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .contact-form-section {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 36px;
+            height: 36px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+            background: var(--secondary-color);
+        }
+
+        @media (max-width: 768px) {
+            .contact-details-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Ensure submit button is visible in the schedule visit form */
+        #modalAdoptionForm .submit-btn {
+            display: block !important;
+            visibility: visible !important;
+        }
+
+        /* Make the schedule visit form section scrollable */
+        #modalAdoptionForm {
+            overflow-y: auto;
+            max-height: 70vh; /* Adjust height as needed */
+        }
+
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+        .loading::after {
+            content: '';
+            display: inline-block;
+            width: 1rem;
+            height: 1rem;
+            border: 2px solid var(--primary-color);
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -607,7 +1602,7 @@
                     <li><a href="#about">About Us</a></li>
                     <li><a href="#resources">Resources</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <li><a href="#ngo-login" class="ngo-login-btn">NGO Login</a></li>
+                    <li><a href="ngo-portal.html" target="_blank" class="ngo-login-btn">NGO Login</a></li>
                 </ul>
             </nav>
         </div>
@@ -660,14 +1655,11 @@
                 <div class="search-box">
                     <select id="size">
                         <option value="">All Sizes</option>
-                        <option value="small">Small (0-25 lbs)</option>
-                        <option value="medium">Medium (26-60 lbs)</option>
-                        <option value="large">Large (61-100 lbs)</option>
-                        <option value="xlarge">X-Large (100+ lbs)</option>
+                        <option value="small">Small (0-25 kgs)</option>
+                        <option value="medium">Medium (26-60 kgs)</option>
+                        <option value="large">Large (61-100 kgs)</option>
+                        <option value="xlarge">X-Large (100+ kgs)</option>
                     </select>
-                </div>
-                <div class="search-box">
-                    <input type="text" placeholder="Zip Code" id="zipcode">
                 </div>
                 <button class="search-btn">Search</button>
             </div>
@@ -676,112 +1668,12 @@
 
     <section class="featured-dogs">
         <div class="container">
-            <h2 class="section-title">Dogs Looking for Homes</h2>
+            <h2 class="section-title">Dogs Looking for a Home</h2>
             <div class="dogs-grid">
-                <div class="dog-card">
-                    <div class="dog-img">
-                        <img src="/api/placeholder/300/200" alt="Max">
-                    </div>
-                    <div class="dog-info">
-                        <h3 class="dog-name">Max</h3>
-                        <p class="dog-breed">Labrador Retriever</p>
-                        <div class="dog-details">
-                            <span class="dog-detail"><i>🐶</i> 2 years</span>
-                            <span class="dog-detail"><i>⚖️</i> 65 lbs</span>
-                            <span class="dog-detail"><i>📍</i> 5 miles</span>
-                        </div>
-                        <p class="dog-description">Max is a friendly, energetic boy who loves playing fetch and going for long walks. He's great with kids and other dogs.</p>
-                        <a href="#" class="btn">Meet Max</a>
-                    </div>
-                </div>
-                
-                <div class="dog-card">
-                    <div class="dog-img">
-                        <img src="/api/placeholder/300/200" alt="Bella">
-                    </div>
-                    <div class="dog-info">
-                        <h3 class="dog-name">Bella</h3>
-                        <p class="dog-breed">German Shepherd Mix</p>
-                        <div class="dog-details">
-                            <span class="dog-detail"><i>🐶</i> 3 years</span>
-                            <span class="dog-detail"><i>⚖️</i> 55 lbs</span>
-                            <span class="dog-detail"><i>📍</i> 8 miles</span>
-                        </div>
-                        <p class="dog-description">Bella is a loyal and intelligent companion. She's house trained and knows basic commands. She prefers a home without cats.</p>
-                        <a href="#" class="btn">Meet Bella</a>
-                    </div>
-                </div>
-                
-                <div class="dog-card">
-                    <div class="dog-img">
-                        <img src="/api/placeholder/300/200" alt="Charlie">
-                    </div>
-                    <div class="dog-info">
-                        <h3 class="dog-name">Charlie</h3>
-                        <p class="dog-breed">Beagle</p>
-                        <div class="dog-details">
-                            <span class="dog-detail"><i>🐶</i> 5 years</span>
-                            <span class="dog-detail"><i>⚖️</i> 22 lbs</span>
-                            <span class="dog-detail"><i>📍</i> 12 miles</span>
-                        </div>
-                        <p class="dog-description">Charlie is a sweet and gentle soul who loves snuggling on the couch. He gets along well with everyone he meets.</p>
-                        <a href="#" class="btn">Meet Charlie</a>
-                    </div>
-                </div>
-                
-                <div class="dog-card">
-                    <div class="dog-img">
-                        <img src="/api/placeholder/300/200" alt="Luna">
-                    </div>
-                    <div class="dog-info">
-                        <h3 class="dog-name">Luna</h3>
-                        <p class="dog-breed">Border Collie Mix</p>
-                        <div class="dog-details">
-                            <span class="dog-detail"><i>🐶</i> 1 year</span>
-                            <span class="dog-detail"><i>⚖️</i> 35 lbs</span>
-                            <span class="dog-detail"><i>📍</i> 3 miles</span>
-                        </div>
-                        <p class="dog-description">Luna is a smart and active pup who would thrive in a home that can provide plenty of exercise and mental stimulation.</p>
-                        <a href="#" class="btn">Meet Luna</a>
-                    </div>
-                </div>
-                
-                <div class="dog-card">
-                    <div class="dog-img">
-                        <img src="/api/placeholder/300/200" alt="Oscar">
-                    </div>
-                    <div class="dog-info">
-                        <h3 class="dog-name">Oscar</h3>
-                        <p class="dog-breed">Dachshund</p>
-                        <div class="dog-details">
-                            <span class="dog-detail"><i>🐶</i> 7 years</span>
-                            <span class="dog-detail"><i>⚖️</i> 12 lbs</span>
-                            <span class="dog-detail"><i>📍</i> 15 miles</span>
-                        </div>
-                        <p class="dog-description">Oscar is a senior gentleman with lots of love to give. He enjoys short walks and is looking for a quiet retirement home.</p>
-                        <a href="#" class="btn">Meet Oscar</a>
-                    </div>
-                </div>
-                
-                <div class="dog-card">
-                    <div class="dog-img">
-                        <img src="/api/placeholder/300/200" alt="Daisy">
-                    </div>
-                    <div class="dog-info">
-                        <h3 class="dog-name">Daisy</h3>
-                        <p class="dog-breed">Golden Retriever</p>
-                        <div class="dog-details">
-                            <span class="dog-detail"><i>🐶</i> 4 years</span>
-                            <span class="dog-detail"><i>⚖️</i> 58 lbs</span>
-                            <span class="dog-detail"><i>📍</i> 7 miles</span>
-                        </div>
-                        <p class="dog-description">Daisy is a gentle soul who loves everyone she meets. She's great with children and would make a perfect family dog.</p>
-                        <a href="#" class="btn">Meet Daisy</a>
-                    </div>
-                </div>
+                <!-- Dog cards from Firestore will be loaded here -->
             </div>
             <div style="text-align: center; margin-top: 2rem;">
-                <a href="#" class="btn">View All Dogs</a>
+                <a href="#" class="btn" id="viewAllDogsBtn">View All Dogs</a>
             </div>
         </div>
     </section>
@@ -795,6 +1687,19 @@
         </div>
     </section>
 
+    <!-- Our Vision Section START -->
+    <section class="vision" style="background: var(--gradient-secondary); position: relative; overflow: hidden; padding: 6rem 0; margin: 4rem 0;">
+        <div class="container mission-content">
+            <h2 style="color: var(--light-text); margin-bottom: 2rem; font-size: 2.5rem;">Our Vision</h2>
+            <p style="color: rgba(255,255,255,0.9); font-size: 1.1rem; line-height: 1.8;">
+                Our vision is a world where every dog has a loving, permanent home and no dog is left behind.
+                We strive to create a compassionate community that values animal welfare, supports responsible adoption,
+                and inspires others to join us in making a difference—one paw at a time.
+            </p>
+        </div>
+    </section>
+    <!-- Our Vision Section END -->
+
     <section class="testimonials">
         <div class="container">
             <h2 class="section-title">Happy Tails</h2>
@@ -802,17 +1707,17 @@
                 <div class="testimonial-card">
                     <div class="quote">"</div>
                     <p class="testimonial-text">Adopting Rocky through PawPortal was the best decision we've ever made. The process was smooth, and the support we received afterward was incredible.</p>
-                    <p class="testimonial-author">- Sarah & Mike Johnson</p>
+                    <p class="testimonial-author">- Priya & Amit Sharma</p>
                 </div>
                 <div class="testimonial-card">
                     <div class="quote">"</div>
                     <p class="testimonial-text">After losing my senior dog, I wasn't sure I was ready for another. PawPortal helped me find Bailey, who has healed my heart in ways I never thought possible.</p>
-                    <p class="testimonial-author">- James Wilson</p>
+                    <p class="testimonial-author">- Rohan Mehra</p>
                 </div>
                 <div class="testimonial-card">
                     <div class="quote">"</div>
                     <p class="testimonial-text">I was looking for a specific breed, and PawPortal's search tools made it easy to find exactly what I was looking for. Lucy fits perfectly into our family!</p>
-                    <p class="testimonial-author">- Maria Rodriguez</p>
+                    <p class="testimonial-author">- Sunita Reddy</p>
                 </div>
             </div>
         </div>
@@ -837,7 +1742,7 @@
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" id="email" required>
+                        <input type="email" id="ngoEmail" required>
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
@@ -857,7 +1762,7 @@
                     <p>Connecting loving homes with dogs in need since 2022.</p>
                     <div class="social-links">
                         <a href="#"><span>f</span></a>
-                        <a href="#"><span>t</span></a>
+                        <a href="#"><span>x</span></a>
                         <a href="#"><span>in</span></a>
                         <a href="#"><span>ig</span></a>
                     </div>
@@ -884,9 +1789,10 @@
                 <div class="footer-section">
                     <h3>Contact Us</h3>
                     <ul class="footer-links">
-                        <li>Email: info@pawportal.com</li>
-                        <li>Phone: (555) 123-4567</li>
-                        <li>Address: 123 Adoption Way, Dogtown, CA 90210</li>
+                        <li><i class="fas fa-envelope"></i> Email: info@pawportal.in</li>
+                        <li><i class="fas fa-phone"></i> Phone: +91 98765 43210</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Pet Care Avenue, Bandra West, Mumbai, Maharashtra 400050</li>
+                        <li><i class="fas fa-clock"></i> Mon-Sat: 10:00 AM - 7:00 PM IST</li>
                     </ul>
                 </div>
             </div>
@@ -896,35 +1802,1148 @@
         </div>
     </footer>
 
+    <div class="modal" id="dogModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalDogName">Dog Name</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body" id="modalDogDetails">
+                <div class="modal-image">
+                    <img id="modalDogImage" src="" alt="Dog Image">
+                </div>
+                <div class="modal-info">
+                    <h3 id="modalDogBreed">Breed</h3>
+                    <div class="modal-details">
+                        <div class="modal-detail">
+                            <i>🐶</i>
+                            <span id="modalDogAge">Age</span>
+                        </div>
+                        <div class="modal-detail">
+                            <i>⚖️</i>
+                            <span id="modalDogWeight">Weight</span>
+                        </div>
+                        
+                        <div class="modal-detail">
+                            <i>🏢</i>
+                            <span id="modalDogNgoName">NGO Name</span>
+                        </div>
+                    </div>
+                    <p id="modalDogDescription">Description</p>
+                    <div class="modal-actions">
+                        <button class="modal-btn primary" data-action="schedule-visit">Schedule Visit</button>
+                        <button class="modal-btn secondary" data-action="contact-ngo">Contact NGO</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Adoption Request Form Section -->
+            <div class="modal-body" id="modalAdoptionForm" style="display: none;">
+                 <h3>Schedule a Visit</h3>
+                 <form id="adoptionRequestForm">
+                      <input type="hidden" id="adoptionDogId">
+                      <input type="hidden" id="adoptionNgoId">
+                      <div class="form-group">
+                           <label for="adopterName">Your Name</label>
+                           <input type="text" id="adopterName" required>
+                      </div>
+                      <div class="form-group">
+                           <label for="adopterEmail">Email Address</label>
+                           <input type="email" id="adopterEmail" required>
+                      </div>
+                      <div class="form-group">
+                           <label for="adopterPhone">Phone Number</label>
+                           <input type="tel" id="adopterPhone" required>
+                      </div>
+                      <div class="form-group">
+                           <label for="visitDate">Preferred Visit Date</label>
+                           <input type="date" id="visitDate" required min="">
+                      </div>
+                      <div class="form-group">
+                           <label for="visitTime">Preferred Time Slot</label>
+                           <select id="visitTime" required>
+                                <option value="">Select a time slot</option>
+                                <option value="morning">Morning (10:00 AM - 12:00 PM)</option>
+                                <option value="afternoon">Afternoon (2:00 PM - 4:00 PM)</option>
+                                <option value="evening">Evening (4:00 PM - 6:00 PM)</option>
+                           </select>
+                      </div>
+                      <div class="form-group">
+                           <label for="adopterMessage">Additional Notes</label>
+                           <textarea id="adopterMessage" rows="4" placeholder="Any special requirements or questions you'd like to share with the NGO"></textarea>
+                      </div>
+                      <button type="submit" class="submit-btn">Schedule Visit</button>
+                 </form>
+                 <div class="contact-success" id="adoptionSuccessMessage" style="display: none;">
+                     <i class="fas fa-check-circle"></i>
+                     <p>Your visit request has been sent! The NGO will contact you soon to confirm the appointment.</p>
+                 </div>
+            </div>
+            <!-- NGO Contact Info Section -->
+            <div class="modal-body" id="modalNgoContact" style="display: none;">
+                 <h3>Contact NGO</h3>
+                 <div id="ngoContactDetails" class="contact-details-container">
+                      <div class="contact-info-section">
+                           <div id="ngoBasicInfo">
+                                <p>Loading contact information...</p>
+                           </div>
+                           <div id="ngoSocialLinks" class="social-links" style="margin-top: 1rem;">
+                                <!-- Social media links will be added here -->
+                           </div>
+                      </div>
+                      <div class="contact-form-section">
+                           <h4>Send a Message</h4>
+                           <form id="contactNgoForm">
+                                <div class="form-group">
+                                     <label for="contactName">Your Name</label>
+                                     <input type="text" id="contactName" required>
+                                </div>
+                                <div class="form-group">
+                                     <label for="contactEmail">Email Address</label>
+                                     <input type="email" id="contactEmail" required>
+                                </div>
+                                <div class="form-group">
+                                     <label for="contactSubject">Subject</label>
+                                     <input type="text" id="contactSubject" required>
+                                </div>
+                                <div class="form-group">
+                                     <label for="contactMessage">Message</label>
+                                     <textarea id="contactMessage" rows="4" required></textarea>
+                                </div>
+                                <button type="submit" class="submit-btn">Send Message</button>
+                           </form>
+                      </div>
+                 </div>
+                 <div id="ngoMap" style="height: 200px; margin-top: 1rem; border-radius: 8px; overflow: hidden;">
+                      <!-- Map will be added here -->
+                 </div>
+                 <button class="modal-btn secondary" onclick="showDogDetails()" style="margin-top: 1rem;">Back to Dog Details</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">
+        <span id="toastMessage">Message</span>
+    </div>
+
+    <a href="#home" class="floating-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 19V5M5 12l7-7 7 7"/>
+        </svg>
+    </a>
+
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">About PawPortal</h2>
+            <p class="text-center" style="max-width: 800px; margin: 0 auto 3rem; color: #64748b; font-size: 1.1rem;">
+                We're on a mission to connect every dog with their perfect forever home. Our platform brings together animal lovers, 
+                rescue organizations, and dogs in need to create happy endings.
+            </p>
+            
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="about-icon">🐾</div>
+                    <h3>Our Mission</h3>
+                    <p>To create a world where every dog has a loving home and no dog is left behind. We believe in the power of adoption 
+                    and the joy it brings to both pets and their families.</p>
+                </div>
+                
+                <div class="about-card">
+                    <div class="about-icon">❤️</div>
+                    <h3>Our Values</h3>
+                    <p>Compassion, transparency, and dedication drive everything we do. We're committed to making the adoption process 
+                    as smooth and joyful as possible for everyone involved.</p>
+                </div>
+                
+                <div class="about-card">
+                    <div class="about-icon">🏆</div>
+                    <h3>Our Impact</h3>
+                    <p>Since our founding, we've helped thousands of dogs find their forever homes. We work with trusted NGOs and 
+                    shelters to ensure every dog gets the care and love they deserve.</p>
+                </div>
+            </div>
+            
+            <h2 class="section-title" style="margin-top: 5rem;">Meet Our Team</h2>
+            <p class="text-center" style="max-width: 800px; margin: 0 auto 3rem; color: #64748b; font-size: 1.1rem;">
+                Our dedicated team of animal lovers works tirelessly to make a difference in the lives of dogs and their future families.
+            </p>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-image">
+                        <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg" alt="Priya Sharma">
+                    </div>
+                    <div class="team-info">
+                        <h3>Priya Sharma</h3>
+                        <p>Founder & CEO</p>
+                        <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 1rem;">Former Animal Welfare Officer at Blue Cross of India</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-x-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-image">
+                        <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg" alt="Arjun Patel">
+                    </div>
+                    <div class="team-info">
+                        <h3>Arjun Patel</h3>
+                        <p>Head of Operations</p>
+                        <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 1rem;">15+ years experience in Animal Rescue Operations</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-x-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-image">
+                        <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg" alt="Ananya Reddy">
+                    </div>
+                    <div class="team-info">
+                        <h3>Ananya Reddy</h3>
+                        <p>Adoption Coordinator</p>
+                        <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 1rem;">Certified Animal Behaviorist & Trainer</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-x-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="resources" class="resources-section">
+        <div class="container">
+            <h2 class="section-title">Resources</h2>
+            <p class="text-center" style="max-width: 800px; margin: 0 auto 3rem; color: #64748b; font-size: 1.1rem;">
+                Everything you need to know about dog adoption, care, and training. Our comprehensive resources will help you 
+                make informed decisions and provide the best care for your furry friend.
+            </p>
+            
+            <div class="resources-filter">
+                <button class="filter-btn active" data-filter="all">All Resources</button>
+                <button class="filter-btn" data-filter="adoption">Adoption Guides</button>
+                <button class="filter-btn" data-filter="care">Care Tips</button>
+                <button class="filter-btn" data-filter="training">Training</button>
+                <button class="filter-btn" data-filter="health">Health & Wellness</button>
+            </div>
+            
+            <div class="resources-grid">
+                <div class="resource-card" data-category="adoption">
+                    <div class="resource-image">
+                        <img src="https://images.pexels.com/photos/2607544/pexels-photo-2607544.jpeg" alt="Adoption Guide">
+                        <span class="resource-tag">Guide</span>
+                    </div>
+                    <div class="resource-content">
+                        <h3>Complete Adoption Guide</h3>
+                        <p>Learn everything you need to know about the adoption process, from choosing the right dog to bringing them home.</p>
+                        <a href="adoption-guide.html" class="resource-link">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="resource-card" data-category="training">
+                    <div class="resource-image">
+                        <img src="https://images.pexels.com/photos/3658120/pexels-photo-3658120.jpeg" alt="Training Tips">
+                        <span class="resource-tag">Training</span>
+                    </div>
+                    <div class="resource-content">
+                        <h3>Basic Training Tips</h3>
+                        <p>Essential training techniques for new dog owners. From basic commands to behavior management.</p>
+                        <a href="training-tips.html" class="resource-link">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="resource-card" data-category="health">
+                    <div class="resource-image">
+                        <img src="https://images.pexels.com/photos/3658120/pexels-photo-3658120.jpeg" alt="Health Care">
+                        <span class="resource-tag">Health</span>
+                    </div>
+                    <div class="resource-content">
+                        <h3>Health & Nutrition Guide</h3>
+                        <p>Comprehensive guide to keeping your dog healthy, including diet, exercise, and preventive care.</p>
+                        <a href="health-nutrition-guide.html" class="resource-link">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="download-section">
+                <h2>Downloadable Resources</h2>
+                <p style="max-width: 800px; margin: 1rem auto 0; opacity: 0.9;">
+                    Get our free guides and checklists to help you prepare for your new furry family member.
+                </p>
+                
+                <div class="download-grid">
+                    <div class="download-card">
+                        <div class="download-icon">📋</div>
+                        <h3>Adoption Checklist</h3>
+                        <p>Everything you need to prepare before bringing your new dog home.</p>
+                        <a href="downloads/adoption-checklist.pdf" class="download-btn" download>Download PDF <i class="fas fa-download"></i></a>
+                    </div>
+                    
+                    <div class="download-card">
+                        <div class="download-icon">🏥</div>
+                        <h3>Vet Visit Guide</h3>
+                        <p>Questions to ask and what to expect during your first vet visit.</p>
+                        <a href="downloads/vet-visit-guide.pdf" class="download-btn" download>Download PDF <i class="fas fa-download"></i></a>
+                    </div>
+                    
+                    <div class="download-card">
+                        <div class="download-icon">📝</div>
+                        <h3>Training Schedule</h3>
+                        <p>Printable training schedule and progress tracker.</p>
+                        <a href="downloads/training-schedule.pdf" class="download-btn" download>Download PDF <i class="fas fa-download"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End of Resources section -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>PawPortal</h3>
+                    <p>Connecting loving homes with dogs in need since 2022.</p>
+                    <div class="social-links">
+                        <a href="#"><span>f</span></a>
+                        <a href="#"><span>x</span></a>
+                        <a href="#"><span>in</span></a>
+                        <a href="#"><span>ig</span></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#search">Find a Dog</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Adoption Process</a></li>
+                        <li><a href="#">Dog Care Tips</a></li>
+                        <li><a href="#">Training Resources</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> Email: info@pawportal.in</li>
+                        <li><i class="fas fa-phone"></i> Phone: +91 98765 43210</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Pet Care Avenue, Bandra West, Mumbai, Maharashtra 400050</li>
+                        <li><i class="fas fa-clock"></i> Mon-Sat: 10:00 AM - 7:00 PM IST</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 PawPortal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <div class="contact-details">
+                        <div class="contact-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Pet Care Avenue, Bandra West, Mumbai, Maharashtra 400050</span>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-phone"></i>
+                            <span>+91 98765 43210</span>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@pawportal.in</span>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-clock"></i>
+                            <span>Mon-Sat: 10:00 AM - 7:00 PM IST</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link" title="X">
+                            <svg width="20" height="20" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;"><rect width="120" height="120" rx="24" fill="#222"/><path d="M85 35H99L69 70L100 105H78L60 83L40 105H26L57 68L27 35H50L66 55L85 35ZM81 98H87L47 42H41L81 98Z" fill="white"/></svg>
+                        </a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                    <div class="contact-success">
+                        <i class="fas fa-check-circle"></i>
+                        <p>Thank you for your message! We'll get back to you soon.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+
     <script>
-        // Basic JavaScript for search functionality
-        document.querySelector('.search-btn').addEventListener('click', function() {
-            const ngo = document.getElementById('ngo').value;
-            const breed = document.getElementById('breed').value;
-            const age = document.getElementById('age').value;
-            const size = document.getElementById('size').value;
-            const zipcode = document.getElementById('zipcode').value;
+        // Initialize Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyA2zAdnwkms_F-lVWZnA9q-4t_f014CkZQ",
+            authDomain: "paw-portal-f651d.firebaseapp.com",
+            projectId: "paw-portal-f651d",
+            storageBucket: "paw-portal-f651d.firebasestorage.app",
+            messagingSenderId: "178766672520",
+            appId: "1:178766672520:web:123d27c8e353477579a53d"
+        };
+
+        // Initialize Firebase
+        try {
+            firebase.initializeApp(firebaseConfig);
+            console.log("Firebase initialized successfully");
+        } catch (error) {
+            console.error("Firebase initialization error:", error);
+        }
+
+        const db = firebase.firestore();
+
+        // Function to populate NGO dropdown with unique names
+        async function populateNgoDropdown() {
+            const ngoSelect = document.getElementById('ngo');
+            ngoSelect.innerHTML = '<option value="">All NGOs</option>'; // Clear existing options and add default
+
+            try {
+                const ngosSnapshot = await db.collection('ngos').get();
+                const uniqueNgos = new Map(); // Map to store unique NGO names and their IDs
+
+                ngosSnapshot.forEach(doc => {
+                    const ngoData = doc.data();
+                    const ngoName = ngoData.organizationName || ngoData.name || 'Unnamed NGO';
+                    // Add to map, Map keys are unique, so duplicates by name are handled
+                    if (!uniqueNgos.has(ngoName)) {
+                        uniqueNgos.set(ngoName, doc.id);
+                    }
+                });
+
+                // Sort the unique NGO names alphabetically
+                const sortedNgoNames = Array.from(uniqueNgos.keys()).sort();
+
+                // Populate the dropdown with unique names and their corresponding IDs
+                sortedNgoNames.forEach(ngoName => {
+                    const option = document.createElement('option');
+                    option.value = uniqueNgos.get(ngoName); // Use NGO document ID as value
+                    option.textContent = ngoName;
+                    ngoSelect.appendChild(option);
+                });
+
+            } catch (error) {
+                console.error('Error fetching NGOs:', error);
+            }
+        }
+
+        // Function to populate Breed dropdown
+        async function populateBreedDropdown() {
+            const breedSelect = document.getElementById('breed');
+            breedSelect.innerHTML = '<option value="">All Breeds</option>'; // Clear existing options and add default
+
+            try {
+                const dogsSnapshot = await db.collection('dogs').get();
+                const breeds = new Set(); // Use a Set to store unique breeds
+
+                dogsSnapshot.forEach(doc => {
+                    const data = doc.data();
+                    if (data.breed) {
+                        breeds.add(data.breed);
+                    }
+                });
+
+                // Convert Set to Array, sort alphabetically, and populate dropdown
+                const sortedBreeds = Array.from(breeds).sort();
+
+                sortedBreeds.forEach(breed => {
+                    const option = document.createElement('option');
+                    option.value = breed; // Use breed string as value
+                    option.textContent = breed;
+                    breedSelect.appendChild(option);
+                });
+
+            } catch (error) {
+                console.error('Error fetching breeds:', error);
+            }
+        }
+
+        // Call the function to populate dropdowns when the page loads
+        populateNgoDropdown();
+        populateBreedDropdown();
+
+        // Target the existing dogs grid in the featured dogs section
+        const dogsGridDiv = document.querySelector('.dogs-grid');
+
+        db.collection("dogs").orderBy("timestamp", "desc").get()
+            .then(async (querySnapshot) => {
+                if (querySnapshot.empty) {
+                    dogsGridDiv.innerHTML = '<p>No dogs currently available for adoption. Please check back later!</p>';
+                    return;
+                }
+                let dogCardsHtml = '';
+                for (const doc of querySnapshot.docs) {
+                    const data = doc.data();
+                    // Fetch NGO name
+                    let ngoName = 'Unknown NGO';
+                    if (data.ngoId) {
+                        try {
+                            const ngoDoc = await db.collection('ngos').doc(data.ngoId).get();
+                            if (ngoDoc.exists) {
+                                ngoName = ngoDoc.data().organizationName || ngoDoc.data().name || 'Unknown NGO';
+                            } else {
+                                console.warn(`NGO document with ID ${data.ngoId} not found.`);
+                            }
+                        } catch (error) {
+                            console.error("Error fetching NGO details for dog", doc.id, ": ", error);
+                        }
+                    }
+                    const card = `
+                        <div class="dog-card" data-dog-id="${doc.id}" data-ngo-id="${data.ngoId || ''}" data-health-status="${data.healthStatus || 'No health information available.'}">
+                            <div class="dog-img">
+                                <img src="${data.imageUrl}" alt="Dog Image">
+                            </div>
+                            <div class="dog-info">
+                                <h3 class="dog-name">${data.name}</h3>
+                                <p class="dog-breed">${data.breed}</p>
+                                <div class="dog-details">
+                                    ${data.age ? `<span class="dog-detail"><i>🐶</i> ${data.age} years</span>` : ''}
+                                    ${data.weight ? `<span class="dog-detail"><i>⚖️</i> ${data.weight} kg</span>` : ''}
+                                    <span class="dog-detail"><i>🏢</i> ${ngoName}</span>
+                                </div>
+                                ${data.description ? `<p class="dog-description">${data.description}</p>` : ''}
+                                <a href="#" class="btn">Meet ${data.name}</a>
+                            </div>
+                        </div>
+                    `;
+                    dogCardsHtml += card;
+                }
+                dogsGridDiv.innerHTML = dogCardsHtml;
+                attachDogCardListeners();
+            })
+            .catch((error) => {
+                console.error("Error fetching dogs: ", error);
+                dogsGridDiv.innerHTML = '<p>Error loading dogs. Please try again later.</p>';
+            });
+
+        // Existing Modal functionality (keeping this as is)
+        const modal = document.getElementById('dogModal');
+        const modalClose = document.querySelector('.modal-close');
+        // Note: dogCards will need to be re-selected or dynamically attached after loading
+        const toast = document.getElementById('toast');
+        const toastMessage = document.getElementById('toastMessage');
+
+        function showToast(message, duration = 3000) {
+            toastMessage.textContent = message;
+            toast.classList.add('active');
+            setTimeout(() => {
+                toast.classList.remove('active');
+            }, duration);
+        }
+
+        function openModal(dogData) {
+            // Store the dog data including ID and ngoId
+            modal.dataset.dogId = dogData.id; // Store dog ID
+            modal.dataset.ngoId = dogData.ngoId; // Store NGO ID
+
+            document.getElementById('modalDogName').textContent = dogData.name;
+            document.getElementById('modalDogBreed').textContent = dogData.breed;
+            // Extract and set age, weight, and NGO Name
+            document.getElementById('modalDogAge').textContent = dogData.age + ' years'; // Add ' years' for clarity
+            document.getElementById('modalDogWeight').textContent = dogData.weight + ' kg'; // Add ' kg' for clarity
             
-            // In a real application, this would send the search parameters to a backend
-            alert(`Searching for: NGO: ${ngo || 'Any'}, Breed: ${breed || 'Any'}, Age: ${age || 'Any'}, Size: ${size || 'Any'}, Zip: ${zipcode || 'Any'}`);
+            // Update NGO name display in modal
+            const modalNgoNameSpan = document.getElementById('modalDogNgoName');
+            if (modalNgoNameSpan) {
+                modalNgoNameSpan.textContent = dogData.ngoName;
+            }
+
+            // Display health status in the description area
+            document.getElementById('modalDogDescription').textContent = dogData.healthStatus || 'No health information available.';
+
+            document.getElementById('modalDogImage').src = dogData.image;
+
+            // Show the dog details section and hide the form section initially
+            document.getElementById('modalDogDetails').style.display = 'grid'; // Use grid as defined in CSS
+            document.getElementById('modalAdoptionForm').style.display = 'none';
+            document.getElementById('adoptionSuccessMessage').style.display = 'none'; // Hide success message
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+            // Reset modal view to dog details when closing
+            document.getElementById('modalDogDetails').style.display = 'grid';
+            document.getElementById('modalAdoptionForm').style.display = 'none';
+            document.getElementById('modalNgoContact').style.display = 'none';
+        }
+
+        modalClose.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
         });
 
-        // NGO Login functionality
-        document.querySelector('.ngo-login-btn').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.querySelector('.ngo-login-section').style.display = 'block';
-            document.querySelector('.ngo-login-section').scrollIntoView({ behavior: 'smooth' });
+        // Function to switch back to dog details view in modal
+        function showDogDetails() {
+            document.getElementById('modalAdoptionForm').style.display = 'none';
+            document.getElementById('modalNgoContact').style.display = 'none';
+            document.getElementById('modalDogDetails').style.display = 'grid';
+        }
+
+        // Add click handlers for modal buttons
+        document.querySelectorAll('.modal-btn').forEach(btn => {
+            btn.addEventListener('click', async () => {
+                const action = btn.dataset.action;
+                const dogId = modal.dataset.dogId;
+                const ngoId = modal.dataset.ngoId;
+
+                if (!dogId || !ngoId) {
+                     console.error('Dog or NGO ID not available.');
+                     showToast('Error: Could not process request.');
+                     return;
+                }
+
+                if (action === 'schedule-visit') {
+                    // Set minimum date to today
+                    const today = new Date().toISOString().split('T')[0];
+                    document.getElementById('visitDate').min = today;
+                    
+                    // Show the adoption request form
+                    document.getElementById('modalDogDetails').style.display = 'none';
+                    document.getElementById('modalNgoContact').style.display = 'none';
+                    document.getElementById('modalAdoptionForm').style.display = 'block';
+                    
+                    // Pre-fill hidden inputs with dog and NGO IDs
+                    document.getElementById('adoptionDogId').value = dogId;
+                    document.getElementById('adoptionNgoId').value = ngoId;
+                } else if (action === 'contact-ngo') {
+                    // Show loading message and contact section
+                    document.getElementById('modalDogDetails').style.display = 'none';
+                    document.getElementById('modalAdoptionForm').style.display = 'none';
+                    document.getElementById('modalNgoContact').style.display = 'block';
+                    document.getElementById('ngoBasicInfo').innerHTML = '<p>Loading contact information...</p>';
+                    document.getElementById('ngoSocialLinks').innerHTML = '';
+                    document.getElementById('ngoMap').innerHTML = '';
+
+                    try {
+                        // Fetch NGO details from Firestore
+                        const ngoDoc = await db.collection('ngos').doc(ngoId).get();
+
+                        if (ngoDoc.exists) {
+                            const ngoData = ngoDoc.data();
+                            let contactHtml = '<h4>' + (ngoData.organizationName || ngoData.name || 'NGO') + '</h4>';
+                            
+                            // Basic contact info
+                            if (ngoData.email) {
+                                contactHtml += '<p><i class="fas fa-envelope"></i> <a href="mailto:' + ngoData.email + '">' + ngoData.email + '</a></p>';
+                            }
+                            if (ngoData.phone) {
+                                contactHtml += '<p><i class="fas fa-phone"></i> <a href="tel:' + ngoData.phone + '">' + ngoData.phone + '</a></p>';
+                            }
+                            if (ngoData.address) {
+                                contactHtml += '<p><i class="fas fa-map-marker-alt"></i> ' + ngoData.address + '</p>';
+                            }
+                            if (ngoData.website) {
+                                contactHtml += '<p><i class="fas fa-globe"></i> <a href="' + ngoData.website + '" target="_blank">' + ngoData.website + '</a></p>';
+                            }
+
+                            document.getElementById('ngoBasicInfo').innerHTML = contactHtml;
+
+                            // Social media links
+                            let socialHtml = '';
+                            if (ngoData.facebook) {
+                                socialHtml += '<a href="' + ngoData.facebook + '" target="_blank"><i class="fab fa-facebook-f"></i></a>';
+                            }
+                            if (ngoData.twitter) {
+                                socialHtml += '<a href="' + ngoData.twitter + '" target="_blank"><i class="fab fa-twitter"></i></a>';
+                            }
+                            if (ngoData.instagram) {
+                                socialHtml += '<a href="' + ngoData.instagram + '" target="_blank"><i class="fab fa-instagram"></i></a>';
+                            }
+                            if (ngoData.linkedin) {
+                                socialHtml += '<a href="' + ngoData.linkedin + '" target="_blank"><i class="fab fa-linkedin-in"></i></a>';
+                            }
+                            document.getElementById('ngoSocialLinks').innerHTML = socialHtml;
+
+                            // Initialize map if address is available
+                            if (ngoData.address) {
+                                // You would typically initialize a map here using Google Maps or similar
+                                // For now, we'll just show a placeholder
+                                document.getElementById('ngoMap').innerHTML = '<div style="background: #e2e8f0; height: 100%; display: flex; align-items: center; justify-content: center;">Map View (Address: ' + ngoData.address + ')</div>';
+                            }
+                        } else {
+                            document.getElementById('ngoBasicInfo').innerHTML = '<p>Contact information not found for this NGO.</p>';
+                        }
+                    } catch (error) {
+                        console.error('Error fetching NGO contact info:', error);
+                        document.getElementById('ngoBasicInfo').innerHTML = '<p>Error loading contact information.</p>';
+                    }
+                }
+            });
         });
 
-        document.getElementById('ngoLoginForm').addEventListener('submit', function(e) {
+        // Handle adoption request form submission
+        document.getElementById('adoptionRequestForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            const organization = document.getElementById('organization').value;
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            
-            // In a real application, this would authenticate with a backend
-            window.location.href = 'ngo-portal.html';
+
+            // Show loading state
+            const submitBtn = this.querySelector('.submit-btn');
+            submitBtn.classList.add('loading');
+            submitBtn.disabled = true;
+
+            try {
+                const adopterName = document.getElementById('adopterName').value;
+                const adopterEmail = document.getElementById('adopterEmail').value;
+                const adopterPhone = document.getElementById('adopterPhone').value;
+                const visitDate = document.getElementById('visitDate').value;
+                const visitTime = document.getElementById('visitTime').value;
+                const adopterMessage = document.getElementById('adopterMessage').value;
+                const dogId = document.getElementById('adoptionDogId').value;
+                const ngoId = document.getElementById('adoptionNgoId').value;
+
+                console.log('Form data:', {
+                    adopterName,
+                    adopterEmail,
+                    adopterPhone,
+                    visitDate,
+                    visitTime,
+                    adopterMessage,
+                    dogId,
+                    ngoId
+                });
+
+                if (!dogId || !ngoId) {
+                    throw new Error('Dog or NGO ID missing for request.');
+                }
+
+                // First get the dog details to include in the request
+                const dogDoc = await db.collection('dogs').doc(dogId).get();
+                if (!dogDoc.exists) {
+                    throw new Error('Dog not found');
+                }
+                const dogData = dogDoc.data();
+
+                // Create the visit request data
+                const visitRequestData = {
+                    type: 'visit',
+                    dogId: dogId,
+                    ngoId: ngoId,
+                    dogName: dogData.name,
+                    dogBreed: dogData.breed,
+                    visitorName: adopterName,
+                    visitorEmail: adopterEmail,
+                    visitorPhone: adopterPhone,
+                    visitDate: visitDate,
+                    visitTime: visitTime,
+                    message: adopterMessage,
+                    status: 'Pending',
+                    createdAt: new Date(),
+                    updatedAt: new Date()
+                };
+
+                console.log('Submitting visit request:', visitRequestData);
+
+                // Add visit request to Firestore
+                const docRef = await db.collection('adoptionRequests').add(visitRequestData);
+                console.log('Visit request submitted successfully with ID:', docRef.id);
+
+                // Show success message
+                document.getElementById('modalAdoptionForm').style.display = 'none';
+                const successMessageDiv = document.getElementById('adoptionSuccessMessage');
+                successMessageDiv.innerHTML = '<i class="fas fa-check-circle"></i><p>Your visit request has been sent! The NGO will contact you soon to confirm the appointment.</p>';
+                successMessageDiv.style.display = 'block';
+
+                // Clear the form
+                this.reset();
+
+                // Close modal after a delay
+                setTimeout(() => {
+                    closeModal();
+                }, 3000);
+
+            } catch (error) {
+                console.error('Error submitting visit request:', error);
+                showToast('Error submitting request: ' + error.message);
+            } finally {
+                // Remove loading state
+                submitBtn.classList.remove('loading');
+                submitBtn.disabled = false;
+            }
         });
+
+        // Existing NGO Login functionality (keeping this as is)
+         document.querySelectorAll('.ngo-login-btn').forEach(btn => {
+             btn.addEventListener('click', function(e) {
+                  // No preventDefault here, letting the link go to ngo-portal.html
+             });
+         });
+
+         document.getElementById('ngoLoginForm').addEventListener('submit', function(e) {
+              e.preventDefault();
+              // This form is likely not used for actual login with the redirect method
+              // It might be vestigial or intended for a different flow.
+              // For now, keeping the redirect as per previous modifications.
+              window.location.href = 'ngo-portal.html';
+         });
+
+        // Existing Resource filter functionality (keeping this as is)
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.getAttribute('data-filter');
+                document.querySelectorAll('.resource-card').forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Existing Contact form handling (keeping this as is)
+        const contactForm = document.getElementById('contactForm');
+        const contactSuccess = document.querySelector('.contact-success');
+
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Add loading state
+            const submitBtn = this.querySelector('.submit-btn');
+            submitBtn.classList.add('loading');
+            submitBtn.disabled = true;
+
+            // Simulate form submission (replace with actual form submission)
+            setTimeout(() => {
+                submitBtn.classList.remove('loading');
+                submitBtn.disabled = false;
+
+                // Show success message
+                contactSuccess.style.display = 'block';
+                contactForm.reset();
+
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    contactSuccess.style.display = 'none';
+                }, 5000);
+            }, 1500);
+        });
+
+        // Existing Smooth scroll to contact section (keeping this as is)
+        document.querySelectorAll('a[href="#contact"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector('#contact').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Handle NGO contact form submission
+        document.getElementById('contactNgoForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            // Show loading state
+            const submitBtn = this.querySelector('.submit-btn');
+            submitBtn.classList.add('loading');
+            submitBtn.disabled = true;
+
+            const contactName = document.getElementById('contactName').value;
+            const contactEmail = document.getElementById('contactEmail').value;
+            const contactSubject = document.getElementById('contactSubject').value;
+            const contactMessage = document.getElementById('contactMessage').value;
+            // Get dogId and ngoId from the modal dataset
+            const dogId = modal.dataset.dogId;
+            const ngoId = modal.dataset.ngoId;
+
+            if (!dogId || !ngoId) {
+                console.error('Dog or NGO ID missing for contact message.');
+                showToast('Error: Could not send message.');
+                submitBtn.classList.remove('loading');
+                submitBtn.disabled = false;
+                return;
+            }
+
+            try {
+                // First get the dog details to include in the request
+                const dogDoc = await db.collection('dogs').doc(dogId).get();
+                if (!dogDoc.exists) {
+                    throw new Error('Dog not found');
+                }
+                const dogData = dogDoc.data();
+
+                // Add contact message to Firestore under adoptionRequests
+                await db.collection('adoptionRequests').add({
+                    type: 'contact', // Indicate this is a contact message
+                    dogId: dogId,
+                    ngoId: ngoId,
+                    dogName: dogData.name,
+                    dogBreed: dogData.breed,
+                    senderName: contactName,
+                    senderEmail: contactEmail,
+                    subject: contactSubject,
+                    message: contactMessage,
+                    status: 'Unread',
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                    updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+                });
+
+                // Show success message
+                document.getElementById('modalNgoContact').style.display = 'none';
+                const successMessageDiv = document.getElementById('adoptionSuccessMessage');
+                successMessageDiv.innerHTML = '<i class="fas fa-check-circle"></i><p>Your message has been sent! The NGO will contact you soon.</p>';
+                successMessageDiv.style.display = 'block';
+                
+                // Clear the form
+                this.reset();
+                
+                // Close modal after a delay
+                setTimeout(() => {
+                    closeModal();
+                }, 2000);
+
+            } catch (error) {
+                console.error('Error sending message:', error);
+                showToast('Error sending message. Please try again.');
+            } finally {
+                // Remove loading state
+                submitBtn.classList.remove('loading');
+                submitBtn.disabled = false;
+            }
+        });
+
+        // Re-attach event listeners for dynamically loaded dog cards
+        // This function should be called after dogs are loaded into the grid
+        function attachDogCardListeners() {
+             const dogsGrid = document.querySelector('.dogs-grid');
+             if (dogsGrid) {
+                dogsGrid.addEventListener('click', (event) => {
+                    // Find the closest dog-card element to the clicked target
+                    const dogCard = event.target.closest('.dog-card');
+
+                    if (dogCard) {
+                        // Prevent default action if the click is on a link inside the card
+                        if (event.target.tagName === 'A') {
+                            event.preventDefault();
+                        }
+
+                        const dogData = {
+                            id: dogCard.dataset.dogId, // Retrieve dog ID
+                            ngoId: dogCard.dataset.ngoId, // Retrieve NGO ID
+                            name: dogCard.querySelector('.dog-name').textContent,
+                            breed: dogCard.querySelector('.dog-breed').textContent,
+                            // Corrected extraction based on current HTML structure
+                            age: dogCard.querySelector('.dog-detail:nth-child(1)')?.textContent.replace('🐶', '').trim() || 'N/A',
+                            weight: dogCard.querySelector('.dog-detail:nth-child(2)')?.textContent.replace('⚖️', '').replace('kg','').trim() || 'N/A', // Update extraction if needed
+                            // location is removed, NGO Name is the 3rd detail
+                            ngoName: dogCard.querySelector('.dog-detail:nth-child(3)')?.textContent.replace('🏢', '').trim() || 'N/A',
+                            description: dogCard.querySelector('.dog-description')?.textContent || 'No description available.',
+                            image: dogCard.querySelector('.dog-img img').src,
+                            healthStatus: dogCard.dataset.healthStatus || 'No health information available.'
+                        };
+
+                        openModal(dogData);
+                    }
+                });
+             }
+        }
+
+        // Call attachDogCardListeners after dogs are loaded
+        attachDogCardListeners();
+
+        // Add search functionality
+        document.querySelector('.search-btn').addEventListener('click', async function() {
+            const ngoFilter = document.getElementById('ngo').value;
+            const breedFilter = document.getElementById('breed').value;
+            const ageFilter = document.getElementById('age').value;
+            const sizeFilter = document.getElementById('size').value;
+
+            await searchDogs(ngoFilter, breedFilter, ageFilter, sizeFilter);
+        });
+
+        // Function to search dogs with filters
+        async function searchDogs(ngoFilter, breedFilter, ageFilter, sizeFilter) {
+            console.log('Search filters:', { ngoFilter, breedFilter, ageFilter, sizeFilter });
+
+            // Show loading state
+            const dogsGridDiv = document.querySelector('.dogs-grid');
+            dogsGridDiv.innerHTML = '<div class="loading">Loading...</div>';
+
+            try {
+                // Start with base query
+                let query = db.collection("dogs");
+
+                // Apply filters if they have values
+                if (ngoFilter) {
+                    query = query.where("ngoId", "==", ngoFilter);
+                }
+                if (breedFilter) {
+                    query = query.where("breed", "==", breedFilter);
+                }
+
+                let minAge, maxAge, minWeight, maxWeight;
+
+                // Handle Age filter (range query)
+                if (ageFilter && !sizeFilter) { // Apply age filter only if size is not selected
+                    switch(ageFilter) {
+                        case 'puppy':
+                            minAge = 0; maxAge = 1;
+                            break;
+                        case 'young':
+                            minAge = 1; maxAge = 3;
+                            break;
+                        case 'adult':
+                            minAge = 3; maxAge = 7;
+                            break;
+                        case 'senior':
+                            minAge = 7; maxAge = 100; // Assuming 100 is a safe upper bound
+                            break;
+                    }
+                    query = query.where("age", ">=", minAge).where("age", "<=", maxAge);
+                     // When using a range filter on 'age', 'age' must be the first orderBy field
+                    query = query.orderBy("age", "asc").orderBy("timestamp", "desc");
+
+                } else if (sizeFilter) { // Handle Size filter (range query), takes precedence
+                    switch(sizeFilter) {
+                        case 'small':
+                            minWeight = 0; maxWeight = 25;
+                            break;
+                        case 'medium':
+                            minWeight = 26; maxWeight = 60;
+                            break;
+                        case 'large':
+                            minWeight = 61; maxWeight = 100;
+                            break;
+                        case 'xlarge':
+                            minWeight = 101; maxWeight = 1000; // Assuming 1000 is a safe upper bound
+                            break;
+                    }
+                    // Assuming 'weight' field in Firestore is numerical (e.g., kg)
+                    query = query.where("weight", ">=", minWeight).where("weight", "<=", maxWeight);
+                     // When using a range filter on 'weight', 'weight' must be the first orderBy field
+                     query = query.orderBy("weight", "asc").orderBy("timestamp", "desc");
+
+                } else {
+                    // Default ordering if no range filter is applied
+                    query = query.orderBy("timestamp", "desc");
+                }
+
+                console.log('Executing Firestore query with filters:', {
+                    ngoId: ngoFilter,
+                    breed: breedFilter,
+                    ageRange: (ageFilter && !sizeFilter) ? [minAge, maxAge] : 'Any',
+                    weightRange: sizeFilter ? [minWeight, maxWeight] : 'Any',
+                    orderBy: (ageFilter && !sizeFilter) ? ['age asc', 'timestamp desc'] : (sizeFilter ? ['weight asc', 'timestamp desc'] : ['timestamp desc'])
+                });
+
+                const querySnapshot = await query.get();
+                
+                if (querySnapshot.empty) {
+                    dogsGridDiv.innerHTML = '<p>No dogs found matching your criteria. Please try different filters.</p>';
+                    return;
+                }
+
+                let dogCardsHtml = '';
+                for (const doc of querySnapshot.docs) {
+                    const data = doc.data();
+                    // Fetch NGO name
+                    let ngoName = 'Unknown NGO';
+                    if (data.ngoId) {
+                        try {
+                            const ngoDoc = await db.collection('ngos').doc(data.ngoId).get();
+                            if (ngoDoc.exists) {
+                                ngoName = ngoDoc.data().organizationName || ngoDoc.data().name || 'Unknown NGO';
+                            }
+                        } catch (error) {
+                            console.error("Error fetching NGO details for dog", doc.id, ": ", error);
+                        }
+                    }
+                    const card = `
+                        <div class="dog-card" data-dog-id="${doc.id}" data-ngo-id="${data.ngoId || ''}" data-health-status="${data.healthStatus || 'No health information available.'}">
+                            <div class="dog-img">
+                                <img src="${data.imageUrl}" alt="Dog Image">
+                            </div>
+                            <div class="dog-info">
+                                <h3 class="dog-name">${data.name}</h3>
+                                <p class="dog-breed">${data.breed}</p>
+                                <div class="dog-details">
+                                    ${data.age ? `<span class="dog-detail"><i>🐶</i> ${data.age} years</span>` : ''}
+                                    ${data.weight ? `<span class="dog-detail"><i>⚖️</i> ${data.weight} kg</span>` : ''}
+                                    <span class="dog-detail"><i>🏢</i> ${ngoName}</span>
+                                </div>
+                                ${data.description ? `<p class="dog-description">${data.description}</p>` : ''}
+                                <a href="#" class="btn">Meet ${data.name}</a>
+                            </div>
+                        </div>
+                    `;
+                    dogCardsHtml += card;
+                }
+                dogsGridDiv.innerHTML = dogCardsHtml;
+                attachDogCardListeners();
+            } catch (error) {
+                console.error("Error searching dogs: ", error);
+                dogsGridDiv.innerHTML = '<p>Error searching dogs. Please try again later.</p>';
+            }
+        }
+
+        // Add click handler for View All Dogs button
+        document.getElementById('viewAllDogsBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            // Reset all filters
+            document.getElementById('ngo').value = '';
+            document.getElementById('breed').value = '';
+            document.getElementById('age').value = '';
+            document.getElementById('size').value = '';
+            // Search with no filters
+            searchDogs('', '', '', '');
+        });
+
     </script>
+
+
 </body>
 </html>
