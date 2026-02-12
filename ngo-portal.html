@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,6 +23,7 @@
             --border-radius: 20px;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
         body {
             background-color: var(--light-bg);
             color: var(--dark-text);
@@ -29,6 +31,7 @@
             margin: 0;
             min-height: 100vh;
         }
+
         .portal-header {
             background: var(--gradient-primary);
             color: var(--light-text);
@@ -38,15 +41,18 @@
             border-bottom-left-radius: var(--border-radius);
             border-bottom-right-radius: var(--border-radius);
         }
+
         .portal-header h1 {
             font-size: 2.5rem;
             margin-bottom: 0.5rem;
             letter-spacing: 1px;
         }
+
         .portal-header p {
             color: #e0e7ff;
             font-size: 1.15rem;
         }
+
         .portal-nav {
             background: var(--gradient-secondary);
             display: flex;
@@ -56,6 +62,7 @@
             box-shadow: 0 2px 8px rgba(249, 115, 22, 0.08);
             border-radius: 0 0 var(--border-radius) var(--border-radius);
         }
+
         .portal-nav a {
             color: var(--light-text);
             text-decoration: none;
@@ -66,11 +73,14 @@
             transition: var(--transition);
             position: relative;
         }
-        .portal-nav a:hover, .portal-nav a.active {
+
+        .portal-nav a:hover,
+        .portal-nav a.active {
             background: var(--gradient-primary);
             color: #fff;
             box-shadow: var(--card-shadow);
         }
+
         .portal-main {
             max-width: 1000px;
             margin: 3rem auto;
@@ -80,22 +90,26 @@
             padding: 3rem 2.5rem;
             text-align: center;
         }
+
         .portal-main h2 {
             color: var(--primary-color);
             margin-bottom: 1.5rem;
             font-size: 2rem;
         }
+
         .portal-main p {
             font-size: 1.15rem;
             color: #475569;
             margin-bottom: 2rem;
         }
+
         .portal-actions {
             display: flex;
             flex-wrap: wrap;
             gap: 2rem;
             justify-content: center;
         }
+
         .portal-action {
             background: var(--gradient-primary);
             color: var(--light-text);
@@ -112,26 +126,38 @@
             justify-content: center;
             gap: 0.8rem;
         }
+
         .portal-action:hover {
             transform: translateY(-8px) scale(1.04);
             box-shadow: var(--hover-shadow);
             background: var(--gradient-secondary);
             color: #fff;
         }
+
         .portal-section {
             margin-top: 2rem;
         }
+
         form {
             background: #f8fafc;
             padding: 2rem;
             border-radius: var(--border-radius);
-            box-shadow: 0 2px 8px rgba(44,62,80,0.08);
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
             margin: 0 auto;
         }
-        input, textarea, select, button {
+
+        input,
+        textarea,
+        select,
+        button {
             font-family: inherit;
         }
-        input[type="text"], input[type="number"], input[type="email"], input[type="tel"], textarea {
+
+        input[type="text"],
+        input[type="number"],
+        input[type="email"],
+        input[type="tel"],
+        textarea {
             width: 100%;
             padding: 0.9rem;
             border-radius: 12px;
@@ -141,12 +167,17 @@
             transition: var(--transition);
             background: #fff;
         }
-        input:focus, textarea:focus {
+
+        input:focus,
+        textarea:focus {
             border-color: var(--primary-color);
             box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.08);
             outline: none;
         }
-        button[type="submit"], button, .portal-action {
+
+        button[type="submit"],
+        button,
+        .portal-action {
             cursor: pointer;
             background: var(--gradient-primary);
             color: #fff;
@@ -158,12 +189,15 @@
             box-shadow: var(--card-shadow);
             transition: var(--transition);
         }
-        button[type="submit"]:hover, button:hover {
+
+        button[type="submit"]:hover,
+        button:hover {
             background: var(--gradient-secondary);
             color: #fff;
             transform: translateY(-2px);
             box-shadow: var(--hover-shadow);
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
@@ -173,25 +207,32 @@
             overflow: hidden;
             box-shadow: var(--card-shadow);
         }
-        th, td {
+
+        th,
+        td {
             padding: 1rem;
             text-align: left;
         }
+
         th {
             background: var(--gradient-primary);
             color: #fff;
             font-weight: 600;
             border-bottom: 2px solid #e2e8f0;
         }
+
         tr:nth-child(even) {
             background: #f3f4f6;
         }
+
         tr:hover {
             background: #ede9fe;
         }
+
         img {
             border-radius: 12px;
         }
+
         .success-message {
             color: #10b981;
             background: #e0f7ef;
@@ -201,32 +242,99 @@
             font-weight: 600;
             display: inline-block;
         }
+
+        /* ========== MOBILE HAMBURGER MENU ========== */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 0.5rem;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 3px 0;
+            transition: all 0.3s ease;
+            border-radius: 3px;
+        }
+
+        .mobile-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .portal-nav {
+                position: fixed;
+                right: -100%;
+                top: 0;
+                flex-direction: column;
+                background: var(--gradient-secondary);
+                width: 75%;
+                max-width: 300px;
+                height: 100vh;
+                transition: right 0.3s ease;
+                padding: 5rem 2rem 2rem;
+                z-index: 1000;
+                gap: 1rem;
+            }
+
+            .portal-nav.active {
+                right: 0;
+            }
+
+            .portal-nav a {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
         @media (max-width: 900px) {
             .portal-main {
                 padding: 2rem 0.5rem;
             }
+
             .portal-actions {
                 flex-direction: column;
                 gap: 1.2rem;
             }
         }
+
         @media (max-width: 600px) {
             .portal-header h1 {
                 font-size: 1.5rem;
             }
+
             .portal-main h2 {
                 font-size: 1.2rem;
             }
+
             .portal-action {
                 padding: 1.2rem 1.5rem;
                 font-size: 1rem;
             }
-            th, td {
+
+            th,
+            td {
                 padding: 0.7rem;
             }
         }
     </style>
 </head>
+
 <body>
     <div class="portal-header">
         <h1 id="ngoName">Welcome to NGO Portal</h1>
@@ -261,7 +369,8 @@
 
         <section id="dashboard-section" class="portal-section" style="display: none;">
             <h2>NGO Dashboard</h2>
-            <p>Use the options below to manage your organization's dogs and adoption process. More features coming soon!</p>
+            <p>Use the options below to manage your organization's dogs and adoption process. More features coming soon!
+            </p>
             <div class="portal-actions">
                 <a href="#" class="portal-action" data-section="add-dog">Add a New Dog</a>
                 <a href="#" class="portal-action" data-section="manage-dogs">View & Edit Dogs</a>
@@ -276,7 +385,9 @@
                 <input type="text" id="breed" placeholder="Breed" required />
                 <input type="number" id="age" placeholder="Age (in years)" min="0" step="0.1" required />
                 <input type="number" id="weight" placeholder="Weight (in kg)" min="0" step="0.1" required />
-                <textarea id="healthStatus" placeholder="Health Status (e.g., Vaccinated, Spayed/Neutered, Any medical conditions)" rows="3" required></textarea>
+                <textarea id="healthStatus"
+                    placeholder="Health Status (e.g., Vaccinated, Spayed/Neutered, Any medical conditions)" rows="3"
+                    required></textarea>
                 <input type="file" id="imageInput" accept="image/*" required />
                 <button type="submit">Upload Dog Info</button>
             </form>
@@ -322,63 +433,82 @@
         </section>
         <section id="update-info-section" class="portal-section" style="display:none">
             <h2>Update Organization Info</h2>
-            <form id="orgInfoForm" style="max-width: 500px; margin: 0 auto; background: #f8f9fa; padding: 2rem 2rem 1rem 2rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(44,62,80,0.08);">
+            <form id="orgInfoForm"
+                style="max-width: 500px; margin: 0 auto; background: #f8f9fa; padding: 2rem 2rem 1rem 2rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(44,62,80,0.08);">
                 <div style="margin-bottom: 1.2rem;">
-                    <label for="orgName" style="display:block; font-weight:600; margin-bottom:0.4rem;">Organization Name</label>
-                    <input type="text" id="orgName" name="orgName" required style="width:100%; padding:0.6rem; border-radius:6px; border:1px solid #ccc;">
+                    <label for="orgName" style="display:block; font-weight:600; margin-bottom:0.4rem;">Organization
+                        Name</label>
+                    <input type="text" id="orgName" name="orgName" required
+                        style="width:100%; padding:0.6rem; border-radius:6px; border:1px solid #ccc;">
                 </div>
                 <div style="margin-bottom: 1.2rem;">
                     <label for="orgEmail" style="display:block; font-weight:600; margin-bottom:0.4rem;">Email</label>
-                    <input type="email" id="orgEmail" name="orgEmail" required style="width:100%; padding:0.6rem; border-radius:6px; border:1px solid #ccc;">
+                    <input type="email" id="orgEmail" name="orgEmail" required
+                        style="width:100%; padding:0.6rem; border-radius:6px; border:1px solid #ccc;">
                 </div>
                 <div style="margin-bottom: 1.2rem;">
                     <label for="orgPhone" style="display:block; font-weight:600; margin-bottom:0.4rem;">Phone</label>
-                    <input type="tel" id="orgPhone" name="orgPhone" required style="width:100%; padding:0.6rem; border-radius:6px; border:1px solid #ccc;">
+                    <input type="tel" id="orgPhone" name="orgPhone" required
+                        style="width:100%; padding:0.6rem; border-radius:6px; border:1px solid #ccc;">
                 </div>
                 <div style="margin-bottom: 1.2rem;">
-                    <label for="orgAddress" style="display:block; font-weight:600; margin-bottom:0.4rem;">Address</label>
-                    <input type="text" id="orgAddress" name="orgAddress" required style="width:100%; padding:0.6rem; border-radius:6px; border:1px solid #ccc;">
+                    <label for="orgAddress"
+                        style="display:block; font-weight:600; margin-bottom:0.4rem;">Address</label>
+                    <input type="text" id="orgAddress" name="orgAddress" required
+                        style="width:100%; padding:0.6rem; border-radius:6px; border:1px solid #ccc;">
                 </div>
                 <div style="margin-bottom: 1.2rem;">
-                    <label for="orgDescription" style="display:block; font-weight:600; margin-bottom:0.4rem;">Description</label>
-                    <textarea id="orgDescription" name="orgDescription" rows="3" required style="width:100%; padding:0.6rem; border-radius:6px; border:1px solid #ccc;"></textarea>
+                    <label for="orgDescription"
+                        style="display:block; font-weight:600; margin-bottom:0.4rem;">Description</label>
+                    <textarea id="orgDescription" name="orgDescription" rows="3" required
+                        style="width:100%; padding:0.6rem; border-radius:6px; border:1px solid #ccc;"></textarea>
                 </div>
-                <button type="submit" style="width:100%; padding:0.8rem; background: var(--primary-color); color:#fff; border:none; border-radius:6px; font-size:1.1rem; font-weight:600; cursor:pointer; transition:background 0.2s;">Save</button>
+                <button type="submit"
+                    style="width:100%; padding:0.8rem; background: var(--primary-color); color:#fff; border:none; border-radius:6px; font-size:1.1rem; font-weight:600; cursor:pointer; transition:background 0.2s;">Save</button>
             </form>
-            <div class="success-message" id="orgSuccessMessage" style="display:none; color:green; text-align:center; margin-top:1.2rem;">
+            <div class="success-message" id="orgSuccessMessage"
+                style="display:none; color:green; text-align:center; margin-top:1.2rem;">
                 Organization info updated successfully!
             </div>
         </section>
     </main>
     <!-- Modal for editing dog details -->
-    <div id="editDogModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.3); z-index:1000; align-items:center; justify-content:center;">
+    <div id="editDogModal"
+        style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.3); z-index:1000; align-items:center; justify-content:center;">
         <div style="background:#fff; padding:2rem; border-radius:12px; max-width:400px; width:90%; position:relative;">
             <h3>Edit Dog</h3>
             <form id="editDogForm">
                 <input type="hidden" id="editDogId">
                 <div style="margin-bottom:1rem;">
                     <label for="editDogName" style="font-weight:600;">Name</label>
-                    <input type="text" id="editDogName" required style="width:100%; padding:0.5rem; border-radius:6px; border:1px solid #ccc;">
+                    <input type="text" id="editDogName" required
+                        style="width:100%; padding:0.5rem; border-radius:6px; border:1px solid #ccc;">
                 </div>
                 <div style="margin-bottom:1rem;">
                     <label for="editDogAge" style="font-weight:600;">Age</label>
-                    <input type="number" id="editDogAge" min="0" required style="width:100%; padding:0.5rem; border-radius:6px; border:1px solid #ccc;">
+                    <input type="number" id="editDogAge" min="0" required
+                        style="width:100%; padding:0.5rem; border-radius:6px; border:1px solid #ccc;">
                 </div>
                 <div style="margin-bottom:1rem;">
                     <label for="editDogBreed" style="font-weight:600;">Breed</label>
-                    <input type="text" id="editDogBreed" required style="width:100%; padding:0.5rem; border-radius:6px; border:1px solid #ccc;">
+                    <input type="text" id="editDogBreed" required
+                        style="width:100%; padding:0.5rem; border-radius:6px; border:1px solid #ccc;">
                 </div>
                 <div style="margin-bottom:1rem;">
                     <label for="editDogHealth" style="font-weight:600;">Health Description</label>
-                    <input type="text" id="editDogHealth" style="width:100%; padding:0.5rem; border-radius:6px; border:1px solid #ccc;">
+                    <input type="text" id="editDogHealth"
+                        style="width:100%; padding:0.5rem; border-radius:6px; border:1px solid #ccc;">
                 </div>
                 <div style="margin-bottom:1rem;">
                     <label for="editDogImage" style="font-weight:600;">Image URL</label>
-                    <input type="text" id="editDogImage" style="width:100%; padding:0.5rem; border-radius:6px; border:1px solid #ccc;">
+                    <input type="text" id="editDogImage"
+                        style="width:100%; padding:0.5rem; border-radius:6px; border:1px solid #ccc;">
                 </div>
                 <div style="text-align:right;">
-                    <button type="button" onclick="closeEditModal()" style="margin-right:0.5rem; padding:0.5rem 1rem; border:none; background:#ccc; color:#333; border-radius:4px; cursor:pointer;">Cancel</button>
-                    <button type="submit" style="padding:0.5rem 1rem; border:none; background:#1976d2; color:#fff; border-radius:4px; cursor:pointer;">Save</button>
+                    <button type="button" onclick="closeEditModal()"
+                        style="margin-right:0.5rem; padding:0.5rem 1rem; border:none; background:#ccc; color:#333; border-radius:4px; cursor:pointer;">Cancel</button>
+                    <button type="submit"
+                        style="padding:0.5rem 1rem; border:none; background:#1976d2; color:#fff; border-radius:4px; cursor:pointer;">Save</button>
                 </div>
             </form>
         </div>
@@ -426,7 +556,7 @@
         });
 
         // Register form submission
-        document.getElementById("registerForm").addEventListener("submit", function(e) {
+        document.getElementById("registerForm").addEventListener("submit", function (e) {
             e.preventDefault();
             signup();
         });
@@ -541,7 +671,7 @@
         });
 
         // Update logout functionality
-        document.getElementById('logoutBtn').addEventListener('click', function(event) {
+        document.getElementById('logoutBtn').addEventListener('click', function (event) {
             event.preventDefault();
             if (confirm('Are you sure you want to logout?')) {
                 firebase.auth().signOut().then(() => {
@@ -690,7 +820,7 @@
             document.getElementById('editDogModal').style.display = 'none';
         }
 
-        document.getElementById('editDogForm').addEventListener('submit', function(e) {
+        document.getElementById('editDogForm').addEventListener('submit', function (e) {
             e.preventDefault();
             const id = parseInt(document.getElementById('editDogId').value, 10);
             const dog = mockDogs.find(d => d.id === id);
@@ -706,7 +836,7 @@
         });
 
         // Optional: Close modal when clicking outside the modal content
-        document.getElementById('editDogModal').addEventListener('click', function(e) {
+        document.getElementById('editDogModal').addEventListener('click', function (e) {
             if (e.target === this) closeEditModal();
         });
 
@@ -799,7 +929,7 @@
         document.querySelector('a[data-section="update-info"]').addEventListener('click', fillOrgInfoForm);
         document.querySelector('.portal-action[data-section="update-info"]').addEventListener('click', fillOrgInfoForm);
 
-        document.getElementById('orgInfoForm').addEventListener('submit', function(event) {
+        document.getElementById('orgInfoForm').addEventListener('submit', function (event) {
             event.preventDefault();
             mockOrgInfo.name = document.getElementById('orgName').value;
             mockOrgInfo.email = document.getElementById('orgEmail').value;
@@ -815,4 +945,5 @@
         });
     </script>
 </body>
-</html> 
+
+</html>

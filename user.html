@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,24 +24,24 @@
             --border-radius: 16px;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', 'Arial', sans-serif;
         }
-        
+
         body {
             background-color: var(--light-bg);
             color: var(--dark-text);
             line-height: 1.6;
-            background-image: 
+            background-image:
                 radial-gradient(circle at 10% 20%, rgba(79, 70, 229, 0.05) 0%, transparent 20%),
                 radial-gradient(circle at 90% 80%, rgba(249, 115, 22, 0.05) 0%, transparent 20%);
             background-attachment: fixed;
         }
-        
+
         header {
             background: var(--section-bg);
             color: var(--dark-text);
@@ -53,19 +54,19 @@
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
         }
-        
+
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
         }
-        
+
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .logo {
             display: flex;
             align-items: center;
@@ -73,25 +74,25 @@
             font-weight: bold;
             color: var(--primary-color);
         }
-        
+
         .logo span {
             color: var(--secondary-color);
         }
-        
+
         .paw-icon {
             margin-right: 10px;
             font-size: 2rem;
         }
-        
+
         nav ul {
             display: flex;
             list-style: none;
         }
-        
+
         nav ul li {
             margin-left: 1.5rem;
         }
-        
+
         nav ul li a {
             color: var(--dark-text);
             text-decoration: none;
@@ -100,14 +101,14 @@
             padding: 0.5rem 1rem;
             border-radius: 8px;
         }
-        
+
         nav ul li a:hover {
             color: var(--primary-color);
             background: rgba(37, 99, 235, 0.1);
         }
-        
+
         .hero {
-            background-image: 
+            background-image:
                 linear-gradient(rgba(79, 70, 229, 0.85), rgba(99, 102, 241, 0.85)),
                 url('https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg');
             background-size: cover;
@@ -123,7 +124,7 @@
             margin-top: 0;
             overflow: hidden;
         }
-        
+
         .hero::before {
             content: '';
             position: absolute;
@@ -134,25 +135,26 @@
             background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
             opacity: 0.5;
         }
-        
+
         .hero-content {
             max-width: 800px;
             padding: 0 2rem;
             position: relative;
             animation: fadeInUp 1s ease-out;
         }
-        
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-        
+
         .hero h1 {
             font-size: 4.5rem;
             margin-bottom: 1.5rem;
@@ -163,19 +165,27 @@
             -webkit-text-fill-color: transparent;
             animation: gradientFlow 8s ease infinite;
         }
-        
+
         @keyframes gradientFlow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
-        
+
         .hero p {
             font-size: 1.4rem;
             margin-bottom: 2.5rem;
             opacity: 0.9;
         }
-        
+
         .btn {
             background: var(--gradient-secondary);
             color: var(--light-text);
@@ -191,7 +201,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .btn::before {
             content: '';
             position: absolute;
@@ -199,20 +209,20 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(rgba(255,255,255,0.2), transparent);
+            background: linear-gradient(rgba(255, 255, 255, 0.2), transparent);
             transform: translateY(-100%);
             transition: var(--transition);
         }
-        
+
         .btn:hover {
             transform: translateY(-3px);
             box-shadow: var(--hover-shadow);
         }
-        
+
         .btn:hover::before {
             transform: translateY(0);
         }
-        
+
         .search-section {
             padding: 4rem 0;
             background-color: var(--section-bg);
@@ -227,7 +237,7 @@
             -webkit-backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
+
         .search-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -236,12 +246,13 @@
             margin: 0 auto;
             padding: 0 2rem;
         }
-        
+
         .search-box {
             position: relative;
         }
-        
-        .search-box select, .search-box input {
+
+        .search-box select,
+        .search-box input {
             width: 100%;
             padding: 1.2rem 1.2rem 1.2rem 3rem;
             border: 2px solid #e2e8f0;
@@ -253,7 +264,7 @@
             appearance: none;
             cursor: pointer;
         }
-        
+
         .search-box::before {
             content: '';
             position: absolute;
@@ -267,37 +278,38 @@
             opacity: 0.5;
             transition: var(--transition);
         }
-        
+
         .search-box:nth-child(1)::before {
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234f46e5'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z'/%3E%3C/svg%3E");
         }
-        
+
         .search-box:nth-child(2)::before {
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234f46e5'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z'/%3E%3C/svg%3E");
         }
-        
+
         .search-box:nth-child(3)::before {
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234f46e5'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z'/%3E%3C/svg%3E");
         }
-        
+
         .search-box:nth-child(4)::before {
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234f46e5'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z'/%3E%3C/svg%3E");
         }
-        
+
         .search-box:nth-child(5)::before {
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234f46e5'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z'/%3E%3C/svg%3E");
         }
-        
-        .search-box select:focus, .search-box input:focus {
+
+        .search-box select:focus,
+        .search-box input:focus {
             border-color: var(--primary-color);
             box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
             outline: none;
         }
-        
+
         .search-box:hover::before {
             opacity: 1;
         }
-        
+
         .search-btn {
             background: var(--gradient-primary);
             color: white;
@@ -315,7 +327,7 @@
             max-width: 200px;
             margin: 0 auto;
         }
-        
+
         .search-btn::before {
             content: '';
             position: absolute;
@@ -323,25 +335,25 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(rgba(255,255,255,0.2), transparent);
+            background: linear-gradient(rgba(255, 255, 255, 0.2), transparent);
             transform: translateY(-100%);
             transition: var(--transition);
         }
-        
+
         .search-btn:hover {
             transform: translateY(-2px);
             box-shadow: var(--hover-shadow);
         }
-        
+
         .search-btn:hover::before {
             transform: translateY(0);
         }
-        
+
         .loading {
             position: relative;
             overflow: hidden;
         }
-        
+
         .loading::after {
             content: '';
             position: absolute;
@@ -349,19 +361,24 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
             animation: loading 1.5s infinite;
         }
-        
+
         @keyframes loading {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
         }
-        
+
         .featured-dogs {
             padding: 3rem 0;
         }
-        
+
         .section-title {
             text-align: center;
             margin-bottom: 3rem;
@@ -372,7 +389,7 @@
             transform: translateX(-50%);
             font-size: 2.5rem;
         }
-        
+
         .section-title::after {
             content: '';
             position: absolute;
@@ -385,29 +402,29 @@
             transform-origin: right;
             transition: transform 0.5s ease;
         }
-        
+
         .section-title.animate::after {
             transform: scaleX(1);
             transform-origin: left;
         }
-        
+
         .dogs-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 2rem;
         }
-        
+
         .dog-card {
             background-color: #ffffff;
             border-radius: var(--border-radius);
             overflow: hidden;
             box-shadow: var(--card-shadow);
             transition: var(--transition);
-            border: 1px solid rgba(0,0,0,0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
             cursor: pointer;
             position: relative;
         }
-        
+
         .dog-card::before {
             content: '';
             position: absolute;
@@ -415,65 +432,65 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.7));
+            background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.7));
             opacity: 0;
             transition: var(--transition);
         }
-        
+
         .dog-card:hover {
             transform: translateY(-10px) scale(1.02);
             box-shadow: var(--hover-shadow);
         }
-        
+
         .dog-card:hover::before {
             opacity: 1;
         }
-        
+
         .dog-img {
             height: 300px;
             position: relative;
             overflow: hidden;
         }
-        
+
         .dog-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: var(--transition);
         }
-        
+
         .dog-card:hover .dog-img img {
             transform: scale(1.1);
         }
-        
+
         .dog-info {
             padding: 2rem;
             position: relative;
             z-index: 1;
         }
-        
+
         .dog-name {
             font-size: 1.8rem;
             margin-bottom: 0.5rem;
             color: var(--primary-color);
             transition: var(--transition);
         }
-        
+
         .dog-card:hover .dog-name {
             color: var(--light-text);
         }
-        
+
         .dog-breed {
             color: var(--secondary-color);
             font-weight: 500;
             margin-bottom: 1rem;
             transition: var(--transition);
         }
-        
+
         .dog-card:hover .dog-breed {
             color: var(--light-text);
         }
-        
+
         .dog-details {
             display: flex;
             justify-content: space-between;
@@ -483,11 +500,11 @@
             border-bottom: 1px solid rgba(226, 232, 240, 0.5);
             transition: var(--transition);
         }
-        
+
         .dog-card:hover .dog-details {
             border-color: rgba(255, 255, 255, 0.2);
         }
-        
+
         .dog-detail {
             display: flex;
             align-items: center;
@@ -495,11 +512,11 @@
             font-size: 0.95rem;
             transition: var(--transition);
         }
-        
+
         .dog-card:hover .dog-detail {
             color: var(--light-text);
         }
-        
+
         .dog-description {
             margin-bottom: 1.5rem;
             font-size: 1rem;
@@ -507,11 +524,11 @@
             line-height: 1.7;
             transition: var(--transition);
         }
-        
+
         .dog-card:hover .dog-description {
             color: var(--light-text);
         }
-        
+
         .mission {
             background: linear-gradient(rgba(37, 99, 235, 0.95), rgba(59, 130, 246, 0.95));
             position: relative;
@@ -519,7 +536,7 @@
             padding: 6rem 0;
             margin: 4rem 0;
         }
-        
+
         .mission::before {
             content: '';
             position: absolute;
@@ -530,41 +547,41 @@
             background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/></svg>') repeat;
             opacity: 0.1;
         }
-        
+
         .mission-content {
             max-width: 800px;
             margin: 0 auto;
             text-align: center;
             padding: 0 2rem;
         }
-        
+
         .mission h2 {
             margin-bottom: 2rem;
             font-size: 2.5rem;
             color: var(--light-text);
         }
-        
+
         .mission p {
             margin-bottom: 2rem;
             font-size: 1.1rem;
             line-height: 1.8;
             color: rgba(255, 255, 255, 0.9);
         }
-        
+
         .testimonials {
             background-color: #ffffff;
             position: relative;
             padding: 6rem 0;
             margin: 4rem 0;
         }
-        
+
         .testimonial-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 3rem;
             padding: 0 2rem;
         }
-        
+
         .testimonial-card {
             background: #ffffff;
             border-radius: var(--border-radius);
@@ -572,14 +589,14 @@
             transition: var(--transition);
             padding: 2.5rem;
             position: relative;
-            border: 1px solid rgba(0,0,0,0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
-        
+
         .testimonial-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--hover-shadow);
         }
-        
+
         .quote {
             font-size: 5rem;
             position: absolute;
@@ -589,7 +606,7 @@
             font-family: Georgia, serif;
             line-height: 1;
         }
-        
+
         .testimonial-text {
             position: relative;
             z-index: 1;
@@ -598,7 +615,7 @@
             line-height: 1.8;
             color: var(--dark-text);
         }
-        
+
         .testimonial-author {
             font-weight: bold;
             color: var(--primary-color);
@@ -607,7 +624,7 @@
             align-items: center;
             gap: 0.5rem;
         }
-        
+
         .testimonial-author::before {
             content: '';
             display: inline-block;
@@ -615,7 +632,7 @@
             height: 2px;
             background: var(--primary-color);
         }
-        
+
         .cta {
             background: linear-gradient(rgba(245, 158, 11, 0.95), rgba(251, 191, 36, 0.95));
             position: relative;
@@ -623,7 +640,7 @@
             padding: 6rem 0;
             margin: 4rem 0;
         }
-        
+
         .cta::before {
             content: '';
             position: absolute;
@@ -634,7 +651,7 @@
             background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2"/></svg>') repeat;
             opacity: 0.1;
         }
-        
+
         .cta .container {
             position: relative;
             z-index: 2;
@@ -642,13 +659,13 @@
             max-width: 800px;
             padding: 0 2rem;
         }
-        
+
         .cta h2 {
             margin-bottom: 2rem;
             font-size: 2.5rem;
             color: var(--dark-text);
         }
-        
+
         .cta p {
             margin-bottom: 3rem;
             font-size: 1.1rem;
@@ -656,7 +673,7 @@
             color: var(--dark-text);
             opacity: 0.9;
         }
-        
+
         .cta-btn {
             background: var(--gradient-primary);
             color: var(--light-text);
@@ -669,19 +686,19 @@
             box-shadow: 0 4px 15px rgba(44, 62, 80, 0.3);
             font-size: 1.1rem;
         }
-        
+
         .cta-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(44, 62, 80, 0.4);
         }
-        
+
         footer {
             background: linear-gradient(rgba(37, 99, 235, 0.95), rgba(59, 130, 246, 0.95));
             color: var(--light-text);
             padding: 3rem 0 1.5rem;
             position: relative;
         }
-        
+
         footer::before {
             content: '';
             position: absolute;
@@ -689,45 +706,45 @@
             left: 0;
             right: 0;
             height: 1px;
-            background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
         }
-        
+
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
             margin-bottom: 2rem;
         }
-        
+
         .footer-section h3 {
             margin-bottom: 1rem;
             color: var(--secondary-color);
         }
-        
+
         .footer-links {
             list-style: none;
         }
-        
+
         .footer-links li {
             margin-bottom: 0.5rem;
         }
-        
+
         .footer-links a {
             color: #ddd;
             text-decoration: none;
             transition: color 0.3s;
         }
-        
+
         .footer-links a:hover {
             color: var(--secondary-color);
         }
-        
+
         .social-links {
             display: flex;
             gap: 1rem;
             margin-top: 1rem;
         }
-        
+
         .social-links a {
             display: inline-block;
             width: 36px;
@@ -741,18 +758,18 @@
             text-decoration: none;
             transition: background-color 0.3s;
         }
-        
+
         .social-links a:hover {
             background-color: var(--secondary-color);
         }
-        
+
         .copyright {
             text-align: center;
             padding-top: 1.5rem;
             border-top: 1px solid #444;
             font-size: 0.9rem;
         }
-        
+
         .ngo-login-btn {
             background: var(--gradient-accent);
             color: var(--light-text);
@@ -763,36 +780,36 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
         }
-        
+
         .ngo-login-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
         }
-        
+
         .ngo-login-section {
             display: none;
             padding: 3rem 0;
             background-color: white;
         }
-        
+
         .login-form {
             background: var(--section-bg);
             border-radius: 15px;
             box-shadow: var(--card-shadow);
             padding: 2.5rem;
         }
-        
+
         .form-group {
             margin-bottom: 1.5rem;
         }
-        
+
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
             color: var(--primary-color);
             font-weight: bold;
         }
-        
+
         .form-group input {
             width: 100%;
             padding: 0.8rem;
@@ -800,7 +817,7 @@
             border-radius: 4px;
             font-size: 1rem;
         }
-        
+
         .form-submit {
             background: var(--gradient-primary);
             color: var(--light-text);
@@ -814,12 +831,12 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(44, 62, 80, 0.3);
         }
-        
+
         .form-submit:hover {
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(44, 62, 80, 0.4);
         }
-        
+
         .floating-btn {
             position: fixed;
             bottom: 2rem;
@@ -838,13 +855,13 @@
             z-index: 1000;
             border: 2px solid rgba(255, 255, 255, 0.2);
         }
-        
+
         .floating-btn:hover {
             transform: translateY(-5px) scale(1.1);
             box-shadow: var(--hover-shadow);
             border-color: rgba(255, 255, 255, 0.4);
         }
-        
+
         .modal {
             display: none;
             position: fixed;
@@ -859,12 +876,12 @@
             opacity: 0;
             transition: var(--transition);
         }
-        
+
         .modal.active {
             display: flex;
             opacity: 1;
         }
-        
+
         .modal-content {
             background: white;
             width: 90%;
@@ -877,18 +894,18 @@
             overflow: hidden;
             box-shadow: var(--hover-shadow);
         }
-        
+
         .modal.active .modal-content {
             transform: translateY(0) scale(1);
         }
-        
+
         .modal-header {
             padding: 2rem;
             background: var(--gradient-primary);
             color: white;
             position: relative;
         }
-        
+
         .modal-close {
             position: absolute;
             top: 1rem;
@@ -905,61 +922,61 @@
             justify-content: center;
             transition: var(--transition);
         }
-        
+
         .modal-close:hover {
             background: rgba(255, 255, 255, 0.3);
             transform: rotate(90deg);
         }
-        
+
         .modal-body {
             padding: 2rem;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 2rem;
         }
-        
+
         .modal-image {
             width: 100%;
             height: 300px;
             border-radius: 12px;
             overflow: hidden;
         }
-        
+
         .modal-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        
+
         .modal-info h2 {
             color: var(--primary-color);
             margin-bottom: 1rem;
         }
-        
+
         .modal-details {
             margin: 1.5rem 0;
             padding: 1rem 0;
             border-top: 1px solid #e2e8f0;
             border-bottom: 1px solid #e2e8f0;
         }
-        
+
         .modal-detail {
             display: flex;
             align-items: center;
             margin-bottom: 0.8rem;
         }
-        
+
         .modal-detail i {
             margin-right: 0.8rem;
             color: var(--primary-color);
         }
-        
+
         .modal-actions {
             display: flex;
             gap: 1rem;
             margin-top: 2rem;
         }
-        
+
         .modal-btn {
             padding: 0.8rem 1.5rem;
             border-radius: 8px;
@@ -968,22 +985,22 @@
             font-weight: 600;
             transition: all 0.3s ease;
         }
-        
+
         .modal-btn.primary {
             background: var(--gradient-primary);
             color: white;
         }
-        
+
         .modal-btn.secondary {
             background: #e2e8f0;
             color: var(--dark-text);
         }
-        
+
         .modal-btn:hover {
             transform: translateY(-2px);
             box-shadow: var(--card-shadow);
         }
-        
+
         .toast {
             position: fixed;
             bottom: 2rem;
@@ -1000,66 +1017,66 @@
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
         }
-        
+
         .toast.active {
             transform: translateX(-50%) translateY(0);
             opacity: 1;
         }
-        
+
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
                 text-align: center;
                 padding: 1rem;
             }
-            
+
             nav ul {
                 margin-top: 1rem;
                 flex-wrap: wrap;
                 justify-content: center;
                 gap: 0.5rem;
             }
-            
+
             .hero h1 {
                 font-size: 2.5rem;
             }
-            
+
             .hero p {
                 font-size: 1.1rem;
             }
-            
+
             .search-container {
                 flex-direction: column;
                 padding: 1rem;
             }
-            
+
             .search-section {
                 margin: -50px 1rem 0;
             }
-            
+
             .modal-body {
                 grid-template-columns: 1fr;
             }
-            
+
             .modal-content {
                 width: 95%;
                 margin: 1rem;
             }
         }
-        
+
         .about-section {
             padding: 6rem 0;
             background-color: var(--light-bg);
             position: relative;
         }
-        
+
         .about-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 3rem;
             margin-top: 3rem;
         }
-        
+
         .about-card {
             background: white;
             border-radius: 20px;
@@ -1068,12 +1085,12 @@
             transition: all 0.3s ease;
             text-align: center;
         }
-        
+
         .about-card:hover {
             transform: translateY(-10px);
             box-shadow: var(--hover-shadow);
         }
-        
+
         .about-icon {
             width: 80px;
             height: 80px;
@@ -1086,25 +1103,25 @@
             font-size: 2rem;
             color: white;
         }
-        
+
         .about-card h3 {
             color: var(--primary-color);
             margin-bottom: 1rem;
             font-size: 1.5rem;
         }
-        
+
         .about-card p {
             color: #64748b;
             line-height: 1.7;
         }
-        
+
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
-        
+
         .team-member {
             background: white;
             border-radius: 20px;
@@ -1112,49 +1129,49 @@
             box-shadow: var(--card-shadow);
             transition: all 0.3s ease;
         }
-        
+
         .team-member:hover {
             transform: translateY(-10px);
             box-shadow: var(--hover-shadow);
         }
-        
+
         .team-image {
             height: 300px;
             overflow: hidden;
         }
-        
+
         .team-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.3s ease;
         }
-        
+
         .team-member:hover .team-image img {
             transform: scale(1.1);
         }
-        
+
         .team-info {
             padding: 1.5rem;
             text-align: center;
         }
-        
+
         .team-info h3 {
             color: var(--primary-color);
             margin-bottom: 0.5rem;
         }
-        
+
         .team-info p {
             color: var(--secondary-color);
             margin-bottom: 1rem;
         }
-        
+
         .team-social {
             display: flex;
             justify-content: center;
             gap: 1rem;
         }
-        
+
         .team-social a {
             width: 36px;
             height: 36px;
@@ -1167,26 +1184,26 @@
             text-decoration: none;
             transition: all 0.3s ease;
         }
-        
+
         .team-social a:hover {
             background: var(--gradient-primary);
             color: white;
             transform: translateY(-3px);
         }
-        
+
         .resources-section {
             padding: 6rem 0;
             background-color: var(--light-bg);
             position: relative;
         }
-        
+
         .resources-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
-        
+
         .resource-card {
             background: white;
             border-radius: 20px;
@@ -1196,29 +1213,29 @@
             display: flex;
             flex-direction: column;
         }
-        
+
         .resource-card:hover {
             transform: translateY(-10px);
             box-shadow: var(--hover-shadow);
         }
-        
+
         .resource-image {
             height: 200px;
             overflow: hidden;
             position: relative;
         }
-        
+
         .resource-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.3s ease;
         }
-        
+
         .resource-card:hover .resource-image img {
             transform: scale(1.1);
         }
-        
+
         .resource-tag {
             position: absolute;
             top: 1rem;
@@ -1230,27 +1247,27 @@
             font-size: 0.9rem;
             font-weight: 500;
         }
-        
+
         .resource-content {
             padding: 2rem;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
         }
-        
+
         .resource-content h3 {
             color: var(--primary-color);
             margin-bottom: 1rem;
             font-size: 1.5rem;
         }
-        
+
         .resource-content p {
             color: #64748b;
             margin-bottom: 1.5rem;
             line-height: 1.7;
             flex-grow: 1;
         }
-        
+
         .resource-link {
             display: inline-flex;
             align-items: center;
@@ -1259,20 +1276,20 @@
             font-weight: 600;
             transition: all 0.3s ease;
         }
-        
+
         .resource-link i {
             margin-left: 0.5rem;
             transition: transform 0.3s ease;
         }
-        
+
         .resource-link:hover {
             color: var(--secondary-color);
         }
-        
+
         .resource-link:hover i {
             transform: translateX(5px);
         }
-        
+
         .resources-filter {
             display: flex;
             justify-content: center;
@@ -1280,7 +1297,7 @@
             margin-bottom: 3rem;
             flex-wrap: wrap;
         }
-        
+
         .filter-btn {
             padding: 0.8rem 1.5rem;
             border: 2px solid var(--primary-color);
@@ -1291,14 +1308,14 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        
+
         .filter-btn.active,
         .filter-btn:hover {
             background: var(--gradient-primary);
             color: white;
             border-color: transparent;
         }
-        
+
         .download-section {
             background: var(--gradient-primary);
             padding: 4rem 0;
@@ -1306,14 +1323,14 @@
             color: white;
             text-align: center;
         }
-        
+
         .download-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
-        
+
         .download-card {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
@@ -1321,22 +1338,22 @@
             padding: 2rem;
             transition: all 0.3s ease;
         }
-        
+
         .download-card:hover {
             transform: translateY(-5px);
             background: rgba(255, 255, 255, 0.2);
         }
-        
+
         .download-icon {
             font-size: 2.5rem;
             margin-bottom: 1rem;
         }
-        
+
         .download-card h3 {
             margin-bottom: 1rem;
             font-size: 1.3rem;
         }
-        
+
         .download-btn {
             display: inline-flex;
             align-items: center;
@@ -1349,11 +1366,11 @@
             margin-top: 1rem;
             transition: all 0.3s ease;
         }
-        
+
         .download-btn i {
             margin-left: 0.5rem;
         }
-        
+
         .download-btn:hover {
             transform: translateY(-3px);
             box-shadow: var(--card-shadow);
@@ -1474,7 +1491,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(rgba(255,255,255,0.2), transparent);
+            background: linear-gradient(rgba(255, 255, 255, 0.2), transparent);
             transform: translateY(-100%);
             transition: var(--transition);
         }
@@ -1500,8 +1517,15 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .contact-details-container {
@@ -1562,11 +1586,236 @@
         /* Make the schedule visit form section scrollable */
         #modalAdoptionForm {
             overflow-y: auto;
-            max-height: 70vh; /* Adjust height as needed */
+            max-height: 70vh;
+            /* Adjust height as needed */
         }
 
+
+        /* ========== MOBILE HAMBURGER MENU ========== */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 0.5rem;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 3px 0;
+            transition: var(--transition);
+            border-radius: 3px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        .mobile-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            nav ul {
+                position: fixed;
+                right: -100%;
+                top: 0;
+                flex-direction: column;
+                background: white;
+                width: 75%;
+                max-width: 300px;
+                height: 100vh;
+                transition: right 0.3s ease;
+                box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+                padding: 5rem 0 2rem 0;
+                margin: 0;
+                z-index: 1000;
+                overflow-y: auto;
+            }
+
+            nav ul.active {
+                right: 0;
+            }
+
+            nav ul li {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+            }
+
+            nav ul li a {
+                display: block;
+                padding: 1rem 2rem;
+                border-radius: 0;
+                border-bottom: 1px solid #f1f5f9;
+                width: 100%;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .paw-icon {
+                font-size: 1.5rem;
+            }
+
+            .hero {
+                height: auto;
+                min-height: 100vh;
+                background-attachment: scroll;
+                padding: 6rem 1rem 4rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .search-section {
+                margin: -50px 1rem 0;
+                padding: 2rem 1rem;
+            }
+
+            .search-container {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                padding: 0 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .dogs-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 1rem auto;
+                max-height: 90vh;
+                overflow-y: auto;
+            }
+
+            .modal-body {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 1.5rem;
+            }
+
+            .modal-actions {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+
+            .modal-btn {
+                width: 100%;
+            }
+
+            .btn {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+                min-height: 48px;
+            }
+
+            .testimonial-grid,
+            .about-grid,
+            .resources-grid,
+            .team-grid,
+            .download-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 0 1rem;
+            }
+
+            .container {
+                width: 95%;
+            }
+
+            input,
+            textarea,
+            select,
+            button {
+                min-height: 48px;
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            nav ul {
+                width: 85%;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+
+            .dogs-grid,
+            .testimonial-grid,
+            .about-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+        }
     </style>
 </head>
+
 <body>
     <header>
         <div class="container header-content">
@@ -1574,8 +1823,13 @@
                 <div class="paw-icon">🐾</div>
                 <div>Paw<span>Portal</span></div>
             </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
             <nav>
-                <ul>
+                <ul id="navMenu">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#search">Find a Dog</a></li>
                     <li><a href="#about">About Us</a></li>
@@ -1585,12 +1839,14 @@
                 </ul>
             </nav>
         </div>
+        <div class="mobile-overlay" id="mobileOverlay"></div>
     </header>
 
     <section id="home" class="hero">
         <div class="container hero-content">
             <h1>Find Your Perfect Furry Friend</h1>
-            <p>PawPortal connects loving homes with dogs in need. Browse our available dogs or let us help you find your perfect match.</p>
+            <p>PawPortal connects loving homes with dogs in need. Browse our available dogs or let us help you find your
+                perfect match.</p>
             <a href="#search" class="btn">Find a Dog</a>
         </div>
     </section>
@@ -1660,14 +1916,17 @@
     <section class="mission">
         <div class="container mission-content">
             <h2>Our Mission</h2>
-            <p>At PawPortal, we believe every dog deserves a loving home. We work tirelessly to connect dogs in need with compassionate adopters who can provide them with the care, love, and security they deserve.</p>
-            <p>When you adopt from PawPortal, you're not just gaining a furry family member – you're saving a life and making room for another dog in need.</p>
+            <p>At PawPortal, we believe every dog deserves a loving home. We work tirelessly to connect dogs in need
+                with compassionate adopters who can provide them with the care, love, and security they deserve.</p>
+            <p>When you adopt from PawPortal, you're not just gaining a furry family member – you're saving a life and
+                making room for another dog in need.</p>
             <a href="#" class="btn">Learn More About Us</a>
         </div>
     </section>
 
     <!-- Our Vision Section START -->
-    <section class="vision" style="background: var(--gradient-secondary); position: relative; overflow: hidden; padding: 6rem 0; margin: 4rem 0;">
+    <section class="vision"
+        style="background: var(--gradient-secondary); position: relative; overflow: hidden; padding: 6rem 0; margin: 4rem 0;">
         <div class="container mission-content">
             <h2 style="color: var(--light-text); margin-bottom: 2rem; font-size: 2.5rem;">Our Vision</h2>
             <p style="color: rgba(255,255,255,0.9); font-size: 1.1rem; line-height: 1.8;">
@@ -1685,17 +1944,20 @@
             <div class="testimonial-grid">
                 <div class="testimonial-card">
                     <div class="quote">"</div>
-                    <p class="testimonial-text">Adopting Rocky through PawPortal was the best decision we've ever made. The process was smooth, and the support we received afterward was incredible.</p>
+                    <p class="testimonial-text">Adopting Rocky through PawPortal was the best decision we've ever made.
+                        The process was smooth, and the support we received afterward was incredible.</p>
                     <p class="testimonial-author">- Priya & Amit Sharma</p>
                 </div>
                 <div class="testimonial-card">
                     <div class="quote">"</div>
-                    <p class="testimonial-text">After losing my senior dog, I wasn't sure I was ready for another. PawPortal helped me find Bailey, who has healed my heart in ways I never thought possible.</p>
+                    <p class="testimonial-text">After losing my senior dog, I wasn't sure I was ready for another.
+                        PawPortal helped me find Bailey, who has healed my heart in ways I never thought possible.</p>
                     <p class="testimonial-author">- Rohan Mehra</p>
                 </div>
                 <div class="testimonial-card">
                     <div class="quote">"</div>
-                    <p class="testimonial-text">I was looking for a specific breed, and PawPortal's search tools made it easy to find exactly what I was looking for. Lucy fits perfectly into our family!</p>
+                    <p class="testimonial-text">I was looking for a specific breed, and PawPortal's search tools made it
+                        easy to find exactly what I was looking for. Lucy fits perfectly into our family!</p>
                     <p class="testimonial-author">- Sunita Reddy</p>
                 </div>
             </div>
@@ -1705,7 +1967,8 @@
     <section class="cta">
         <div class="container">
             <h2>Ready to Find Your New Best Friend?</h2>
-            <p>Start your search today and discover the joy of adopting a dog in need. Your perfect companion is just a click away.</p>
+            <p>Start your search today and discover the joy of adopting a dog in need. Your perfect companion is just a
+                click away.</p>
             <a href="#search" class="btn cta-btn">Find Your Dog</a>
         </div>
     </section>
@@ -1770,7 +2033,8 @@
                     <ul class="footer-links">
                         <li><i class="fas fa-envelope"></i> Email: info@pawportal.in</li>
                         <li><i class="fas fa-phone"></i> Phone: +91 98765 43210</li>
-                        <li><i class="fas fa-map-marker-alt"></i> 123 Pet Care Avenue, Bandra West, Mumbai, Maharashtra 400050</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Pet Care Avenue, Bandra West, Mumbai, Maharashtra
+                            400050</li>
                         <li><i class="fas fa-clock"></i> Mon-Sat: 10:00 AM - 7:00 PM IST</li>
                     </ul>
                 </div>
@@ -1802,7 +2066,7 @@
                             <i>⚖️</i>
                             <span id="modalDogWeight">Weight</span>
                         </div>
-                        
+
                         <div class="modal-detail">
                             <i>🏢</i>
                             <span id="modalDogNgoName">NGO Name</span>
@@ -1817,85 +2081,87 @@
             </div>
             <!-- Adoption Request Form Section -->
             <div class="modal-body" id="modalAdoptionForm" style="display: none;">
-                 <h3>Schedule a Visit</h3>
-                 <form id="adoptionRequestForm">
-                      <input type="hidden" id="adoptionDogId">
-                      <input type="hidden" id="adoptionNgoId">
-                      <div class="form-group">
-                           <label for="adopterName">Your Name</label>
-                           <input type="text" id="adopterName" required>
-                      </div>
-                      <div class="form-group">
-                           <label for="adopterEmail">Email Address</label>
-                           <input type="email" id="adopterEmail" required>
-                      </div>
-                      <div class="form-group">
-                           <label for="adopterPhone">Phone Number</label>
-                           <input type="tel" id="adopterPhone" required>
-                      </div>
-                      <div class="form-group">
-                           <label for="visitDate">Preferred Visit Date</label>
-                           <input type="date" id="visitDate" required min="">
-                      </div>
-                      <div class="form-group">
-                           <label for="visitTime">Preferred Time Slot</label>
-                           <select id="visitTime" required>
-                                <option value="">Select a time slot</option>
-                                <option value="morning">Morning (10:00 AM - 12:00 PM)</option>
-                                <option value="afternoon">Afternoon (2:00 PM - 4:00 PM)</option>
-                                <option value="evening">Evening (4:00 PM - 6:00 PM)</option>
-                           </select>
-                      </div>
-                      <div class="form-group">
-                           <label for="adopterMessage">Additional Notes</label>
-                           <textarea id="adopterMessage" rows="4" placeholder="Any special requirements or questions you'd like to share with the NGO"></textarea>
-                      </div>
-                      <button type="submit" class="submit-btn">Schedule Visit</button>
-                 </form>
-                 <div class="contact-success" id="adoptionSuccessMessage" style="display: none;">
-                     <i class="fas fa-check-circle"></i>
-                     <p>Your visit request has been sent! The NGO will contact you soon to confirm the appointment.</p>
-                 </div>
+                <h3>Schedule a Visit</h3>
+                <form id="adoptionRequestForm">
+                    <input type="hidden" id="adoptionDogId">
+                    <input type="hidden" id="adoptionNgoId">
+                    <div class="form-group">
+                        <label for="adopterName">Your Name</label>
+                        <input type="text" id="adopterName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="adopterEmail">Email Address</label>
+                        <input type="email" id="adopterEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="adopterPhone">Phone Number</label>
+                        <input type="tel" id="adopterPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="visitDate">Preferred Visit Date</label>
+                        <input type="date" id="visitDate" required min="">
+                    </div>
+                    <div class="form-group">
+                        <label for="visitTime">Preferred Time Slot</label>
+                        <select id="visitTime" required>
+                            <option value="">Select a time slot</option>
+                            <option value="morning">Morning (10:00 AM - 12:00 PM)</option>
+                            <option value="afternoon">Afternoon (2:00 PM - 4:00 PM)</option>
+                            <option value="evening">Evening (4:00 PM - 6:00 PM)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="adopterMessage">Additional Notes</label>
+                        <textarea id="adopterMessage" rows="4"
+                            placeholder="Any special requirements or questions you'd like to share with the NGO"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Schedule Visit</button>
+                </form>
+                <div class="contact-success" id="adoptionSuccessMessage" style="display: none;">
+                    <i class="fas fa-check-circle"></i>
+                    <p>Your visit request has been sent! The NGO will contact you soon to confirm the appointment.</p>
+                </div>
             </div>
             <!-- NGO Contact Info Section -->
             <div class="modal-body" id="modalNgoContact" style="display: none;">
-                 <h3>Contact NGO</h3>
-                 <div id="ngoContactDetails" class="contact-details-container">
-                      <div class="contact-info-section">
-                           <div id="ngoBasicInfo">
-                                <p>Loading contact information...</p>
-                           </div>
-                           <div id="ngoSocialLinks" class="social-links" style="margin-top: 1rem;">
-                                <!-- Social media links will be added here -->
-                           </div>
-                      </div>
-                      <div class="contact-form-section">
-                           <h4>Send a Message</h4>
-                           <form id="contactNgoForm">
-                                <div class="form-group">
-                                     <label for="contactName">Your Name</label>
-                                     <input type="text" id="contactName" required>
-                                </div>
-                                <div class="form-group">
-                                     <label for="contactEmail">Email Address</label>
-                                     <input type="email" id="contactEmail" required>
-                                </div>
-                                <div class="form-group">
-                                     <label for="contactSubject">Subject</label>
-                                     <input type="text" id="contactSubject" required>
-                                </div>
-                                <div class="form-group">
-                                     <label for="contactMessage">Message</label>
-                                     <textarea id="contactMessage" rows="4" required></textarea>
-                                </div>
-                                <button type="submit" class="submit-btn">Send Message</button>
-                           </form>
-                      </div>
-                 </div>
-                 <div id="ngoMap" style="height: 200px; margin-top: 1rem; border-radius: 8px; overflow: hidden;">
-                      <!-- Map will be added here -->
-                 </div>
-                 <button class="modal-btn secondary" onclick="showDogDetails()" style="margin-top: 1rem;">Back to Dog Details</button>
+                <h3>Contact NGO</h3>
+                <div id="ngoContactDetails" class="contact-details-container">
+                    <div class="contact-info-section">
+                        <div id="ngoBasicInfo">
+                            <p>Loading contact information...</p>
+                        </div>
+                        <div id="ngoSocialLinks" class="social-links" style="margin-top: 1rem;">
+                            <!-- Social media links will be added here -->
+                        </div>
+                    </div>
+                    <div class="contact-form-section">
+                        <h4>Send a Message</h4>
+                        <form id="contactNgoForm">
+                            <div class="form-group">
+                                <label for="contactName">Your Name</label>
+                                <input type="text" id="contactName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contactEmail">Email Address</label>
+                                <input type="email" id="contactEmail" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contactSubject">Subject</label>
+                                <input type="text" id="contactSubject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contactMessage">Message</label>
+                                <textarea id="contactMessage" rows="4" required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+                <div id="ngoMap" style="height: 200px; margin-top: 1rem; border-radius: 8px; overflow: hidden;">
+                    <!-- Map will be added here -->
+                </div>
+                <button class="modal-btn secondary" onclick="showDogDetails()" style="margin-top: 1rem;">Back to Dog
+                    Details</button>
             </div>
         </div>
     </div>
@@ -1905,8 +2171,9 @@
     </div>
 
     <a href="#home" class="floating-btn">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 19V5M5 12l7-7 7 7"/>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 19V5M5 12l7-7 7 7" />
         </svg>
     </a>
 
@@ -1914,38 +2181,43 @@
         <div class="container">
             <h2 class="section-title">About PawPortal</h2>
             <p class="text-center" style="max-width: 800px; margin: 0 auto 3rem; color: #64748b; font-size: 1.1rem;">
-                We're on a mission to connect every dog with their perfect forever home. Our platform brings together animal lovers, 
+                We're on a mission to connect every dog with their perfect forever home. Our platform brings together
+                animal lovers,
                 rescue organizations, and dogs in need to create happy endings.
             </p>
-            
+
             <div class="about-grid">
                 <div class="about-card">
                     <div class="about-icon">🐾</div>
                     <h3>Our Mission</h3>
-                    <p>To create a world where every dog has a loving home and no dog is left behind. We believe in the power of adoption 
-                    and the joy it brings to both pets and their families.</p>
+                    <p>To create a world where every dog has a loving home and no dog is left behind. We believe in the
+                        power of adoption
+                        and the joy it brings to both pets and their families.</p>
                 </div>
-                
+
                 <div class="about-card">
                     <div class="about-icon">❤️</div>
                     <h3>Our Values</h3>
-                    <p>Compassion, transparency, and dedication drive everything we do. We're committed to making the adoption process 
-                    as smooth and joyful as possible for everyone involved.</p>
+                    <p>Compassion, transparency, and dedication drive everything we do. We're committed to making the
+                        adoption process
+                        as smooth and joyful as possible for everyone involved.</p>
                 </div>
-                
+
                 <div class="about-card">
                     <div class="about-icon">🏆</div>
                     <h3>Our Impact</h3>
-                    <p>Since our founding, we've helped thousands of dogs find their forever homes. We work with trusted NGOs and 
-                    shelters to ensure every dog gets the care and love they deserve.</p>
+                    <p>Since our founding, we've helped thousands of dogs find their forever homes. We work with trusted
+                        NGOs and
+                        shelters to ensure every dog gets the care and love they deserve.</p>
                 </div>
             </div>
-            
+
             <h2 class="section-title" style="margin-top: 5rem;">Meet Our Team</h2>
             <p class="text-center" style="max-width: 800px; margin: 0 auto 3rem; color: #64748b; font-size: 1.1rem;">
-                Our dedicated team of animal lovers works tirelessly to make a difference in the lives of dogs and their future families.
+                Our dedicated team of animal lovers works tirelessly to make a difference in the lives of dogs and their
+                future families.
             </p>
-            
+
             <div class="team-grid">
                 <div class="team-member">
                     <div class="team-image">
@@ -1954,7 +2226,8 @@
                     <div class="team-info">
                         <h3>Priya Sharma</h3>
                         <p>Founder & CEO</p>
-                        <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 1rem;">Former Animal Welfare Officer at Blue Cross of India</p>
+                        <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 1rem;">Former Animal Welfare Officer
+                            at Blue Cross of India</p>
                         <div class="team-social">
                             <a href="#"><i class="fab fa-linkedin"></i></a>
                             <a href="#"><i class="fab fa-x-twitter"></i></a>
@@ -1962,7 +2235,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="team-member">
                     <div class="team-image">
                         <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg" alt="Arjun Patel">
@@ -1970,7 +2243,8 @@
                     <div class="team-info">
                         <h3>Arjun Patel</h3>
                         <p>Head of Operations</p>
-                        <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 1rem;">15+ years experience in Animal Rescue Operations</p>
+                        <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 1rem;">15+ years experience in
+                            Animal Rescue Operations</p>
                         <div class="team-social">
                             <a href="#"><i class="fab fa-linkedin"></i></a>
                             <a href="#"><i class="fab fa-x-twitter"></i></a>
@@ -1978,15 +2252,17 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="team-member">
                     <div class="team-image">
-                        <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg" alt="Ananya Reddy">
+                        <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg"
+                            alt="Ananya Reddy">
                     </div>
                     <div class="team-info">
                         <h3>Ananya Reddy</h3>
                         <p>Adoption Coordinator</p>
-                        <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 1rem;">Certified Animal Behaviorist & Trainer</p>
+                        <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 1rem;">Certified Animal Behaviorist
+                            & Trainer</p>
                         <div class="team-social">
                             <a href="#"><i class="fab fa-linkedin"></i></a>
                             <a href="#"><i class="fab fa-x-twitter"></i></a>
@@ -2002,10 +2278,11 @@
         <div class="container">
             <h2 class="section-title">Resources</h2>
             <p class="text-center" style="max-width: 800px; margin: 0 auto 3rem; color: #64748b; font-size: 1.1rem;">
-                Everything you need to know about dog adoption, care, and training. Our comprehensive resources will help you 
+                Everything you need to know about dog adoption, care, and training. Our comprehensive resources will
+                help you
                 make informed decisions and provide the best care for your furry friend.
             </p>
-            
+
             <div class="resources-filter">
                 <button class="filter-btn active" data-filter="all">All Resources</button>
                 <button class="filter-btn" data-filter="adoption">Adoption Guides</button>
@@ -2013,32 +2290,38 @@
                 <button class="filter-btn" data-filter="training">Training</button>
                 <button class="filter-btn" data-filter="health">Health & Wellness</button>
             </div>
-            
+
             <div class="resources-grid">
                 <div class="resource-card" data-category="adoption">
                     <div class="resource-image">
-                        <img src="https://images.pexels.com/photos/2607544/pexels-photo-2607544.jpeg" alt="Adoption Guide">
+                        <img src="https://images.pexels.com/photos/2607544/pexels-photo-2607544.jpeg"
+                            alt="Adoption Guide">
                         <span class="resource-tag">Guide</span>
                     </div>
                     <div class="resource-content">
                         <h3>Complete Adoption Guide</h3>
-                        <p>Learn everything you need to know about the adoption process, from choosing the right dog to bringing them home.</p>
-                        <a href="adoption-guide.html" class="resource-link">Read More <i class="fas fa-arrow-right"></i></a>
+                        <p>Learn everything you need to know about the adoption process, from choosing the right dog to
+                            bringing them home.</p>
+                        <a href="adoption-guide.html" class="resource-link">Read More <i
+                                class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
-                
+
                 <div class="resource-card" data-category="training">
                     <div class="resource-image">
-                        <img src="https://images.pexels.com/photos/3658120/pexels-photo-3658120.jpeg" alt="Training Tips">
+                        <img src="https://images.pexels.com/photos/3658120/pexels-photo-3658120.jpeg"
+                            alt="Training Tips">
                         <span class="resource-tag">Training</span>
                     </div>
                     <div class="resource-content">
                         <h3>Basic Training Tips</h3>
-                        <p>Essential training techniques for new dog owners. From basic commands to behavior management.</p>
-                        <a href="training-tips.html" class="resource-link">Read More <i class="fas fa-arrow-right"></i></a>
+                        <p>Essential training techniques for new dog owners. From basic commands to behavior management.
+                        </p>
+                        <a href="training-tips.html" class="resource-link">Read More <i
+                                class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
-                
+
                 <div class="resource-card" data-category="health">
                     <div class="resource-image">
                         <img src="https://images.pexels.com/photos/3658120/pexels-photo-3658120.jpeg" alt="Health Care">
@@ -2046,38 +2329,43 @@
                     </div>
                     <div class="resource-content">
                         <h3>Health & Nutrition Guide</h3>
-                        <p>Comprehensive guide to keeping your dog healthy, including diet, exercise, and preventive care.</p>
-                        <a href="health-nutrition-guide.html" class="resource-link">Read More <i class="fas fa-arrow-right"></i></a>
+                        <p>Comprehensive guide to keeping your dog healthy, including diet, exercise, and preventive
+                            care.</p>
+                        <a href="health-nutrition-guide.html" class="resource-link">Read More <i
+                                class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
-            
+
             <div class="download-section">
                 <h2>Downloadable Resources</h2>
                 <p style="max-width: 800px; margin: 1rem auto 0; opacity: 0.9;">
                     Get our free guides and checklists to help you prepare for your new furry family member.
                 </p>
-                
+
                 <div class="download-grid">
                     <div class="download-card">
                         <div class="download-icon">📋</div>
                         <h3>Adoption Checklist</h3>
                         <p>Everything you need to prepare before bringing your new dog home.</p>
-                        <a href="downloads/adoption-checklist.pdf" class="download-btn" download>Download PDF <i class="fas fa-download"></i></a>
+                        <a href="downloads/adoption-checklist.pdf" class="download-btn" download>Download PDF <i
+                                class="fas fa-download"></i></a>
                     </div>
-                    
+
                     <div class="download-card">
                         <div class="download-icon">🏥</div>
                         <h3>Vet Visit Guide</h3>
                         <p>Questions to ask and what to expect during your first vet visit.</p>
-                        <a href="downloads/vet-visit-guide.pdf" class="download-btn" download>Download PDF <i class="fas fa-download"></i></a>
+                        <a href="downloads/vet-visit-guide.pdf" class="download-btn" download>Download PDF <i
+                                class="fas fa-download"></i></a>
                     </div>
-                    
+
                     <div class="download-card">
                         <div class="download-icon">📝</div>
                         <h3>Training Schedule</h3>
                         <p>Printable training schedule and progress tracker.</p>
-                        <a href="downloads/training-schedule.pdf" class="download-btn" download>Download PDF <i class="fas fa-download"></i></a>
+                        <a href="downloads/training-schedule.pdf" class="download-btn" download>Download PDF <i
+                                class="fas fa-download"></i></a>
                     </div>
                 </div>
             </div>
@@ -2121,7 +2409,8 @@
                     <ul class="footer-links">
                         <li><i class="fas fa-envelope"></i> Email: info@pawportal.in</li>
                         <li><i class="fas fa-phone"></i> Phone: +91 98765 43210</li>
-                        <li><i class="fas fa-map-marker-alt"></i> 123 Pet Care Avenue, Bandra West, Mumbai, Maharashtra 400050</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Pet Care Avenue, Bandra West, Mumbai, Maharashtra
+                            400050</li>
                         <li><i class="fas fa-clock"></i> Mon-Sat: 10:00 AM - 7:00 PM IST</li>
                     </ul>
                 </div>
@@ -2159,7 +2448,13 @@
                     <div class="social-links">
                         <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" class="social-link" title="X">
-                            <svg width="20" height="20" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;"><rect width="120" height="120" rx="24" fill="#222"/><path d="M85 35H99L69 70L100 105H78L60 83L40 105H26L57 68L27 35H50L66 55L85 35ZM81 98H87L47 42H41L81 98Z" fill="white"/></svg>
+                            <svg width="20" height="20" viewBox="0 0 120 120" fill="none"
+                                xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;">
+                                <rect width="120" height="120" rx="24" fill="#222" />
+                                <path
+                                    d="M85 35H99L69 70L100 105H78L60 83L40 105H26L57 68L27 35H50L66 55L85 35ZM81 98H87L47 42H41L81 98Z"
+                                    fill="white" />
+                            </svg>
                         </a>
                         <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
@@ -2299,7 +2594,7 @@
             // Extract and set age, weight, and NGO Name
             document.getElementById('modalDogAge').textContent = dogData.age + ' years'; // Add ' years' for clarity
             document.getElementById('modalDogWeight').textContent = dogData.weight + ' kg'; // Add ' kg' for clarity
-            
+
             // Update NGO name display in modal
             const modalNgoNameSpan = document.getElementById('modalDogNgoName');
             if (modalNgoNameSpan) {
@@ -2351,21 +2646,21 @@
                 const ngoId = modal.dataset.ngoId;
 
                 if (!dogId || !ngoId) {
-                     console.error('Dog or NGO ID not available.');
-                     showToast('Error: Could not process request.');
-                     return;
+                    console.error('Dog or NGO ID not available.');
+                    showToast('Error: Could not process request.');
+                    return;
                 }
 
                 if (action === 'schedule-visit') {
                     // Set minimum date to today
                     const today = new Date().toISOString().split('T')[0];
                     document.getElementById('visitDate').min = today;
-                    
+
                     // Show the adoption request form
                     document.getElementById('modalDogDetails').style.display = 'none';
                     document.getElementById('modalNgoContact').style.display = 'none';
                     document.getElementById('modalAdoptionForm').style.display = 'block';
-                    
+
                     // Pre-fill hidden inputs with dog and NGO IDs
                     document.getElementById('adoptionDogId').value = dogId;
                     document.getElementById('adoptionNgoId').value = ngoId;
@@ -2385,7 +2680,7 @@
                         if (ngoDoc.exists) {
                             const ngoData = ngoDoc.data();
                             let contactHtml = '<h4>' + (ngoData.organizationName || ngoData.name || 'NGO') + '</h4>';
-                            
+
                             // Basic contact info
                             if (ngoData.email) {
                                 contactHtml += '<p><i class="fas fa-envelope"></i> <a href="mailto:' + ngoData.email + '">' + ngoData.email + '</a></p>';
@@ -2436,7 +2731,7 @@
         });
 
         // Handle adoption request form submission
-        document.getElementById('adoptionRequestForm').addEventListener('submit', async function(e) {
+        document.getElementById('adoptionRequestForm').addEventListener('submit', async function (e) {
             e.preventDefault();
 
             // Show loading state
@@ -2525,23 +2820,23 @@
         });
 
         // Existing NGO Login functionality (keeping this as is)
-         document.querySelectorAll('.ngo-login-btn').forEach(btn => {
-             btn.addEventListener('click', function(e) {
-                  // No preventDefault here, letting the link go to ngo-portal.html
-             });
-         });
+        document.querySelectorAll('.ngo-login-btn').forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                // No preventDefault here, letting the link go to ngo-portal.html
+            });
+        });
 
-         document.getElementById('ngoLoginForm').addEventListener('submit', function(e) {
-              e.preventDefault();
-              // This form is likely not used for actual login with the redirect method
-              // It might be vestigial or intended for a different flow.
-              // For now, keeping the redirect as per previous modifications.
-              window.location.href = 'ngo-portal.html';
-         });
+        document.getElementById('ngoLoginForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            // This form is likely not used for actual login with the redirect method
+            // It might be vestigial or intended for a different flow.
+            // For now, keeping the redirect as per previous modifications.
+            window.location.href = 'ngo-portal.html';
+        });
 
         // Existing Resource filter functionality (keeping this as is)
         document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
+            btn.addEventListener('click', function () {
                 document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 const filter = btn.getAttribute('data-filter');
@@ -2559,7 +2854,7 @@
         const contactForm = document.getElementById('contactForm');
         const contactSuccess = document.querySelector('.contact-success');
 
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
 
             // Add loading state
@@ -2585,7 +2880,7 @@
 
         // Existing Smooth scroll to contact section (keeping this as is)
         document.querySelectorAll('a[href="#contact"]').forEach(link => {
-            link.addEventListener('click', function(e) {
+            link.addEventListener('click', function (e) {
                 e.preventDefault();
                 document.querySelector('#contact').scrollIntoView({
                     behavior: 'smooth'
@@ -2594,7 +2889,7 @@
         });
 
         // Handle NGO contact form submission
-        document.getElementById('contactNgoForm').addEventListener('submit', async function(e) {
+        document.getElementById('contactNgoForm').addEventListener('submit', async function (e) {
             e.preventDefault();
 
             // Show loading state
@@ -2647,10 +2942,10 @@
                 const successMessageDiv = document.getElementById('adoptionSuccessMessage');
                 successMessageDiv.innerHTML = '<i class="fas fa-check-circle"></i><p>Your message has been sent! The NGO will contact you soon.</p>';
                 successMessageDiv.style.display = 'block';
-                
+
                 // Clear the form
                 this.reset();
-                
+
                 // Close modal after a delay
                 setTimeout(() => {
                     closeModal();
@@ -2669,8 +2964,8 @@
         // Re-attach event listeners for dynamically loaded dog cards
         // This function should be called after dogs are loaded into the grid
         function attachDogCardListeners() {
-             const dogsGrid = document.querySelector('.dogs-grid');
-             if (dogsGrid) {
+            const dogsGrid = document.querySelector('.dogs-grid');
+            if (dogsGrid) {
                 dogsGrid.addEventListener('click', (event) => {
                     // Find the closest dog-card element to the clicked target
                     const dogCard = event.target.closest('.dog-card');
@@ -2688,7 +2983,7 @@
                             breed: dogCard.querySelector('.dog-breed').textContent,
                             // Corrected extraction based on current HTML structure
                             age: dogCard.querySelector('.dog-detail:nth-child(1)')?.textContent.replace('🐶', '').trim() || 'N/A',
-                            weight: dogCard.querySelector('.dog-detail:nth-child(2)')?.textContent.replace('⚖️', '').replace('kg','').trim() || 'N/A', // Update extraction if needed
+                            weight: dogCard.querySelector('.dog-detail:nth-child(2)')?.textContent.replace('⚖️', '').replace('kg', '').trim() || 'N/A', // Update extraction if needed
                             // location is removed, NGO Name is the 3rd detail
                             ngoName: dogCard.querySelector('.dog-detail:nth-child(3)')?.textContent.replace('🏢', '').trim() || 'N/A',
                             description: dogCard.querySelector('.dog-description')?.textContent || 'No description available.',
@@ -2699,14 +2994,53 @@
                         openModal(dogData);
                     }
                 });
-             }
+            }
         }
 
         // Call attachDogCardListeners after dogs are loaded
         attachDogCardListeners();
 
+        // ========== HAMBURGER MENU FUNCTIONALITY ==========
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+        const navLinks = document.querySelectorAll('#navMenu a');
+
+        hamburger.addEventListener('click', function () {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            mobileOverlay.classList.toggle('active');
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+        });
+
+        mobileOverlay.addEventListener('click', function () {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+            mobileOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', function () {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                mobileOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        window.addEventListener('resize', function () {
+            if (window.innerWidth > 768) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                mobileOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
     </script>
 
 
 </body>
+
 </html>
